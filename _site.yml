@@ -1,0 +1,22 @@
+name: My website
+output_dir: '.'
+navbar:
+  title: 'Population genetics analysis in R'
+  left:
+  - text: Home
+    href: index.html
+  - text: Introduction to population genetics
+    href: popgen.html
+  - text: Introduction to R
+    href: introR.html
+  - text: SSR data anaysis
+    href: ssr.html
+  - text: VCF data analysis
+    href: vcf.html
+  
+output:
+  html_document:
+    theme: readable
+    css: styles.css
+    lib_dir: site_libs
+    self_contained: no
