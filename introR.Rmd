@@ -8,3 +8,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## What is R and why R?
+
+Something about R.
+
+## Installing R and Rstudio
+
+add links etc
+

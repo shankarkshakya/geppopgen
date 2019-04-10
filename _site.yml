@@ -5,6 +5,8 @@ navbar:
   left:
   - text: Home
     href: index.html
+  - text: Meet the organizers
+    href: organizers.html
   - text: Introduction to population genetics
     href: popgen.html
   - text: Introduction to R

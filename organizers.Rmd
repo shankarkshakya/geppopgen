@@ -1,0 +1,26 @@
+---
+title: "organizers"
+output: html_document
+---
+
+<img src="Shankar.jpg" style="width:20%; border:5px solid; margin-left: 20px" align="right">
+**Shankar Kaji Shakya**\
+Ph.D. candidate\
+Department of Botany and Plant Pathology\
+Oregon State University\
+https://shankarkshakya.github.io\
+
+\
+\
+\
+\
+\
+\
+
+
+<img src="Subodh.PNG" style="width:20%; border:5px solid; margin-left: 20px" align="right">
+**Subodh Khanal**\
+Assistant Professor\
+Department of Soil and Environmental Science\ 
+Paklihawa Campus, Institute of Agriculture and Animal Science\
+Tribhuvan University\
