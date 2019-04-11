@@ -1,10 +1,6 @@
 ---
-title: "SSR"
 
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Analyses of microsatellite data in R

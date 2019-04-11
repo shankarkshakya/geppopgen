@@ -8,11 +8,19 @@ navbar:
   - text: Meet the organizers
     href: organizers.html
   - text: Day 1
-    href: popgen.html
+    menu:
+      - text: "Core Concepts"
+      - href: "Core_Concepts.html"
   - text: Day 2
-    href: introR.html
+    menu: 
+      - text: Installing R and Rstudio
+      - href: installR.html
   - text: Day3
-    href: ssr.html
+    menu:
+      - text: Microsatellite data analysis
+      - href: SSR.html
+      - text: SNP data analysis
+      - href: SNP.html
   - text: List of participants
     href: participants.html
   - text: Acknowledgements

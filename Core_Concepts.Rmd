@@ -1,11 +1,13 @@
 ---
-title: "Concepts in population genetics"
 
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
 
 ## Brush up your population genetics concepts
 
