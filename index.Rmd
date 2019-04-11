@@ -9,6 +9,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Welcome all!!
 
 
-Welcome to introduction to population genetics and R workshop. This workshop is designed to provide a very brief overview of concept of population genetics and its data analysis in R. 
+Welcome to the introduction to population genetics and data R workshop. This workshop is designed to provide a very brief overview of concept of population genetics and its data analysis in R. This will be a 2.5 day worshop targeting plant pathology undergraduate students of Paklihawa campus.
 
-This work is funded by American Phytopathological Society (APS) through Global experience fund awarded to Shankar K. Shakya (Ph.D. candidate, Oregon State University) and Subodh Khanal (assistant prof, Tribhuwan University, Nepal). Paklihawa campus, Tribhuwan University is the host institution. 
+
+## Objectives and motivation
+
+We cannot learn population genetics and R programming in just 2.5 days. Don't be discouraged. My primary goal is to teach you to provide basic concepts and navigate to right directions.  
+
+
+When I was in undergrad, I didnot know a lot about population genetics and had no idea about R programming. When I first came to US to get my M.S in plant pathology, I saw that most people where attracted towards free statistical and programming software R. I started teaching R myself. Joining Niklaus Grunwald lab at USDA-ARS was a major turning point in learning R. I had an excellent peers to learn from Dr. Zhian Kamvar and Dr. Javier Tabima (developers of R package poppr which will talk a lot) and Dr. Brian Knaus (developer of R package VCFR). Our lab was one of the leading labs to provide population genetics workshop in R. At that time I realized these are important concepts and skills to learn. Back of mind I was thinking, this type of workshop could also benefit Nepalese students. Even though we might not cover every details, I will try to present important concepts and points towards right resources.
+
+
+## Final words
+
+There are many people to thank and the list will keep growing. First, I want to thank my advisor Nik Grunwald, lab members: Zhian Kamvar, Javier Tabima, Brian Knaus, Zach Foster and Nick Carleson for their support. I must thank host country coordinator Subodh Khanal for helping in putting the proposal. This work is funded by American Phytopathological Society (APS) through Global experience fund awarded to Shankar K. Shakya (Ph.D. candidate, Oregon State University) and Subodh Khanal (assistant prof, Tribhuwan University, Nepal). Paklihawa campus, Tribhuwan University is the host institution. 

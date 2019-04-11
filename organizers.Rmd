@@ -8,7 +8,7 @@ output: html_document
 Ph.D. candidate\
 Department of Botany and Plant Pathology\
 Oregon State University\
-https://shankarkshakya.github.io\
+https://shankarkshakya.github.io
 
 \
 \

@@ -1,5 +1,4 @@
 ---
-title: "VCF"
 
 ---
 
@@ -7,4 +6,3 @@ title: "VCF"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Analyses of VCF data

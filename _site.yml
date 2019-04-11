@@ -7,14 +7,16 @@ navbar:
     href: index.html
   - text: Meet the organizers
     href: organizers.html
-  - text: Introduction to population genetics
+  - text: Day 1
     href: popgen.html
-  - text: Introduction to R
+  - text: Day 2
     href: introR.html
-  - text: SSR data anaysis
+  - text: Day3
     href: ssr.html
-  - text: VCF data analysis
-    href: vcf.html
+  - text: List of participants
+    href: participants.html
+  - text: Acknowledgements
+    href: acknowledgement.html
   
 output:
   html_document:
