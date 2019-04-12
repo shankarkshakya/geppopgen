@@ -11,4 +11,34 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Brush up your population genetics concepts
 
-The very first concept in population genetics probably is allele. 
+### Introduction
+
+Population genetics is the study of genetic composition of the population and forces that cause changes in this composition. Simply, its the study of forces like mutation, migration, selection and drift. It is also studies genetic differentiation between populations.
+
+### Gene and genotype frequency
+
+
+### Hardy Weinberg equilibrium
+
+
+### Molecular markers
+
+#### Simple Sequence Repeats or microsatellites 
+
+#### Single Nucleotide Polymorphism (SNPs)
+
+### Population structure
+
+#### FST
+
+#### Clustering
+
+#### Minimum spanning network
+
+### Discriminant analysis of principle components
+
+
+
+
+
+### 

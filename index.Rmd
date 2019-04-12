@@ -9,15 +9,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Welcome all!!
 
 
-Welcome to the introduction to population genetics and data R workshop. This workshop is designed to provide a very brief overview of concept of population genetics and its data analysis in R. This will be a 2.5 day worshop targeting plant pathology undergraduate students of Paklihawa campus.
+Welcome to the introduction to population genetics and data analysis in R workshop. This workshop is designed to provide a very brief overview of concept of population genetics and its data analysis in R. This will be a 2.5 day worshop targeting plant pathology undergraduate students of Paklihawa campus, Nepal.
 
 
 ## Objectives and motivation
 
-We cannot learn population genetics and R programming in just 2.5 days. Don't be discouraged. My primary goal is to teach you to provide basic concepts and navigate to right directions.  
+We cannot learn population genetics and R programming in just 2.5 days. Don't be discouraged. My primary goal is to teach you to provide basic concepts and navigate to right directions. Therefore this site will also contain links to other repositories which has excellent resources.   
 
 
-When I was in undergrad, I didnot know a lot about population genetics and had no idea about R programming. When I first came to US to get my M.S in plant pathology, I saw that most people where attracted towards free statistical and programming software R. I started teaching R myself. Joining Niklaus Grunwald lab at USDA-ARS was a major turning point in learning R. I had an excellent peers to learn from Dr. Zhian Kamvar and Dr. Javier Tabima (developers of R package poppr which will talk a lot) and Dr. Brian Knaus (developer of R package VCFR). Our lab was one of the leading labs to provide population genetics workshop in R. At that time I realized these are important concepts and skills to learn. Back of mind I was thinking, this type of workshop could also benefit Nepalese students. Even though we might not cover every details, I will try to present important concepts and points towards right resources.
+When I was in undergrad, I did not know a lot about population genetics and had no idea about R programming. When I first came to US to get my M.S in plant pathology, I saw that most people where attracted towards free statistical and programming software R. I started teaching R myself. Joining Niklaus Grunwald lab at USDA-ARS for my Ph.D. was a major turning point in learning R. I had an excellent peers to learn from Dr. Zhian Kamvar and Dr. Javier Tabima (developers of R package poppr which will talk a lot) and Dr. Brian Knaus (developer of R package VCFR). Our lab is one of the leading labs to organize population genetics workshop in R here in US. At that time I realized these are important concepts and skills to learn and teach. Back of mind I was thinking, this type of workshop could also benefit Nepalese students. Even though we might not cover every details, I will try to present important concepts and points towards right resources.
 
 
 ## Final words

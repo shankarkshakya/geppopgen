@@ -3,4 +3,14 @@
 ---
 
 
-## Analyses of microsatellite data in R
+# Analyses of microsatellite data in R
+
+For this part, we ll reanalyze the data from Shakya et al. 2018. This work is on Phytophthora infestans in various regions of Mexico. We ll use various package to reconstruct the graphs and figures.
+
+
+# First lets read the data
+
+```{r}
+
+```
+

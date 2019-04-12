@@ -1,7 +1,7 @@
 name: My website
 output_dir: '.'
 navbar:
-  title: 'Population genetics analysis in R'
+  title: 'Population genetics and data analysis workshop in R'
   left:
   - text: Home
     href: index.html
@@ -9,8 +9,8 @@ navbar:
     href: organizers.html
   - text: Day 1
     menu:
-      - text: "Core Concepts"
-      - href: "Core_Concepts.html"
+      - text: Core Concepts
+      - href: Core_Concepts.html
   - text: Day 2
     menu: 
       - text: Installing R and Rstudio
