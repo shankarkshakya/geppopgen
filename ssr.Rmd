@@ -5,10 +5,12 @@
 
 # Analyses of microsatellite data in R
 
-For this part, we ll reanalyze the data from Shakya et al. 2018. This work is on Phytophthora infestans in various regions of Mexico. We ll use various package to reconstruct the graphs and figures.
+Hopefully I have covered what microsatellites markers are. Many R packages are available to analyse microsatellite data. We ll be using R package Poppr to analyze the data from Shakya et a. 2018. 
+
+We ll first read the paper and understand what were the objectives of the paper and try to reproduce the work. We ll work as a group.
 
 
-# First lets read the data
+# Reading data
 
 ```{r}
 
