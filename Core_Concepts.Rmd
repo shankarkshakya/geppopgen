@@ -1,24 +1,106 @@
 ---
-
+editor_options: 
+  chunk_output_type: console
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
 
+## Introduction
 
-## Brush up your population genetics concepts
+Population genetics is the study of genetic composition of the population and forces that cause changes in this composition. Simply, it is also the study of forces like mutation, migration, selection and drift. Before diving into details, there are some key concepts that we need to learn. 
 
-### Introduction
+**Allele:** It is a variant form of a gene e.g. Avr3a gene in plant pathogen Phytophthora infestans have either E or K amino acid at position xx and either M or I at position xx. Isolates which have KI genotype initiate a hypersensitive response in R3a plants where isolates with EM genotype evade this recognition and cause disease on R3a plants. You can also say that, population genetics is about the alleles in the populations. 
 
-Population genetics is the study of genetic composition of the population and forces that cause changes in this composition. Simply, its the study of forces like mutation, migration, selection and drift. It is also studies genetic differentiation between populations.
+**Locus (plural loci):** Position in a genome where one or more alleles are segregating.
 
-### Gene and genotype frequency
+**Genotype:** Genotype is the combination of the alleles at a particular locus.
+
+**Di-allelic model:** Model which assumes that there is only two alleles.
+
+If an individual has same allele at a locus, we call that **homozyogous individua**l e.g AA or aa
+If an individual has different allele at a locus, we call that **heterozygous individual** e.g Aa
+
+**Allele frequency:** Frequency of copies of the allele in the population divided by total number of gene copies in the population.
+
+**Genotype frequency:** Number of individuals of certain genotype divided by total number of individuals. 
+
+**e.g. Lets look at a locus that carries two alleles, A and B. In diploids, we would observed three possible genotypes, two homozygous (AA and BB), and one heterozygous (AB). Lets say we found following genotype count, AA=38, AB=16, BB = 46. Calculate genotype frequency and allele frequency.**
+
+## first lets look at genotype freq
+
+```{r}
+AA <-  38
+AB <- 16
+BB <- 46
+N <- AA+AB+BB
+  
+AA_freq <- AA/N
+AA_freq
+
+BB_freq <- BB/N
+BB_freq
+
+AB_freq <- AB/N
+AB_freq
+
+```
+
+## Now lets calculate allele freq
+
+remember allele freq is frequency of copies of the allele in the population divided by total number of gene copies in the population. 
+
+For allele A and B
+
+```{r}
+
+A <- 2*38 + 16
+B <- 2*46 + 16
+Gene_copies <- 200 ## why is this 200
+
+allele_freq_A <- A/Gene_copies
+allele_freq_B <- B/Gene_copies
+
+allele_freq_A
+allele_freq_B
+
+```
+
+## Write a simple function to calculate genotype and allele frequencies.
+
+Remember, we said that population genetics is about studying the changes in the allele frequency. Now if you ask, how these allele frequencies are going to change overtime, then you are in right path.
 
 
-### Hardy Weinberg equilibrium
+## Hardy Weinberg equilibrium (HWE)
+
+Previously, we calculated allele frequencies given the genotype counts. Now the question is can we reverse calculate i.e can we predict genotype frequencies from allele frequencies. Yes, we can probably do this but we have to make few assumptions first. 
+
+Random mating: One individual mate with any other individual with the same probablity.
+
+Lets consider a simple example of two alleles A and a whose allele freqencies are p and q respectively. Then, Pr(AA) = p2, Pr(aa) = q2 and P(Aa) = 2pq.
+
+The Hardy–Weinberg principle, also known as the Hardy–Weinberg equilibrium, model, theorem, or law, states that allele and genotype frequencies in a population will remain constant from generation to generation in the absence of other evolutionary influences like  mutation, migration, genetic drift, mate choice, assortative mating, natural selection, sexual selection, inbreeding etc.
+
+Lets try to estimate genotype frequencies given the allele frequency.
+
+```{r}
+
+freq_A <- 0.08
+freq_a <- 1-0.08
+
+AA <- freq_A * freq_A
+aa <- freq_a * freq_a
+
+Aa <- 2*freq_a*freq_A
+
+AA
+aa
+Aa
+```
 
 
 ### Molecular markers

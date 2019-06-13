@@ -10,9 +10,12 @@ Hopefully I have covered what microsatellites markers are. Many R packages are a
 We ll first read the paper and understand what were the objectives of the paper and try to reproduce the work. We ll work as a group.
 
 
-# Reading data
+# Download the necessary data and reading in
+
 
 ```{r}
+
+
 
 ```
 
