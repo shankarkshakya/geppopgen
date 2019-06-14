@@ -9,8 +9,12 @@ navbar:
     href: organizers.html
   - text: Day 1
     menu:
-      - text: Core Concepts
-      - href: Core_Concepts.html
+      - text: Introduction
+      - href: Introduction.html
+      - text: HWE
+      - href: HWE.html
+      - text: Molecular markers
+      - href: Molecular_markers.html
   - text: Day 2
     menu: 
       - text: Installing R and Rstudio

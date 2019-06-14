@@ -1,0 +1,58 @@
+---
+title: "HWE"
+---
+
+
+## **Hardy-Weinberg equilibrium (HWE)**
+
+Previously, we calculated allele frequencies given the genotype counts. Now the question is can we reverse calculate i.e can we predict genotype frequencies from allele frequencies. Yes, we can but we have to make few assumptions first. First assumption is random mating. 
+
+Random mating: One individual mate with any other individual with the same probablity.
+
+Lets consider a simple example of two alleles A and a whose allele freqencies are p and q respectively. Then, Pr(AA) = p2, Pr(aa) = q2 and P(Aa) = 2pq.
+
+The Hardy–Weinberg principle, also known as the Hardy–Weinberg equilibrium, model, theorem, or law, states that allele and genotype frequencies in a population will remain constant from generation to generation in the absence of other evolutionary influences like  mutation, migration, genetic drift, mate choice, assortative mating, natural selection, sexual selection, inbreeding etc.
+
+Lets try to estimate genotype frequencies given the allele frequency.
+
+```{r}
+
+freq_A <- 0.08
+freq_a <- 1-0.08
+
+AA <- freq_A * freq_A
+aa <- freq_a * freq_a
+
+Aa <- 2*freq_a*freq_A
+
+AA
+aa
+Aa
+```
+
+Therefore, expected homozygosity from above example is sum of AA and aa while expected heterozygosity is Aa.
+
+
+## **Problem 2**
+Calculate expected homozygosity and expected heterozygosity from following data
+
+AA = 42
+AB = 16
+BB = 32
+
+[Ans : Observed homozygosity = ;
+observed heterozygosity= ;
+]
+
+
+## **Deviations from HWE**
+
+1. Non random mating
+2. Inbreeding
+3. Population structure
+4. Selection
+
+## **Chi-square test***
+
+We ll use chi-square test to test for the deviations.
+

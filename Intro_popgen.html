@@ -191,17 +191,13 @@ $(document).ready(function () {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Introduction</li>
+    <li class="dropdown-header">Intro_popgen</li>
     <li>
-      <a href="Introduction.html"></a>
+      <a href="Intro_popgen.html"></a>
     </li>
     <li class="dropdown-header">HWE</li>
     <li>
       <a href="HWE.html"></a>
-    </li>
-    <li class="dropdown-header">Molecular markers</li>
-    <li>
-      <a href="Molecular_markers.html"></a>
     </li>
   </ul>
 </li>
@@ -256,6 +252,81 @@ $(document).ready(function () {
 
 <hr />
 <hr />
+<div id="introduction" class="section level2">
+<h2><strong>Introduction</strong></h2>
+<p>Population genetics is the study of genetic composition of the population and forces that cause changes in this composition. Simply, it is also the study of forces like mutation, migration, selection and drift. Before diving into details, there are some key concepts that we need to learn.</p>
+<p><strong>Allele:</strong> It is a variant form of a gene e.g. Avr3a gene in plant pathogen Phytophthora infestans have either E or K amino acid at position xx and either M or I at position xx. Isolates which have KI genotype initiate a hypersensitive response in R3a plants where isolates with EM genotype evade this recognition and cause disease on R3a plants. You can also say that, population genetics is about the alleles in the populations.</p>
+<p><strong>Locus (plural loci):</strong> Position in a genome where one or more alleles are segregating.</p>
+<p><strong>Genotype:</strong> Genotype is the combination of the alleles at a particular locus.</p>
+<p><strong>Di-allelic model:</strong> Model which assumes that there is only two alleles.</p>
+<p>If an individual has same allele at a locus, we call that <strong>homozyogous individua</strong>l e.g AA or aa If an individual has different allele at a locus, we call that <strong>heterozygous individual</strong> e.g Aa</p>
+<p><strong>Allele frequency:</strong> Frequency of copies of the allele in the population divided by total number of gene copies in the population.</p>
+<p><strong>Genotype frequency:</strong> Number of individuals of certain genotype divided by total number of individuals.</p>
+</div>
+<div id="problem-1" class="section level2">
+<h2><strong>Problem 1</strong></h2>
+<p>e.g. Lets look at a locus that carries two alleles, A and B. In diploids, we would observed three possible genotypes, two homozygous (AA and BB), and one heterozygous (AB). Lets say we found following genotype count, AA=38, AB=16, BB = 46. Calculate genotype frequency and allele frequency.**</p>
+<p><strong>first lets look at genotype freq</strong></p>
+<pre class="r"><code>AA &lt;-  38
+AB &lt;- 16
+BB &lt;- 46
+N &lt;- AA+AB+BB
+  
+AA_freq &lt;- AA/N
+AA_freq</code></pre>
+<pre><code>## [1] 0.38</code></pre>
+<pre class="r"><code>BB_freq &lt;- BB/N
+BB_freq</code></pre>
+<pre><code>## [1] 0.46</code></pre>
+<pre class="r"><code>AB_freq &lt;- AB/N
+AB_freq</code></pre>
+<pre><code>## [1] 0.16</code></pre>
+</div>
+<div id="now-lets-calculate-allele-freq" class="section level2">
+<h2>Now lets calculate allele freq</h2>
+<p>remember allele freq is frequency of copies of the allele in the population divided by total number of gene copies in the population.</p>
+<p>For allele A and B</p>
+<pre class="r"><code>A &lt;- 2*38 + 16
+B &lt;- 2*46 + 16
+Gene_copies &lt;- 200 ## why is this 200
+
+allele_freq_A &lt;- A/Gene_copies
+allele_freq_B &lt;- B/Gene_copies
+
+allele_freq_A</code></pre>
+<pre><code>## [1] 0.46</code></pre>
+<pre class="r"><code>allele_freq_B</code></pre>
+<pre><code>## [1] 0.54</code></pre>
+<pre class="r"><code>## Next day we ll try writing a very simple function to calculate these genotype and allele frequencies.</code></pre>
+<p>Remember, we said that population genetics is about studying the changes in the allele frequency. Now if you ask, how these allele frequencies are going to change overtime, then you are in right path.</p>
+<div id="molecular-markers" class="section level3">
+<h3>Molecular markers</h3>
+<div id="simple-sequence-repeats-or-microsatellites" class="section level4">
+<h4>Simple Sequence Repeats or microsatellites</h4>
+</div>
+<div id="single-nucleotide-polymorphism-snps" class="section level4">
+<h4>Single Nucleotide Polymorphism (SNPs)</h4>
+</div>
+</div>
+<div id="population-structure" class="section level3">
+<h3>Population structure</h3>
+<div id="fst" class="section level4">
+<h4>FST</h4>
+</div>
+<div id="clustering" class="section level4">
+<h4>Clustering</h4>
+</div>
+<div id="minimum-spanning-network" class="section level4">
+<h4>Minimum spanning network</h4>
+</div>
+</div>
+<div id="discriminant-analysis-of-principle-components" class="section level3">
+<h3>Discriminant analysis of principle components</h3>
+</div>
+<div id="section" class="section level3">
+<h3></h3>
+</div>
+</div>
 
 
 

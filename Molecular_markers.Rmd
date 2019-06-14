@@ -1,0 +1,9 @@
+---
+title: "marker"
+---
+
+## **Molecular markers**
+
+**1. Simple Sequence Repeats or microsatellites** 
+
+**2. Single Nucleotide Polymorphism (SNPs)**

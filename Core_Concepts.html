@@ -246,10 +246,10 @@ $(document).ready(function () {
 </div>
 
 
-<div id="section" class="section level1">
-<h1></h1>
+<hr />
+<hr />
 <div id="introduction" class="section level2">
-<h2>Introduction</h2>
+<h2><strong>Introduction</strong></h2>
 <p>Population genetics is the study of genetic composition of the population and forces that cause changes in this composition. Simply, it is also the study of forces like mutation, migration, selection and drift. Before diving into details, there are some key concepts that we need to learn.</p>
 <p><strong>Allele:</strong> It is a variant form of a gene e.g. Avr3a gene in plant pathogen Phytophthora infestans have either E or K amino acid at position xx and either M or I at position xx. Isolates which have KI genotype initiate a hypersensitive response in R3a plants where isolates with EM genotype evade this recognition and cause disease on R3a plants. You can also say that, population genetics is about the alleles in the populations.</p>
 <p><strong>Locus (plural loci):</strong> Position in a genome where one or more alleles are segregating.</p>
@@ -258,10 +258,10 @@ $(document).ready(function () {
 <p>If an individual has same allele at a locus, we call that <strong>homozyogous individua</strong>l e.g AA or aa If an individual has different allele at a locus, we call that <strong>heterozygous individual</strong> e.g Aa</p>
 <p><strong>Allele frequency:</strong> Frequency of copies of the allele in the population divided by total number of gene copies in the population.</p>
 <p><strong>Genotype frequency:</strong> Number of individuals of certain genotype divided by total number of individuals.</p>
-<p><strong>e.g. Lets look at a locus that carries two alleles, A and B. In diploids, we would observed three possible genotypes, two homozygous (AA and BB), and one heterozygous (AB). Lets say we found following genotype count, AA=38, AB=16, BB = 46. Calculate genotype frequency and allele frequency.</strong></p>
-</div>
-<div id="first-lets-look-at-genotype-freq" class="section level2">
-<h2>first lets look at genotype freq</h2>
+<p><strong>## Problem 1</strong></p>
+<p>e.g. Lets look at a locus that carries two alleles, A and B. In diploids, we would observed three possible genotypes, two homozygous (AA and BB), and one heterozygous (AB). Lets say we found following genotype count, AA=38, AB=16, BB = 46. Calculate genotype frequency and allele frequency.**</p>
+<div id="first-lets-look-at-genotype-freq" class="section level3">
+<h3>first lets look at genotype freq</h3>
 <pre class="r"><code>AA &lt;-  38
 AB &lt;- 16
 BB &lt;- 46
@@ -276,6 +276,7 @@ BB_freq</code></pre>
 <pre class="r"><code>AB_freq &lt;- AB/N
 AB_freq</code></pre>
 <pre><code>## [1] 0.16</code></pre>
+</div>
 </div>
 <div id="now-lets-calculate-allele-freq" class="section level2">
 <h2>Now lets calculate allele freq</h2>
@@ -318,6 +319,7 @@ AA</code></pre>
 <pre><code>## [1] 0.8464</code></pre>
 <pre class="r"><code>Aa</code></pre>
 <pre><code>## [1] 0.1472</code></pre>
+<p>Therefore, expected homozygosity from above example is sum of AA and aa while expected heterozygosity is Aa.</p>
 <div id="molecular-markers" class="section level3">
 <h3>Molecular markers</h3>
 <div id="simple-sequence-repeats-or-microsatellites" class="section level4">
@@ -342,9 +344,8 @@ AA</code></pre>
 <div id="discriminant-analysis-of-principle-components" class="section level3">
 <h3>Discriminant analysis of principle components</h3>
 </div>
-<div id="section-1" class="section level3">
+<div id="section" class="section level3">
 <h3></h3>
-</div>
 </div>
 </div>
 

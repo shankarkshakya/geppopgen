@@ -91,9 +91,6 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
-.html-widget {
-  margin-bottom: 20px;
-}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -194,9 +191,17 @@ $(document).ready(function () {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Core Concepts</li>
+    <li class="dropdown-header">Introduction</li>
     <li>
-      <a href="Core_Concepts.html"></a>
+      <a href="Introduction.html"></a>
+    </li>
+    <li class="dropdown-header">HWE</li>
+    <li>
+      <a href="HWE.html"></a>
+    </li>
+    <li class="dropdown-header">Molecular markers</li>
+    <li>
+      <a href="Molecular_markers.html"></a>
     </li>
   </ul>
 </li>
@@ -249,8 +254,6 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
-<hr />
 <div id="what-is-r-and-why-r" class="section level2">
 <h2>What is R and why R?</h2>
 <p>R is a free statistical programming language. It has been widely used for statistics, data analysis and data visualization. One of the fields where R is widely used is genomics. Many R packages have been developed for population genetics data analyses and visualization.</p>
@@ -275,8 +278,8 @@ $(document).ready(function () {
 100 / 5</code></pre>
 <pre><code>## [1] 20</code></pre>
 </div>
-<div id="r-data-structure" class="section level3">
-<h3>R data structure</h3>
+<div id="r-data-structures" class="section level3">
+<h3>R data structures</h3>
 <pre class="r"><code># vectors
 x &lt;- c(1,3,2,10,5)
 x</code></pre>
@@ -285,13 +288,42 @@ x</code></pre>
 x &lt;- c(1,2,3,4)
 y &lt;- c(4,5,6,7)
 matrix &lt;- cbind(x,y)
+mymat &lt;- matrix(NA, nrow = 2, ncol = 2)
 
-matrix</code></pre>
-<pre><code>##      x y
-## [1,] 1 4
-## [2,] 2 5
-## [3,] 3 6
-## [4,] 4 7</code></pre>
+# Data frame
+chr &lt;- c(&quot;chr1&quot;, &quot;chr1&quot;, &quot;chr2&quot;, &quot;chr2&quot;)
+strand &lt;- c(&quot;-&quot;,&quot;-&quot;,&quot;+&quot;,&quot;+&quot;)
+start&lt;- c(200,4000,100,400)
+end&lt;-c(250,410,200,450)
+mydata &lt;- data.frame(chr,start,end,strand)
+#change column names
+names(mydata) &lt;- c(&quot;chr&quot;,&quot;start&quot;,&quot;end&quot;,&quot;strand&quot;)
+mydata </code></pre>
+<pre><code>##    chr start end strand
+## 1 chr1   200 250      -
+## 2 chr1  4000 410      -
+## 3 chr2   100 200      +
+## 4 chr2   400 450      +</code></pre>
+<pre class="r"><code># List
+
+w &lt;- list(name=&quot;Fred&quot;,
+       mynumbers=c(1,2,3),
+       mymatrix=matrix(1:4,ncol=2),
+       age=5.3)
+w</code></pre>
+<pre><code>## $name
+## [1] &quot;Fred&quot;
+## 
+## $mynumbers
+## [1] 1 2 3
+## 
+## $mymatrix
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4
+## 
+## $age
+## [1] 5.3</code></pre>
 </div>
 </div>
 

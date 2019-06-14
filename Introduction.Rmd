@@ -1,16 +1,9 @@
 ---
-editor_options: 
-  chunk_output_type: console
+
 ---
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-```
-
-
-## Introduction
+## **Introduction**
 
 Population genetics is the study of genetic composition of the population and forces that cause changes in this composition. Simply, it is also the study of forces like mutation, migration, selection and drift. Before diving into details, there are some key concepts that we need to learn. 
 
@@ -29,9 +22,12 @@ If an individual has different allele at a locus, we call that **heterozygous in
 
 **Genotype frequency:** Number of individuals of certain genotype divided by total number of individuals. 
 
-**e.g. Lets look at a locus that carries two alleles, A and B. In diploids, we would observed three possible genotypes, two homozygous (AA and BB), and one heterozygous (AB). Lets say we found following genotype count, AA=38, AB=16, BB = 46. Calculate genotype frequency and allele frequency.**
 
-## first lets look at genotype freq
+## **Problem 1**
+
+e.g. Lets look at a locus that carries two alleles, A and B. In diploids, we would observed three possible genotypes, two homozygous (AA and BB), and one heterozygous (AB). Lets say we found following genotype count, AA=38, AB=16, BB = 46. Calculate genotype frequency and allele frequency.**
+
+**first lets look at genotype freq**
 
 ```{r}
 AA <-  38
@@ -68,46 +64,20 @@ allele_freq_B <- B/Gene_copies
 allele_freq_A
 allele_freq_B
 
+
+## Next day we ll try writing a very simple function to calculate these genotype and allele frequencies.
+
 ```
 
-## Write a simple function to calculate genotype and allele frequencies.
 
 Remember, we said that population genetics is about studying the changes in the allele frequency. Now if you ask, how these allele frequencies are going to change overtime, then you are in right path.
 
 
-## Hardy Weinberg equilibrium (HWE)
-
-Previously, we calculated allele frequencies given the genotype counts. Now the question is can we reverse calculate i.e can we predict genotype frequencies from allele frequencies. Yes, we can probably do this but we have to make few assumptions first. 
-
-Random mating: One individual mate with any other individual with the same probablity.
-
-Lets consider a simple example of two alleles A and a whose allele freqencies are p and q respectively. Then, Pr(AA) = p2, Pr(aa) = q2 and P(Aa) = 2pq.
-
-The Hardy–Weinberg principle, also known as the Hardy–Weinberg equilibrium, model, theorem, or law, states that allele and genotype frequencies in a population will remain constant from generation to generation in the absence of other evolutionary influences like  mutation, migration, genetic drift, mate choice, assortative mating, natural selection, sexual selection, inbreeding etc.
-
-Lets try to estimate genotype frequencies given the allele frequency.
-
-```{r}
-
-freq_A <- 0.08
-freq_a <- 1-0.08
-
-AA <- freq_A * freq_A
-aa <- freq_a * freq_a
-
-Aa <- 2*freq_a*freq_A
-
-AA
-aa
-Aa
-```
 
 
-### Molecular markers
 
-#### Simple Sequence Repeats or microsatellites 
 
-#### Single Nucleotide Polymorphism (SNPs)
+
 
 ### Population structure
 

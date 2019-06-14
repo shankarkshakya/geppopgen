@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>HWE</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -250,12 +250,53 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">HWE</h1>
 
 </div>
 
 
-<hr />
-<hr />
+<div id="hardy-weinberg-equilibrium-hwe" class="section level2">
+<h2><strong>Hardy-Weinberg equilibrium (HWE)</strong></h2>
+<p>Previously, we calculated allele frequencies given the genotype counts. Now the question is can we reverse calculate i.e can we predict genotype frequencies from allele frequencies. Yes, we can but we have to make few assumptions first. First assumption is random mating.</p>
+<p>Random mating: One individual mate with any other individual with the same probablity.</p>
+<p>Lets consider a simple example of two alleles A and a whose allele freqencies are p and q respectively. Then, Pr(AA) = p2, Pr(aa) = q2 and P(Aa) = 2pq.</p>
+<p>The Hardy–Weinberg principle, also known as the Hardy–Weinberg equilibrium, model, theorem, or law, states that allele and genotype frequencies in a population will remain constant from generation to generation in the absence of other evolutionary influences like mutation, migration, genetic drift, mate choice, assortative mating, natural selection, sexual selection, inbreeding etc.</p>
+<p>Lets try to estimate genotype frequencies given the allele frequency.</p>
+<pre class="r"><code>freq_A &lt;- 0.08
+freq_a &lt;- 1-0.08
+
+AA &lt;- freq_A * freq_A
+aa &lt;- freq_a * freq_a
+
+Aa &lt;- 2*freq_a*freq_A
+
+AA</code></pre>
+<pre><code>## [1] 0.0064</code></pre>
+<pre class="r"><code>aa</code></pre>
+<pre><code>## [1] 0.8464</code></pre>
+<pre class="r"><code>Aa</code></pre>
+<pre><code>## [1] 0.1472</code></pre>
+<p>Therefore, expected homozygosity from above example is sum of AA and aa while expected heterozygosity is Aa.</p>
+</div>
+<div id="problem-2" class="section level2">
+<h2><strong>Problem 2</strong></h2>
+<p>Calculate expected homozygosity and expected heterozygosity from following data</p>
+<p>AA = 42 AB = 16 BB = 32</p>
+<p>[Ans : Observed homozygosity = ; observed heterozygosity= ;]</p>
+</div>
+<div id="deviations-from-hwe" class="section level2">
+<h2><strong>Deviations from HWE</strong></h2>
+<ol style="list-style-type: decimal">
+<li>Non random mating</li>
+<li>Inbreeding</li>
+<li>Population structure</li>
+<li>Selection</li>
+</ol>
+</div>
+<div id="chi-square-test" class="section level2">
+<h2><strong>Chi-square test</strong>*</h2>
+<p>We ll use chi-square test to test for the deviations.</p>
+</div>
 
 
 
