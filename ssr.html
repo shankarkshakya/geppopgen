@@ -250,8 +250,6 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
-<hr />
 <div id="analyses-of-microsatellite-data-in-r" class="section level1">
 <h1>Analyses of microsatellite data in R</h1>
 <p>Hopefully I have covered what microsatellites markers are by this time. Many R packages are available to analyse microsatellite data. We ll be using R package Poppr to analyze the data from <a href="https://apsjournals.apsnet.org/doi/10.1094/PDIS-11-17-1801-RE">Shakya et al. 2018</a>.</p>
@@ -260,6 +258,258 @@ $(document).ready(function () {
 <div id="download-the-necessary-data" class="section level1">
 <h1>Download the necessary data</h1>
 <p>First, we need the microsatellite genotype data which can be downloaded from <a href="https://osf.io/hbxvj/files/">here</a>. Download MX_pop.csv file to your current working directory.</p>
+<pre class="r"><code>library(poppr)</code></pre>
+<pre><code>## Warning: package &#39;poppr&#39; was built under R version 3.4.4</code></pre>
+<pre><code>## Loading required package: adegenet</code></pre>
+<pre><code>## Loading required package: ade4</code></pre>
+<pre><code>## 
+##    /// adegenet 2.1.0 is loaded ////////////
+## 
+##    &gt; overview: &#39;?adegenet&#39;
+##    &gt; tutorials/doc/questions: &#39;adegenetWeb()&#39; 
+##    &gt; bug reports/feature requests: adegenetIssues()</code></pre>
+<pre><code>## This is poppr version 2.8.2. To get started, type package?poppr
+## OMP parallel support: available</code></pre>
+<pre class="r"><code>P.inf &lt;- read.genalex(&quot;MX_pop.csv&quot;, ploidy = 4)</code></pre>
+<pre><code>## Warning in read.genalex(&quot;MX_pop.csv&quot;, ploidy = 4): 
+##  I found duplicate column names in your data.
+##  They are being renamed:
+##  col 4: D13 -&gt; D13_1
+##  col 5: D13 -&gt; D13_2
+##  col 6: D13 -&gt; D13_3
+##  col 8: G11 -&gt; G11_1
+##  col 9: G11 -&gt; G11_2
+##  col 10: G11 -&gt; G11_3
+##  col 12: Pi04 -&gt; Pi04_1
+##  col 13: Pi04 -&gt; Pi04_2
+##  col 14: Pi04 -&gt; Pi04_3
+##  col 16: Pi4B -&gt; Pi4B_1
+##  col 17: Pi4B -&gt; Pi4B_2
+##  col 18: Pi4B -&gt; Pi4B_3
+##  col 20: Pi63 -&gt; Pi63_1
+##  col 21: Pi63 -&gt; Pi63_2
+##  col 22: Pi63 -&gt; Pi63_3
+##  col 24: Pi70 -&gt; Pi70_1
+##  col 25: Pi70 -&gt; Pi70_2
+##  col 26: Pi70 -&gt; Pi70_3
+##  col 28: SSR11 -&gt; SSR11_1
+##  col 29: SSR11 -&gt; SSR11_2
+##  col 30: SSR11 -&gt; SSR11_3
+##  col 32: SSR2 -&gt; SSR2_1
+##  col 33: SSR2 -&gt; SSR2_2
+##  col 34: SSR2 -&gt; SSR2_3
+##  col 36: SSR3 -&gt; SSR3_1
+##  col 37: SSR3 -&gt; SSR3_2
+##  col 38: SSR3 -&gt; SSR3_3
+##  col 40: SSR4 -&gt; SSR4_1
+##  col 41: SSR4 -&gt; SSR4_2
+##  col 42: SSR4 -&gt; SSR4_3
+##  col 44: SSR6 -&gt; SSR6_1
+##  col 45: SSR6 -&gt; SSR6_2
+##  col 46: SSR6 -&gt; SSR6_3
+##  col 48: SSR8 -&gt; SSR8_1
+##  col 49: SSR8 -&gt; SSR8_2
+##  col 50: SSR8 -&gt; SSR8_3</code></pre>
+<pre class="r"><code>P.inf</code></pre>
+<pre><code>## 
+## This is a genclone object
+## -------------------------
+## Genotype information:
+## 
+##    283 original multilocus genotypes 
+##    517 tetraploid individuals
+##     12 codominant loci
+## 
+## Population information:
+## 
+##      1 stratum - Pop
+##     11 populations defined - 
+## Chapingo_2015, Juchitepec_2015, San Gerónimo_2015, ..., Michoacan_2001/2010, Tlaxcala_2007, Toluca_1997</code></pre>
+<div id="look-at-the-missing-data" class="section level2">
+<h2>look at the missing data</h2>
+<pre class="r"><code>info_table(P.inf, type = &quot;missing&quot;, plot = T)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre><code>##                      Locus
+## Population               D13    G11 Pi04 Pi4B Pi63   Pi70 SSR11 SSR2
+##   Chapingo_2015       0.3636      .    .    .    .      .     .    .
+##   Juchitepec_2015     0.4848      .    .    .    .      .     .    .
+##   San Gerónimo_2015   0.0545      .    .    .    . 0.0182     .    .
+##   Toluca_2015         0.2609      .    .    .    .      .     .    .
+##   Tlaxcala_2015       0.2424 0.0152    .    .    .      .     .    .
+##   Chapingo_2016       0.3333      .    .    .    .      .     .    .
+##   Juchitepec_2016     0.2456      .    .    .    .      .     .    .
+##   San Gerónimo_2016   0.1250      .    .    .    .      .     .    .
+##   Michoacan_2001/2010 0.0526 0.2105    .    .    .      .     .    .
+##   Tlaxcala_2007       0.3818 0.1818    .    .    .      .     .    .
+##   Toluca_1997         0.1290      .    .    .    .      .     .    .
+##   Total               0.2398 0.0522    .    .    . 0.0019     .    .
+##                      Locus
+## Population              SSR3   SSR4 SSR6 SSR8   Mean
+##   Chapingo_2015            .      .    .    . 0.0303
+##   Juchitepec_2015          .      .    .    . 0.0404
+##   San Gerónimo_2015        . 0.0182    .    . 0.0076
+##   Toluca_2015              .      .    .    . 0.0217
+##   Tlaxcala_2015       0.0152 0.0152    .    . 0.0240
+##   Chapingo_2016            .      .    .    . 0.0278
+##   Juchitepec_2016          .      .    .    . 0.0205
+##   San Gerónimo_2016        .      .    .    . 0.0104
+##   Michoacan_2001/2010      .      .    .    . 0.0219
+##   Tlaxcala_2007            .      .    .    . 0.0470
+##   Toluca_1997              .      .    .    . 0.0108
+##   Total               0.0019 0.0039    .    . 0.0250</code></pre>
+<p>Now instead of working with tetraploids lets work with diploid data.</p>
+<pre class="r"><code>multiploid2diploid &lt;- function(x, to = 2){
+  
+  ploidy_tab &lt;- info_table(x, type = &quot;ploidy&quot;)
+  mat_sum &lt;- rowSums(ploidy_tab &gt; to, na.rm = TRUE)
+  
+  diploid_pinf &lt;- x[mat_sum == 0]
+  
+  diploid_pinf &lt;- recode_polyploids(diploid_pinf, newploidy = to)
+  
+  return(diploid_pinf)
+  
+}
+
+
+diploid_pinf &lt;- multiploid2diploid(P.inf, to = 2)
+diploid_pinf</code></pre>
+<pre><code>## 
+## This is a genclone object
+## -------------------------
+## Genotype information:
+## 
+##    221 original multilocus genotypes 
+##    431 diploid individuals
+##     12 codominant loci
+## 
+## Population information:
+## 
+##      1 stratum - Pop
+##     11 populations defined - 
+## Chapingo_2015, Juchitepec_2015, San Gerónimo_2015, ..., Michoacan_2001/2010, Tlaxcala_2007, Toluca_1997</code></pre>
+<pre class="r"><code>info_table(diploid_pinf, type = &quot;missing&quot;, plot = T)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre><code>##                      Locus
+## Population               D13    G11 Pi04 Pi4B Pi63   Pi70 SSR11 SSR2
+##   Chapingo_2015       0.3721      .    .    .    .      .     .    .
+##   Juchitepec_2015     0.7000      .    .    .    .      .     .    .
+##   San Gerónimo_2015   0.0769      .    .    .    . 0.0256     .    .
+##   Toluca_2015         0.2727      .    .    .    .      .     .    .
+##   Tlaxcala_2015       0.3171      .    .    .    .      .     .    .
+##   Chapingo_2016       0.3433      .    .    .    .      .     .    .
+##   Juchitepec_2016     0.2708      .    .    .    .      .     .    .
+##   San Gerónimo_2016   0.1667      .    .    .    .      .     .    .
+##   Michoacan_2001/2010 0.0563 0.2254    .    .    .      .     .    .
+##   Tlaxcala_2007       0.4000 0.2000    .    .    .      .     .    .
+##   Toluca_1997         0.1667      .    .    .    .      .     .    .
+##   Total               0.2715 0.0603    .    .    . 0.0023     .    .
+##                      Locus
+## Population              SSR3   SSR4 SSR6 SSR8   Mean
+##   Chapingo_2015            .      .    .    . 0.0310
+##   Juchitepec_2015          .      .    .    . 0.0583
+##   San Gerónimo_2015        . 0.0256    .    . 0.0107
+##   Toluca_2015              .      .    .    . 0.0227
+##   Tlaxcala_2015       0.0244      .    .    . 0.0285
+##   Chapingo_2016            .      .    .    . 0.0286
+##   Juchitepec_2016          .      .    .    . 0.0226
+##   San Gerónimo_2016        .      .    .    . 0.0139
+##   Michoacan_2001/2010      .      .    .    . 0.0235
+##   Tlaxcala_2007            .      .    .    . 0.0500
+##   Toluca_1997              .      .    .    . 0.0139
+##   Total               0.0023 0.0023    .    . 0.0282</code></pre>
+</div>
+<div id="remove-locus-with-high-percentage-of-missing-data" class="section level2">
+<h2>Remove locus with high percentage of missing data</h2>
+<pre class="r"><code>diploid_pinf &lt;- missingno(diploid_pinf, type = &quot;loci&quot;, cutoff = 0.07)</code></pre>
+<pre><code>## 
+## Found 5647 missing values.
+## 
+## 1 locus contained missing values greater than 7%
+## 
+## Removing 1 locus: , D13</code></pre>
+<pre class="r"><code>splitStrata(diploid_pinf) &lt;- ~Region/Year
+setPop(diploid_pinf) &lt;- ~Region
+
+diploid_pinf</code></pre>
+<pre><code>## 
+## This is a genclone object
+## -------------------------
+## Genotype information:
+## 
+##    221 original multilocus genotypes 
+##    431 diploid individuals
+##     11 codominant loci
+## 
+## Population information:
+## 
+##      2 strata - Region, Year
+##      6 populations defined - 
+## Chapingo, Juchitepec, San Gerónimo, Toluca, Tlaxcala, Michoacan</code></pre>
+</div>
+<div id="table-2.-diversity-summary-by-region" class="section level2">
+<h2>Table 2. Diversity summary by region</h2>
+<pre class="r"><code># Corrected simpson diversity index
+
+uSimp &lt;- function(x){
+  lambda &lt;- vegan::diversity(x, &quot;simpson&quot;)
+  x &lt;- drop(as.matrix(x))
+  if (length(dim(x)) &gt; 1){
+    N &lt;- rowSums(x)
+  } else {
+    N &lt;- sum(x)
+  }
+  return((N/(N-1))*lambda)
+}
+
+
+unbiased &lt;- poppr(diploid_pinf, uSimp = uSimp)
+unbiased &lt;- unbiased[, c(1,2,3,4,9,10,11)]
+colnames(unbiased) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &quot;eMLG&quot;, &quot;E5&quot;, &quot;Corrected lambda&quot;, &quot;Hexp&quot;)
+unbiased &lt;- unbiased[c(6,1,4,3,2,5), ]
+rownames(unbiased) &lt;- NULL
+
+unbiased</code></pre>
+<pre><code>##         Region   N MLG eMLG    E5 Corrected lambda  Hexp
+## 1    Michoacan  71  43 29.9 0.571            0.956 0.548
+## 2     Chapingo 110  17 11.2 0.642            0.824 0.449
+## 3       Toluca  46  38 37.3 0.853            0.987 0.453
+## 4 San Gerónimo  45  22 22.0 0.603            0.913 0.553
+## 5   Juchitepec  68  28 22.0 0.665            0.936 0.569
+## 6     Tlaxcala  91  76 41.1 0.913            0.996 0.571</code></pre>
+</div>
+<div id="table-3.-rbard-and-hardy-weinberg-equilibrium" class="section level2">
+<h2>Table 3. rbarD and Hardy-Weinberg equilibrium</h2>
+<pre class="r"><code>ia_Pinf &lt;- poppr(diploid_pinf, clonecorrect = TRUE, strata = ~Region, sample = 999, quiet = TRUE)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>ia_Pinf &lt;- ia_Pinf[,c(1:3,13:14)]  
+colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &quot;rbarD&quot;, &quot;P-value&quot;)
+library(pegas)</code></pre>
+<pre><code>## Loading required package: ape</code></pre>
+<pre><code>## 
+## Attaching package: &#39;pegas&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ape&#39;:
+## 
+##     mst</code></pre>
+<pre><code>## The following object is masked from &#39;package:ade4&#39;:
+## 
+##     amova</code></pre>
+<pre class="r"><code>diploid_pinf_cc &lt;- clonecorrect(diploid_pinf)
+hwe_per_pop &lt;- seppop(diploid_pinf_cc) %&gt;% lapply(hw.test, B = 1000)
+per_pop_mat &lt;- sapply(hwe_per_pop, &quot;[&quot;, i = TRUE, j = 3)
+alpha &lt;- 0.05
+per_pop_mat[per_pop_mat &gt; alpha] &lt;- 1
+library(lattice)
+hwe_plot &lt;- levelplot(per_pop_mat, xlab = &quot;Locus&quot;, ylab = &quot;Population&quot;)
+num_loci_hwe &lt;- per_pop_mat
+num_loci_hwe[num_loci_hwe != 1] &lt;- 0
+num_loci_hwe &lt;- colSums(num_loci_hwe)
+ia_Pinf &lt;- ia_Pinf[-7, ]
+ia_Pinf &lt;- cbind(ia_Pinf, num_loci_hwe) 
+ia_Pinf &lt;- ia_Pinf[c(6,1,4,3,2,5), ]
+rownames(ia_Pinf) &lt;- NULL
+colnames(ia_Pinf[6]) &lt;- &quot;Number of loci under HWE&quot;</code></pre>
+</div>
 </div>
 
 
