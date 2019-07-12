@@ -14,12 +14,12 @@ Welcome to the introduction to population genetics and data analysis in R progra
 ## Objectives and motivation
 
 
-When I was an undergraduate, I did not know a lot about population genetics and had no idea about R programming language. When I first came to US to get my M.S in plant pathology, I saw that most people where attracted towards using free statistical and programming software R. I started teaching R myself. Joining Niklaus Grunwald lab at USDA-ARS for my Ph.D. was a major turning point in learning R. I had an excellent peers to learn from Dr. Zhian Kamvar and Dr. Javier Tabima (developers of R package poppr which will talk a lot) and Dr. Brian Knaus (developer of R package VCFR). Our lab is one of the leading labs to organize population genetics workshop in R here in US and have been involved in development of several packages. 
+When I was an undergraduate, I did not know a lot about population genetics and had no idea about R programming language. When I first came to US to get my M.S in plant pathology, I saw that most people where attracted towards using free statistical and programming software R. I started teaching R myself. Joining Niklaus Grunwald lab at USDA-ARS for my Ph.D. was a major turning point in learning R. I had an excellent peers to learn from Dr. Zhian Kamvar and Dr. Javier Tabima (developers of R package poppr which will talk a lot) and Dr. Brian Knaus (developer of R package VCFR). Our lab is one of the leading labs to organize population genetics workshop in R here in US and have been involved in development of several otherpackages. 
 
-I knew that Nepalese undergraudates lack knowledge and skills about population genetics and R programming. Therefore I submitted a proposal to APS to conduct a workshop in Nepal.
+I knew that Nepalese undergraudates lack knowledge and skills about population genetics and R programming. Therefore I submitted a proposal to American Phytopathological Society to conduct a workshop in Nepal. The proposal was approved and this workshop is also supported through Department of Botany and Plant Pathology at Oregon State University.
 
 
-We cannot learn population genetics and R programming in just 3 days. Don't be discouraged. My primary goal is to teach you to provide basic concepts and navigate to right directions. Therefore this site will also contain links to other repositories which has excellent resources on data analysis and visualization.   
+We cannot learn population genetics and R programming in just 3 days. Don't be discouraged. My primary goal is to teach you to provide basic concepts and navigate you to right directions. Therefore this site will also contain links to other repositories which has excellent resources on R, data analysis and visualization.   
 
 
 ## Final words
