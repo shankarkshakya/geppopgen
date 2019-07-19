@@ -1,7 +1,8 @@
 ---
-editor_options: 
-  chunk_output_type: console
+
 ---
+
+
 
 
 # Analyses of microsatellite data in R
