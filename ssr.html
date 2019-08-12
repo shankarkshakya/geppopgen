@@ -16,7 +16,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -105,33 +105,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 66px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 71px;
-  margin-top: -71px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h2 {
-  padding-top: 71px;
-  margin-top: -71px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 71px;
-  margin-top: -71px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 71px;
-  margin-top: -71px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 71px;
-  margin-top: -71px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 71px;
-  margin-top: -71px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .dropdown-submenu {
   position: relative;
@@ -355,64 +355,9 @@ $(document).ready(function () {
 <div id="download-the-necessary-data" class="section level1">
 <h1>Download the necessary data</h1>
 <p>First, we need the microsatellite genotype data which can be downloaded from <a href="https://osf.io/hbxvj/files/">here</a>. Download MX_pop.csv file to your current working directory.</p>
-<pre class="r"><code>library(poppr)</code></pre>
-<pre><code>## Loading required package: adegenet</code></pre>
-<pre><code>## Loading required package: ade4</code></pre>
-<pre><code>## Registered S3 method overwritten by &#39;spdep&#39;:
-##   method   from
-##   plot.mst ape</code></pre>
-<pre><code>## 
-##    /// adegenet 2.1.1 is loaded ////////////
-## 
-##    &gt; overview: &#39;?adegenet&#39;
-##    &gt; tutorials/doc/questions: &#39;adegenetWeb()&#39; 
-##    &gt; bug reports/feature requests: adegenetIssues()</code></pre>
-<pre><code>## Registered S3 method overwritten by &#39;pegas&#39;:
-##   method      from
-##   print.amova ade4</code></pre>
-<pre><code>## This is poppr version 2.8.3. To get started, type package?poppr
-## OMP parallel support: available</code></pre>
-<pre class="r"><code>P.inf &lt;- read.genalex(&quot;MX_pop.csv&quot;, ploidy = 4)</code></pre>
-<pre><code>## Warning in read.genalex(&quot;MX_pop.csv&quot;, ploidy = 4): 
-##  I found duplicate column names in your data.
-##  They are being renamed:
-##  col 4: D13 -&gt; D13_1
-##  col 5: D13 -&gt; D13_2
-##  col 6: D13 -&gt; D13_3
-##  col 8: G11 -&gt; G11_1
-##  col 9: G11 -&gt; G11_2
-##  col 10: G11 -&gt; G11_3
-##  col 12: Pi04 -&gt; Pi04_1
-##  col 13: Pi04 -&gt; Pi04_2
-##  col 14: Pi04 -&gt; Pi04_3
-##  col 16: Pi4B -&gt; Pi4B_1
-##  col 17: Pi4B -&gt; Pi4B_2
-##  col 18: Pi4B -&gt; Pi4B_3
-##  col 20: Pi63 -&gt; Pi63_1
-##  col 21: Pi63 -&gt; Pi63_2
-##  col 22: Pi63 -&gt; Pi63_3
-##  col 24: Pi70 -&gt; Pi70_1
-##  col 25: Pi70 -&gt; Pi70_2
-##  col 26: Pi70 -&gt; Pi70_3
-##  col 28: SSR11 -&gt; SSR11_1
-##  col 29: SSR11 -&gt; SSR11_2
-##  col 30: SSR11 -&gt; SSR11_3
-##  col 32: SSR2 -&gt; SSR2_1
-##  col 33: SSR2 -&gt; SSR2_2
-##  col 34: SSR2 -&gt; SSR2_3
-##  col 36: SSR3 -&gt; SSR3_1
-##  col 37: SSR3 -&gt; SSR3_2
-##  col 38: SSR3 -&gt; SSR3_3
-##  col 40: SSR4 -&gt; SSR4_1
-##  col 41: SSR4 -&gt; SSR4_2
-##  col 42: SSR4 -&gt; SSR4_3
-##  col 44: SSR6 -&gt; SSR6_1
-##  col 45: SSR6 -&gt; SSR6_2
-##  col 46: SSR6 -&gt; SSR6_3
-##  col 48: SSR8 -&gt; SSR8_1
-##  col 49: SSR8 -&gt; SSR8_2
-##  col 50: SSR8 -&gt; SSR8_3</code></pre>
-<pre class="r"><code>P.inf</code></pre>
+<pre class="r"><code>library(poppr)
+P.inf &lt;- read.genalex(&quot;MX_pop.csv&quot;, ploidy = 4)
+P.inf</code></pre>
 <pre><code>## 
 ## This is a genclone object
 ## -------------------------
@@ -427,10 +372,10 @@ $(document).ready(function () {
 ##      1 stratum - Pop
 ##     11 populations defined - 
 ## Chapingo_2015, Juchitepec_2015, San Gerónimo_2015, ..., Michoacan_2001/2010, Tlaxcala_2007, Toluca_1997</code></pre>
-<div id="look-at-the-missing-data" class="section level2">
-<h2>look at the missing data</h2>
+<div id="lets-look-at-the-missing-data" class="section level2">
+<h2>Lets look at the missing data</h2>
 <pre class="r"><code>info_table(P.inf, type = &quot;missing&quot;, plot = T)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="ssr_files/figure-html/unnamed-chunk-2-1.png" width="864" style="display: block; margin: auto;" /></p>
 <pre><code>##                      Locus
 ## Population               D13    G11 Pi04 Pi4B Pi63   Pi70 SSR11 SSR2
 ##   Chapingo_2015       0.3636      .    .    .    .      .     .    .
@@ -491,7 +436,7 @@ diploid_pinf</code></pre>
 ##     11 populations defined - 
 ## Chapingo_2015, Juchitepec_2015, San Gerónimo_2015, ..., Michoacan_2001/2010, Tlaxcala_2007, Toluca_1997</code></pre>
 <pre class="r"><code>info_table(diploid_pinf, type = &quot;missing&quot;, plot = T)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="ssr_files/figure-html/unnamed-chunk-3-1.png" width="864" style="display: block; margin: auto;" /></p>
 <pre><code>##                      Locus
 ## Population               D13    G11 Pi04 Pi4B Pi63   Pi70 SSR11 SSR2
 ##   Chapingo_2015       0.3721      .    .    .    .      .     .    .
@@ -523,14 +468,8 @@ diploid_pinf</code></pre>
 </div>
 <div id="remove-locus-with-high-percentage-of-missing-data" class="section level2">
 <h2>Remove locus with high percentage of missing data</h2>
-<pre class="r"><code>diploid_pinf &lt;- missingno(diploid_pinf, type = &quot;loci&quot;, cutoff = 0.07)</code></pre>
-<pre><code>## 
-## Found 5647 missing values.
-## 
-## 1 locus contained missing values greater than 7%
-## 
-## Removing 1 locus: , D13</code></pre>
-<pre class="r"><code>splitStrata(diploid_pinf) &lt;- ~Region/Year
+<pre class="r"><code>diploid_pinf &lt;- missingno(diploid_pinf, type = &quot;loci&quot;, cutoff = 0.07)
+splitStrata(diploid_pinf) &lt;- ~Region/Year
 setPop(diploid_pinf) &lt;- ~Region
 
 diploid_pinf</code></pre>
@@ -583,20 +522,14 @@ unbiased</code></pre>
 <div id="table-3.-rbard-and-hardy-weinberg-equilibrium" class="section level2">
 <h2>Table 3. rbarD and Hardy-Weinberg equilibrium</h2>
 <pre class="r"><code>ia_Pinf &lt;- poppr(diploid_pinf, clonecorrect = TRUE, strata = ~Region, sample = 999, quiet = TRUE)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="ssr_files/figure-html/unnamed-chunk-6-1.png" width="864" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>ia_Pinf &lt;- ia_Pinf[,c(1:3,13:14)]  
-colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &quot;rbarD&quot;, &quot;P-value&quot;)
-library(pegas)</code></pre>
-<pre><code>## Loading required package: ape</code></pre>
-<pre><code>## 
-## Attaching package: &#39;pegas&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ape&#39;:
-## 
-##     mst</code></pre>
-<pre><code>## The following object is masked from &#39;package:ade4&#39;:
-## 
-##     amova</code></pre>
-<pre class="r"><code>diploid_pinf_cc &lt;- clonecorrect(diploid_pinf)
+colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &quot;rbarD&quot;, &quot;P-value&quot;)</code></pre>
+</div>
+<div id="hwe" class="section level2">
+<h2>HWE</h2>
+<pre class="r"><code>library(pegas)
+diploid_pinf_cc &lt;- clonecorrect(diploid_pinf)
 hwe_per_pop &lt;- seppop(diploid_pinf_cc) %&gt;% lapply(hw.test, B = 1000)
 per_pop_mat &lt;- sapply(hwe_per_pop, &quot;[&quot;, i = TRUE, j = 3)
 alpha &lt;- 0.05
@@ -611,6 +544,88 @@ ia_Pinf &lt;- cbind(ia_Pinf, num_loci_hwe)
 ia_Pinf &lt;- ia_Pinf[c(6,1,4,3,2,5), ]
 rownames(ia_Pinf) &lt;- NULL
 colnames(ia_Pinf[6]) &lt;- &quot;Number of loci under HWE&quot;</code></pre>
+</div>
+<div id="table-4.-pairwise-fst" class="section level2">
+<h2>Table 4. Pairwise FST</h2>
+<pre class="r"><code>diploid_pinf_cc &lt;- clonecorrect(diploid_pinf)
+
+library(strataG)
+gen2gtype &lt;- function (x) {
+  
+  gen.mat &lt;- genind2df(x, usepop = TRUE, oneColPerAll = TRUE)
+  strata &lt;- x@strata
+  rownames(strata) &lt;- rownames(gen.mat)
+  x@strata &lt;- strata
+  gen.mat[gen.mat == &quot;NA&quot;] &lt;- NA
+  has.pop &lt;- !is.null(x@pop)
+  df2gtypes(x = gen.mat, ploidy = x@ploidy[1], id.col = NULL, 
+            strata.col = if (has.pop) 
+              1
+            else NULL, loc.col = if (has.pop) 
+              2
+            else 1, 
+            schemes = x@strata,  other = other(x))
+}
+
+diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
+
+pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 10000)</code></pre>
+<pre><code>## 
+## &lt;&lt;&lt; gtypes created on 2019-08-11 13:57:47 &gt;&gt;&gt;
+##  2019-08-11 13:57:48 : Pairwise tests : 10000 permutations
+##    2019-08-11 13:57:48 : Chapingo v. Juchitepec 
+##    2019-08-11 13:58:02 : Chapingo v. Michoacan 
+##    2019-08-11 13:58:21 : Chapingo v. San Gerónimo 
+##    2019-08-11 13:58:32 : Chapingo v. Tlaxcala 
+##    2019-08-11 13:58:51 : Chapingo v. Toluca 
+##    2019-08-11 13:59:04 : Juchitepec v. Michoacan 
+##    2019-08-11 13:59:21 : Juchitepec v. San Gerónimo 
+##    2019-08-11 13:59:33 : Juchitepec v. Tlaxcala 
+##    2019-08-11 13:59:53 : Juchitepec v. Toluca 
+##    2019-08-11 14:00:08 : Michoacan v. San Gerónimo 
+##    2019-08-11 14:00:23 : Michoacan v. Tlaxcala 
+##    2019-08-11 14:00:45 : Michoacan v. Toluca 
+##    2019-08-11 14:01:04 : San Gerónimo v. Tlaxcala 
+##    2019-08-11 14:01:24 : San Gerónimo v. Toluca 
+##    2019-08-11 14:01:39 : Tlaxcala v. Toluca 
+## 
+## Population structure results:
+##                              pair.label        Fst  Fst.p.val
+## 1      Chapingo (17) v. Juchitepec (28) 0.05933588 0.00009999
+## 2       Chapingo (17) v. Michoacan (43) 0.06152119 0.00009999
+## 3    Chapingo (17) v. San Gerónimo (22) 0.06584521 0.00009999
+## 4        Chapingo (17) v. Tlaxcala (76) 0.05181373 0.00009999
+## 5          Chapingo (17) v. Toluca (38) 0.04356232 0.00019998
+## 6     Juchitepec (28) v. Michoacan (43) 0.06805726 0.00009999
+## 7  Juchitepec (28) v. San Gerónimo (22) 0.05353811 0.00009999
+## 8      Juchitepec (28) v. Tlaxcala (76) 0.04262064 0.00009999
+## 9        Juchitepec (28) v. Toluca (38) 0.06661917 0.00009999
+## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00009999
+## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00009999
+## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00009999
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.01269873
+## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00009999
+## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00009999</code></pre>
+<pre class="r"><code>fst_mat &lt;- pairwise_fst$pair.mat$Fst
+fst_mat[upper.tri(fst_mat)] &lt;- t(fst_mat)[upper.tri(fst_mat)]
+fst_mat[is.na(fst_mat)] &lt;- 0
+
+
+library(reshape2)
+fst_mat[upper.tri(fst_mat)] &lt;- NA
+lower_tri &lt;- melt(fst_mat, na.rm = TRUE)
+
+
+# library(ggplot2)
+# ggheatmap &lt;- ggplot(lower_tri, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = &quot;white&quot;) +
+#   scale_fill_gradient(low = &quot;green&quot;, high = &quot;red&quot; , space = &quot;Lab&quot;, name=&quot;Pairwise FST&quot;) + theme_minimal() +
+#    theme(axis.text.x = element_text(angle = 90, vjust = 1, size = 12, hjust = 1)) + coord_fixed() +
+#   labs(x = &quot;Population&quot;, y = &quot;Population&quot;) +
+#   theme(axis.text.y = element_text(size = 12)) +
+#   theme(axis.title = element_text(size = 12)) +
+#   geom_text(aes(label = round(value, 2)))
+# 
+# ggheatmap</code></pre>
 </div>
 </div>
 

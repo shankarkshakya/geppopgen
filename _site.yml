@@ -23,15 +23,13 @@ navbar:
     menu:
       - text: Microsatellite data analysis
       - href: ssr.html
-      #- text: SNP data analysis
-      #- href: SNP.html
   - text: List of participants
     href: participants.html
   
   
 output:
   html_document:
-    theme: readable
+    theme: cerulean
     css: styles.css
     lib_dir: site_libs
     self_contained: no

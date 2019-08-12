@@ -2,8 +2,9 @@
 
 ---
 
-
-
+```{r setu, include=FALSE}
+knitr::opts_chunk$set(fig.width = 9, fig.height = 7, echo = T, warning = F, message = F, verbose = F)
+```
 
 # Analyses of microsatellite data in R
 
@@ -25,16 +26,17 @@ P.inf
 
 ```
 
-## look at the missing data
+## Lets look at the missing data
 
-```{r}
+```{r, fig.width = 9, fig.height = 7, fig.align="center"}
 info_table(P.inf, type = "missing", plot = T)
 ```
 
 
 Now instead of working with tetraploids lets work with diploid data.
 
-```{r}
+```{r, fig.width = 9, fig.height = 7, fig.align="center"}
+
 multiploid2diploid <- function(x, to = 2){
   
   ploidy_tab <- info_table(x, type = "ploidy")
@@ -97,12 +99,18 @@ unbiased
 
 ## Table 3. rbarD and Hardy-Weinberg equilibrium
 
-```{r}
+```{r, fig.width = 9, fig.height = 7, fig.align="center"}
 
 ia_Pinf <- poppr(diploid_pinf, clonecorrect = TRUE, strata = ~Region, sample = 999, quiet = TRUE)
 
 ia_Pinf <- ia_Pinf[,c(1:3,13:14)]  
 colnames(ia_Pinf) <- c("Region", "N", "MLG", "rbarD", "P-value")
+```
+
+## HWE
+
+```{r, fig.width = 9, fig.height = 7, fig.align="center"}
+
 library(pegas)
 diploid_pinf_cc <- clonecorrect(diploid_pinf)
 hwe_per_pop <- seppop(diploid_pinf_cc) %>% lapply(hw.test, B = 1000)
@@ -119,5 +127,57 @@ ia_Pinf <- cbind(ia_Pinf, num_loci_hwe)
 ia_Pinf <- ia_Pinf[c(6,1,4,3,2,5), ]
 rownames(ia_Pinf) <- NULL
 colnames(ia_Pinf[6]) <- "Number of loci under HWE"
+
+
+```
+
+## Table 4. Pairwise FST 
+
+```{r, message=FALSE, warning=FALSE, fig.width = 9, fig.height = 7, fig.align="center"}
+
+diploid_pinf_cc <- clonecorrect(diploid_pinf)
+
+library(strataG)
+gen2gtype <- function (x) {
+  
+  gen.mat <- genind2df(x, usepop = TRUE, oneColPerAll = TRUE)
+  strata <- x@strata
+  rownames(strata) <- rownames(gen.mat)
+  x@strata <- strata
+  gen.mat[gen.mat == "NA"] <- NA
+  has.pop <- !is.null(x@pop)
+  df2gtypes(x = gen.mat, ploidy = x@ploidy[1], id.col = NULL, 
+            strata.col = if (has.pop) 
+              1
+            else NULL, loc.col = if (has.pop) 
+              2
+            else 1, 
+            schemes = x@strata,  other = other(x))
+}
+
+diploid_pinf_cc.g <- gen2gtype(diploid_pinf_cc)
+
+pairwise_fst <- pairwiseTest(diploid_pinf_cc.g, stats = "fst", nrep = 10000)
+
+fst_mat <- pairwise_fst$pair.mat$Fst
+fst_mat[upper.tri(fst_mat)] <- t(fst_mat)[upper.tri(fst_mat)]
+fst_mat[is.na(fst_mat)] <- 0
+
+
+library(reshape2)
+fst_mat[upper.tri(fst_mat)] <- NA
+lower_tri <- melt(fst_mat, na.rm = TRUE)
+
+
+# library(ggplot2)
+# ggheatmap <- ggplot(lower_tri, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = "white") +
+#   scale_fill_gradient(low = "green", high = "red" , space = "Lab", name="Pairwise FST") + theme_minimal() +
+#    theme(axis.text.x = element_text(angle = 90, vjust = 1, size = 12, hjust = 1)) + coord_fixed() +
+#   labs(x = "Population", y = "Population") +
+#   theme(axis.text.y = element_text(size = 12)) +
+#   theme(axis.title = element_text(size = 12)) +
+#   geom_text(aes(label = round(value, 2)))
+# 
+# ggheatmap
 
 ```
