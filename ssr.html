@@ -529,12 +529,12 @@ colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &q
 ia_Pinf</code></pre>
 <pre><code>##         Region   N MLG    rbarD P-value
 ## 1     Chapingo  17  17  0.13903   0.001
-## 2   Juchitepec  28  28 -0.00623   0.730
-## 3 San Gerónimo  22  22  0.01519   0.117
-## 4       Toluca  38  38 -0.00664   0.723
+## 2   Juchitepec  28  28 -0.00623   0.704
+## 3 San Gerónimo  22  22  0.01519   0.114
+## 4       Toluca  38  38 -0.00664   0.714
 ## 5     Tlaxcala  76  76  0.01604   0.011
-## 6    Michoacan  43  43  0.01019   0.135
-## 7        Total 224 221  0.01302   0.001</code></pre>
+## 6    Michoacan  43  43  0.01019   0.121
+## 7        Total 224 221  0.01302   0.002</code></pre>
 </div>
 <div id="hwe" class="section level2">
 <h2>HWE</h2>
@@ -557,11 +557,11 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614   0.135              5
+## 1    Michoacan 43  43  0.010185614   0.121              5
 ## 2     Chapingo 17  17  0.139028170   0.001              6
-## 3       Toluca 38  38 -0.006641278   0.723              7
-## 4 San Gerónimo 22  22  0.015188555   0.117              9
-## 5   Juchitepec 28  28 -0.006226974   0.730             11
+## 3       Toluca 38  38 -0.006641278   0.714              7
+## 4 San Gerónimo 22  22  0.015188555   0.114              9
+## 5   Juchitepec 28  28 -0.006226974   0.704             11
 ## 6     Tlaxcala 76  76  0.016042513   0.011              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
@@ -590,23 +590,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-08-11 21:33:53 &gt;&gt;&gt;
-##  2019-08-11 21:33:54 : Pairwise tests : 100 permutations
-##    2019-08-11 21:33:54 : Chapingo v. Juchitepec 
-##    2019-08-11 21:33:54 : Chapingo v. Michoacan 
-##    2019-08-11 21:33:55 : Chapingo v. San Gerónimo 
-##    2019-08-11 21:33:56 : Chapingo v. Tlaxcala 
-##    2019-08-11 21:33:56 : Chapingo v. Toluca 
-##    2019-08-11 21:33:57 : Juchitepec v. Michoacan 
-##    2019-08-11 21:33:57 : Juchitepec v. San Gerónimo 
-##    2019-08-11 21:33:58 : Juchitepec v. Tlaxcala 
-##    2019-08-11 21:33:59 : Juchitepec v. Toluca 
-##    2019-08-11 21:33:59 : Michoacan v. San Gerónimo 
-##    2019-08-11 21:33:59 : Michoacan v. Tlaxcala 
-##    2019-08-11 21:34:00 : Michoacan v. Toluca 
-##    2019-08-11 21:34:01 : San Gerónimo v. Tlaxcala 
-##    2019-08-11 21:34:01 : San Gerónimo v. Toluca 
-##    2019-08-11 21:34:02 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-08-12 06:37:13 &gt;&gt;&gt;
+##  2019-08-12 06:37:14 : Pairwise tests : 100 permutations
+##    2019-08-12 06:37:14 : Chapingo v. Juchitepec 
+##    2019-08-12 06:37:14 : Chapingo v. Michoacan 
+##    2019-08-12 06:37:15 : Chapingo v. San Gerónimo 
+##    2019-08-12 06:37:16 : Chapingo v. Tlaxcala 
+##    2019-08-12 06:37:16 : Chapingo v. Toluca 
+##    2019-08-12 06:37:17 : Juchitepec v. Michoacan 
+##    2019-08-12 06:37:17 : Juchitepec v. San Gerónimo 
+##    2019-08-12 06:37:18 : Juchitepec v. Tlaxcala 
+##    2019-08-12 06:37:19 : Juchitepec v. Toluca 
+##    2019-08-12 06:37:20 : Michoacan v. San Gerónimo 
+##    2019-08-12 06:37:20 : Michoacan v. Tlaxcala 
+##    2019-08-12 06:37:21 : Michoacan v. Toluca 
+##    2019-08-12 06:37:21 : San Gerónimo v. Tlaxcala 
+##    2019-08-12 06:37:22 : San Gerónimo v. Toluca 
+##    2019-08-12 06:37:22 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
@@ -622,7 +622,7 @@ pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep
 ## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00990099
 ## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00990099
 ## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00990099
-## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.01980198
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.04950495
 ## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00990099
 ## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00990099</code></pre>
 <pre class="r"><code>fst_mat &lt;- pairwise_fst$pair.mat$Fst
@@ -672,7 +672,69 @@ myamv</code></pre>
 ## Total           223 42.890246 0.1923329  100.00000</code></pre>
 </div>
 <div id="fig-2.-neighbor-joining-tree" class="section level2">
-<h2>Fig 2. Neighbor-joining tree</h2>
+<h2>Fig 2. Neighbor joining tree</h2>
+<pre class="r"><code>repeat_length &lt;- c(2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2)
+
+diploid_pinf &lt;- clonecorrect(diploid_pinf)
+tree_nj &lt;- bruvo.boot(diploid_pinf, replen = repeat_length, 
+                   sample = 99, cutoff = 70, tree = &quot;nj&quot;)</code></pre>
+<pre><code>## 
+## Bootstrapping...
+## (note: calculation of node labels can take a while even after the progress bar is full)
+## 
+## 
+## Calculating bootstrap values... done.</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-10-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot(tree_nj)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-10-2.png" width="1152" style="display: block; margin: auto;" /></p>
+</div>
+<div id="structure-analysis" class="section level2">
+<h2>STRUCTURE analysis</h2>
+<pre class="r"><code>edited_qmat_list &lt;- readRDS(&quot;qmat_list.RData&quot;)
+
+for (i in 1:length(edited_qmat_list)){
+  temp_mat &lt;- edited_qmat_list[[i]]
+  key &lt;- c(&quot;Michoacan&quot; = &quot;MICHO&quot;, &quot;Chapingo&quot; = &quot;CHA&quot;, &quot;Toluca&quot; = &quot;TOLU&quot;, &quot;San Gerónimo&quot; = &quot;SG&quot;, &quot;Juchitepec&quot; = &quot;JFH&quot;, &quot;Tlaxcala&quot; = &quot;TLAX&quot;)
+  temp_mat$orig.pop &lt;- factor(key[temp_mat$orig.pop], ordered = TRUE, levels = key)
+  edited_qmat_list[[i]] &lt;- temp_mat
+} 
+
+library(strataG)
+structurePlot(edited_qmat_list[[3]], horiz = F)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-11-1.png" width="1152" style="display: block; margin: auto;" /></p>
+</div>
+<div id="fig-5.-discriminant-analysis-of-principal-components" class="section level2">
+<h2>Fig 5. Discriminant Analysis of Principal components</h2>
+<pre class="r"><code>set.seed(999)
+P.infx &lt;- xvalDapc(tab(diploid_pinf, NA.method = &quot;mean&quot;), pop(diploid_pinf),
+                   n.pca = 60:70,  n.rep = 100, 
+                   parallel = &quot;multicore&quot;, ncpus = 4L)
+
+library(RColorBrewer)
+myCol &lt;- brewer.pal(nPop(diploid_pinf), &quot;Dark2&quot;) %&gt;% setNames(popNames(diploid_pinf))
+
+diploid_pinf_no_MCH &lt;- popsub(diploid_pinf, blacklist = &quot;Michoacan&quot;)
+
+
+set.seed(999)
+P.infx1 &lt;- xvalDapc(tab(diploid_pinf_no_MCH, NA.method = &quot;mean&quot;), pop(diploid_pinf_no_MCH),
+                   n.pca = 60:70,  n.rep = 100,
+                   parallel = &quot;multicore&quot;, ncpus = 4L)
+
+source(&quot;scatterdapc.R&quot;)
+
+par(mfrow = c(1,2))
+par(mar = c(1,1,1,3))
+
+scatterdapc(P.infx$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, 
+        posi.pca = &quot;topright&quot;, posi.leg = &quot;topright&quot;, legend = F, 
+        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)
+title(main = &quot;A&quot;, col = &quot;black&quot;, font.main = 2, adj = 0, line = -1)
+
+scatterdapc(P.infx1$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, 
+        posi.pca = &quot;topright&quot;, posi.leg = &quot;topright&quot;, legend = F, 
+        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)
+title(main = &quot;B&quot;, col = &quot;black&quot;, font.main =2, adj = 0, line = -1)</code></pre>
 </div>
 </div>
 
