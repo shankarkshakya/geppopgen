@@ -12,6 +12,8 @@ Hopefully I have covered what microsatellites markers are by this time. Many R p
 
 We ll first read the paper and understand what were the objectives of the paper and try to reproduce the work. For this part, We ll work in a group of 3-4 students.
 
+Lets remind ourselves what these terms mean: Diploid individuals, multilocus genotypes, locus/loci, diversity index, index of association, rbarD, Hardy Weinberg Equilibrium, Fst, population structure, DAPC, neighbor joining tree and Mantel's test.
+
 
 # Download the necessary data
 
@@ -28,14 +30,14 @@ P.inf
 
 ## Lets look at the missing data
 
-```{r, fig.width = 9, fig.height = 7, fig.align="center"}
+```{r, fig.width = 12, fig.height = 6, fig.align="center"}
 info_table(P.inf, type = "missing", plot = T)
 ```
 
 
 Now instead of working with tetraploids lets work with diploid data.
 
-```{r, fig.width = 9, fig.height = 7, fig.align="center"}
+```{r, fig.width = 12, fig.height = 6, fig.align="center"}
 
 multiploid2diploid <- function(x, to = 2){
   
@@ -95,6 +97,7 @@ unbiased <- unbiased[c(6,1,4,3,2,5), ]
 rownames(unbiased) <- NULL
 
 unbiased
+
 ```
 
 ## Table 3. rbarD and Hardy-Weinberg equilibrium
@@ -105,6 +108,8 @@ ia_Pinf <- poppr(diploid_pinf, clonecorrect = TRUE, strata = ~Region, sample = 9
 
 ia_Pinf <- ia_Pinf[,c(1:3,13:14)]  
 colnames(ia_Pinf) <- c("Region", "N", "MLG", "rbarD", "P-value")
+ia_Pinf
+
 ```
 
 ## HWE
@@ -126,8 +131,9 @@ ia_Pinf <- ia_Pinf[-7, ]
 ia_Pinf <- cbind(ia_Pinf, num_loci_hwe) 
 ia_Pinf <- ia_Pinf[c(6,1,4,3,2,5), ]
 rownames(ia_Pinf) <- NULL
-colnames(ia_Pinf[6]) <- "Number of loci under HWE"
+colnames(ia_Pinf)[6] <- "Loci under HWE"
 
+ia_Pinf
 
 ```
 
@@ -157,7 +163,7 @@ gen2gtype <- function (x) {
 
 diploid_pinf_cc.g <- gen2gtype(diploid_pinf_cc)
 
-pairwise_fst <- pairwiseTest(diploid_pinf_cc.g, stats = "fst", nrep = 10000)
+pairwise_fst <- pairwiseTest(diploid_pinf_cc.g, stats = "fst", nrep = 100)
 
 fst_mat <- pairwise_fst$pair.mat$Fst
 fst_mat[upper.tri(fst_mat)] <- t(fst_mat)[upper.tri(fst_mat)]
@@ -169,15 +175,118 @@ fst_mat[upper.tri(fst_mat)] <- NA
 lower_tri <- melt(fst_mat, na.rm = TRUE)
 
 
-# library(ggplot2)
-# ggheatmap <- ggplot(lower_tri, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = "white") +
-#   scale_fill_gradient(low = "green", high = "red" , space = "Lab", name="Pairwise FST") + theme_minimal() +
-#    theme(axis.text.x = element_text(angle = 90, vjust = 1, size = 12, hjust = 1)) + coord_fixed() +
-#   labs(x = "Population", y = "Population") +
-#   theme(axis.text.y = element_text(size = 12)) +
-#   theme(axis.title = element_text(size = 12)) +
-#   geom_text(aes(label = round(value, 2)))
-# 
-# ggheatmap
+library(ggplot2)
+ggheatmap <- ggplot(lower_tri, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = "white") +
+  scale_fill_gradient(low = "green", high = "red" , space = "Lab", name="Pairwise FST") + theme_minimal() +
+   theme(axis.text.x = element_text(angle = 90, vjust = 1, size = 12, hjust = 1)) + coord_fixed() +
+  labs(x = "Population", y = "Population") +
+  theme(axis.text.y = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 12)) +
+  geom_text(aes(label = round(value, 2)))
+
+ggheatmap
 
 ```
+
+
+## Table 5. Analysis of molecular variance
+
+```{r}
+
+repeat_length <- c(2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2)
+bruvodist <- bruvo.dist(clonecorrect(diploid_pinf), replen = repeat_length)
+
+amv <- poppr.amova(diploid_pinf, 
+                   hier = ~Region, 
+                   clonecorrect = TRUE, 
+                   dist = bruvodist,
+                   within = F)
+
+
+myamv <- amv$results
+rownames(myamv) <- c("Between regions", "Within regions", "Total")
+myamv <- cbind(myamv, amv$componentsofcovariance$`%`)
+
+colnames(myamv) <- c("df", "SS", "MSS", "% variance")
+
+myamv
+
+```
+
+
+## Fig 2. Neighbor joining tree
+
+```{r, fig.width = 12, fig.height = 6, fig.align="center"}
+
+repeat_length <- c(2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2)
+
+diploid_pinf <- clonecorrect(diploid_pinf)
+tree_nj <- bruvo.boot(diploid_pinf, replen = repeat_length, 
+                   sample = 99, cutoff = 70, tree = "nj")
+
+plot(tree_nj)
+
+
+
+
+```
+
+## STRUCTURE analysis
+
+```{r, fig.width = 12, fig.height = 6, fig.align="center"}
+
+edited_qmat_list <- readRDS("qmat_list.RData")
+
+for (i in 1:length(edited_qmat_list)){
+  temp_mat <- edited_qmat_list[[i]]
+  key <- c("Michoacan" = "MICHO", "Chapingo" = "CHA", "Toluca" = "TOLU", "San Gerónimo" = "SG", "Juchitepec" = "JFH", "Tlaxcala" = "TLAX")
+  temp_mat$orig.pop <- factor(key[temp_mat$orig.pop], ordered = TRUE, levels = key)
+  edited_qmat_list[[i]] <- temp_mat
+} 
+
+library(strataG)
+structurePlot(edited_qmat_list[[3]], horiz = F)
+
+```
+
+
+## Fig 5. Discriminant Analysis of Principal components
+
+```{r, eval = F, fig.width = 12, fig.height = 6, fig.align="center"}
+
+set.seed(999)
+P.infx <- xvalDapc(tab(diploid_pinf, NA.method = "mean"), pop(diploid_pinf),
+                   n.pca = 60:70,  n.rep = 100, 
+                   parallel = "multicore", ncpus = 4L)
+
+library(RColorBrewer)
+myCol <- brewer.pal(nPop(diploid_pinf), "Dark2") %>% setNames(popNames(diploid_pinf))
+
+diploid_pinf_no_MCH <- popsub(diploid_pinf, blacklist = "Michoacan")
+
+
+set.seed(999)
+P.infx1 <- xvalDapc(tab(diploid_pinf_no_MCH, NA.method = "mean"), pop(diploid_pinf_no_MCH),
+                   n.pca = 60:70,  n.rep = 100,
+                   parallel = "multicore", ncpus = 4L)
+
+source("scatterdapc.R")
+
+par(mfrow = c(1,2))
+par(mar = c(1,1,1,3))
+
+scatterdapc(P.infx$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, 
+        posi.pca = "topright", posi.leg = "topright", legend = F, 
+        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)
+title(main = "A", col = "black", font.main = 2, adj = 0, line = -1)
+
+scatterdapc(P.infx1$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, 
+        posi.pca = "topright", posi.leg = "topright", legend = F, 
+        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)
+title(main = "B", col = "black", font.main =2, adj = 0, line = -1)
+
+
+
+```
+
+

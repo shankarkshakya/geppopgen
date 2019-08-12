@@ -351,6 +351,7 @@ $(document).ready(function () {
 <h1>Analyses of microsatellite data in R</h1>
 <p>Hopefully I have covered what microsatellites markers are by this time. Many R packages are available to analyse microsatellite data. We ll be using R package Poppr to analyze the data from <a href="https://apsjournals.apsnet.org/doi/10.1094/PDIS-11-17-1801-RE">Shakya et al. 2018</a>.</p>
 <p>We ll first read the paper and understand what were the objectives of the paper and try to reproduce the work. For this part, We ll work in a group of 3-4 students.</p>
+<p>Lets remind ourselves what these terms mean: Diploid individuals, multilocus genotypes, locus/loci, diversity index, index of association, rbarD, Hardy Weinberg Equilibrium, Fst, population structure, DAPC, neighbor joining tree and Mantel’s test.</p>
 </div>
 <div id="download-the-necessary-data" class="section level1">
 <h1>Download the necessary data</h1>
@@ -375,7 +376,7 @@ P.inf</code></pre>
 <div id="lets-look-at-the-missing-data" class="section level2">
 <h2>Lets look at the missing data</h2>
 <pre class="r"><code>info_table(P.inf, type = &quot;missing&quot;, plot = T)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-2-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="ssr_files/figure-html/unnamed-chunk-2-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <pre><code>##                      Locus
 ## Population               D13    G11 Pi04 Pi4B Pi63   Pi70 SSR11 SSR2
 ##   Chapingo_2015       0.3636      .    .    .    .      .     .    .
@@ -436,7 +437,7 @@ diploid_pinf</code></pre>
 ##     11 populations defined - 
 ## Chapingo_2015, Juchitepec_2015, San Gerónimo_2015, ..., Michoacan_2001/2010, Tlaxcala_2007, Toluca_1997</code></pre>
 <pre class="r"><code>info_table(diploid_pinf, type = &quot;missing&quot;, plot = T)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-3-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="ssr_files/figure-html/unnamed-chunk-3-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <pre><code>##                      Locus
 ## Population               D13    G11 Pi04 Pi4B Pi63   Pi70 SSR11 SSR2
 ##   Chapingo_2015       0.3721      .    .    .    .      .     .    .
@@ -524,7 +525,16 @@ unbiased</code></pre>
 <pre class="r"><code>ia_Pinf &lt;- poppr(diploid_pinf, clonecorrect = TRUE, strata = ~Region, sample = 999, quiet = TRUE)</code></pre>
 <p><img src="ssr_files/figure-html/unnamed-chunk-6-1.png" width="864" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>ia_Pinf &lt;- ia_Pinf[,c(1:3,13:14)]  
-colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &quot;rbarD&quot;, &quot;P-value&quot;)</code></pre>
+colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &quot;rbarD&quot;, &quot;P-value&quot;)
+ia_Pinf</code></pre>
+<pre><code>##         Region   N MLG    rbarD P-value
+## 1     Chapingo  17  17  0.13903   0.001
+## 2   Juchitepec  28  28 -0.00623   0.730
+## 3 San Gerónimo  22  22  0.01519   0.117
+## 4       Toluca  38  38 -0.00664   0.723
+## 5     Tlaxcala  76  76  0.01604   0.011
+## 6    Michoacan  43  43  0.01019   0.135
+## 7        Total 224 221  0.01302   0.001</code></pre>
 </div>
 <div id="hwe" class="section level2">
 <h2>HWE</h2>
@@ -543,7 +553,16 @@ ia_Pinf &lt;- ia_Pinf[-7, ]
 ia_Pinf &lt;- cbind(ia_Pinf, num_loci_hwe) 
 ia_Pinf &lt;- ia_Pinf[c(6,1,4,3,2,5), ]
 rownames(ia_Pinf) &lt;- NULL
-colnames(ia_Pinf[6]) &lt;- &quot;Number of loci under HWE&quot;</code></pre>
+colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
+
+ia_Pinf</code></pre>
+<pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
+## 1    Michoacan 43  43  0.010185614   0.135              5
+## 2     Chapingo 17  17  0.139028170   0.001              6
+## 3       Toluca 38  38 -0.006641278   0.723              7
+## 4 San Gerónimo 22  22  0.015188555   0.117              9
+## 5   Juchitepec 28  28 -0.006226974   0.730             11
+## 6     Tlaxcala 76  76  0.016042513   0.011              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
 <h2>Table 4. Pairwise FST</h2>
@@ -569,43 +588,43 @@ gen2gtype &lt;- function (x) {
 
 diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
-pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 10000)</code></pre>
+pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-08-11 13:57:47 &gt;&gt;&gt;
-##  2019-08-11 13:57:48 : Pairwise tests : 10000 permutations
-##    2019-08-11 13:57:48 : Chapingo v. Juchitepec 
-##    2019-08-11 13:58:02 : Chapingo v. Michoacan 
-##    2019-08-11 13:58:21 : Chapingo v. San Gerónimo 
-##    2019-08-11 13:58:32 : Chapingo v. Tlaxcala 
-##    2019-08-11 13:58:51 : Chapingo v. Toluca 
-##    2019-08-11 13:59:04 : Juchitepec v. Michoacan 
-##    2019-08-11 13:59:21 : Juchitepec v. San Gerónimo 
-##    2019-08-11 13:59:33 : Juchitepec v. Tlaxcala 
-##    2019-08-11 13:59:53 : Juchitepec v. Toluca 
-##    2019-08-11 14:00:08 : Michoacan v. San Gerónimo 
-##    2019-08-11 14:00:23 : Michoacan v. Tlaxcala 
-##    2019-08-11 14:00:45 : Michoacan v. Toluca 
-##    2019-08-11 14:01:04 : San Gerónimo v. Tlaxcala 
-##    2019-08-11 14:01:24 : San Gerónimo v. Toluca 
-##    2019-08-11 14:01:39 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-08-11 21:33:53 &gt;&gt;&gt;
+##  2019-08-11 21:33:54 : Pairwise tests : 100 permutations
+##    2019-08-11 21:33:54 : Chapingo v. Juchitepec 
+##    2019-08-11 21:33:54 : Chapingo v. Michoacan 
+##    2019-08-11 21:33:55 : Chapingo v. San Gerónimo 
+##    2019-08-11 21:33:56 : Chapingo v. Tlaxcala 
+##    2019-08-11 21:33:56 : Chapingo v. Toluca 
+##    2019-08-11 21:33:57 : Juchitepec v. Michoacan 
+##    2019-08-11 21:33:57 : Juchitepec v. San Gerónimo 
+##    2019-08-11 21:33:58 : Juchitepec v. Tlaxcala 
+##    2019-08-11 21:33:59 : Juchitepec v. Toluca 
+##    2019-08-11 21:33:59 : Michoacan v. San Gerónimo 
+##    2019-08-11 21:33:59 : Michoacan v. Tlaxcala 
+##    2019-08-11 21:34:00 : Michoacan v. Toluca 
+##    2019-08-11 21:34:01 : San Gerónimo v. Tlaxcala 
+##    2019-08-11 21:34:01 : San Gerónimo v. Toluca 
+##    2019-08-11 21:34:02 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
-## 1      Chapingo (17) v. Juchitepec (28) 0.05933588 0.00009999
-## 2       Chapingo (17) v. Michoacan (43) 0.06152119 0.00009999
-## 3    Chapingo (17) v. San Gerónimo (22) 0.06584521 0.00009999
-## 4        Chapingo (17) v. Tlaxcala (76) 0.05181373 0.00009999
-## 5          Chapingo (17) v. Toluca (38) 0.04356232 0.00019998
-## 6     Juchitepec (28) v. Michoacan (43) 0.06805726 0.00009999
-## 7  Juchitepec (28) v. San Gerónimo (22) 0.05353811 0.00009999
-## 8      Juchitepec (28) v. Tlaxcala (76) 0.04262064 0.00009999
-## 9        Juchitepec (28) v. Toluca (38) 0.06661917 0.00009999
-## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00009999
-## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00009999
-## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00009999
-## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.01269873
-## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00009999
-## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00009999</code></pre>
+## 1      Chapingo (17) v. Juchitepec (28) 0.05933588 0.00990099
+## 2       Chapingo (17) v. Michoacan (43) 0.06152119 0.00990099
+## 3    Chapingo (17) v. San Gerónimo (22) 0.06584521 0.00990099
+## 4        Chapingo (17) v. Tlaxcala (76) 0.05181373 0.00990099
+## 5          Chapingo (17) v. Toluca (38) 0.04356232 0.00990099
+## 6     Juchitepec (28) v. Michoacan (43) 0.06805726 0.00990099
+## 7  Juchitepec (28) v. San Gerónimo (22) 0.05353811 0.00990099
+## 8      Juchitepec (28) v. Tlaxcala (76) 0.04262064 0.00990099
+## 9        Juchitepec (28) v. Toluca (38) 0.06661917 0.00990099
+## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00990099
+## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00990099
+## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00990099
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.01980198
+## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00990099
+## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00990099</code></pre>
 <pre class="r"><code>fst_mat &lt;- pairwise_fst$pair.mat$Fst
 fst_mat[upper.tri(fst_mat)] &lt;- t(fst_mat)[upper.tri(fst_mat)]
 fst_mat[is.na(fst_mat)] &lt;- 0
@@ -616,16 +635,44 @@ fst_mat[upper.tri(fst_mat)] &lt;- NA
 lower_tri &lt;- melt(fst_mat, na.rm = TRUE)
 
 
-# library(ggplot2)
-# ggheatmap &lt;- ggplot(lower_tri, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = &quot;white&quot;) +
-#   scale_fill_gradient(low = &quot;green&quot;, high = &quot;red&quot; , space = &quot;Lab&quot;, name=&quot;Pairwise FST&quot;) + theme_minimal() +
-#    theme(axis.text.x = element_text(angle = 90, vjust = 1, size = 12, hjust = 1)) + coord_fixed() +
-#   labs(x = &quot;Population&quot;, y = &quot;Population&quot;) +
-#   theme(axis.text.y = element_text(size = 12)) +
-#   theme(axis.title = element_text(size = 12)) +
-#   geom_text(aes(label = round(value, 2)))
-# 
-# ggheatmap</code></pre>
+library(ggplot2)
+ggheatmap &lt;- ggplot(lower_tri, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = &quot;white&quot;) +
+  scale_fill_gradient(low = &quot;green&quot;, high = &quot;red&quot; , space = &quot;Lab&quot;, name=&quot;Pairwise FST&quot;) + theme_minimal() +
+   theme(axis.text.x = element_text(angle = 90, vjust = 1, size = 12, hjust = 1)) + coord_fixed() +
+  labs(x = &quot;Population&quot;, y = &quot;Population&quot;) +
+  theme(axis.text.y = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 12)) +
+  geom_text(aes(label = round(value, 2)))
+
+ggheatmap</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-8-1.png" width="864" style="display: block; margin: auto;" /></p>
+</div>
+<div id="table-5.-analysis-of-molecular-variance" class="section level2">
+<h2>Table 5. Analysis of molecular variance</h2>
+<pre class="r"><code>repeat_length &lt;- c(2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2)
+bruvodist &lt;- bruvo.dist(clonecorrect(diploid_pinf), replen = repeat_length)
+
+amv &lt;- poppr.amova(diploid_pinf, 
+                   hier = ~Region, 
+                   clonecorrect = TRUE, 
+                   dist = bruvodist,
+                   within = F)
+
+
+myamv &lt;- amv$results
+rownames(myamv) &lt;- c(&quot;Between regions&quot;, &quot;Within regions&quot;, &quot;Total&quot;)
+myamv &lt;- cbind(myamv, amv$componentsofcovariance$`%`)
+
+colnames(myamv) &lt;- c(&quot;df&quot;, &quot;SS&quot;, &quot;MSS&quot;, &quot;% variance&quot;)
+
+myamv</code></pre>
+<pre><code>##                  df        SS       MSS % variance
+## Between regions   5  4.391361 0.8782721   10.11364
+## Within regions  218 38.498885 0.1766004   89.88636
+## Total           223 42.890246 0.1923329  100.00000</code></pre>
+</div>
+<div id="fig-2.-neighbor-joining-tree" class="section level2">
+<h2>Fig 2. Neighbor-joining tree</h2>
 </div>
 </div>
 
