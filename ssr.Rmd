@@ -112,7 +112,7 @@ ia_Pinf
 
 ```
 
-## HWE
+## Hardy_Weiberg Equilibrium
 
 ```{r, fig.width = 9, fig.height = 7, fig.align="center"}
 
@@ -216,20 +216,33 @@ myamv
 
 ## Fig 2. Neighbor joining tree
 
-```{r, fig.width = 12, fig.height = 6, fig.align="center"}
+```{r, fig.width = 12, fig.height = 12, fig.align="center"}
 
 repeat_length <- c(2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2)
 
 diploid_pinf <- clonecorrect(diploid_pinf)
 tree_nj <- bruvo.boot(diploid_pinf, replen = repeat_length, 
-                   sample = 99, cutoff = 70, tree = "nj")
+                   sample = 99, cutoff = 70, tree = "nj", showtree = FALSE)
 
 plot(tree_nj)
 
 
+```
+
+## Lets try make our tree visually attractive
+
+```{r, eval = F}
+
+tree_nj$tip.label <- as.character(diploid_pinf$pop)
+
+plot(tree_nj)
+plot.phylo(tree_nj)
+
 
 
 ```
+
+
 
 ## STRUCTURE analysis
 
