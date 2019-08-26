@@ -522,25 +522,25 @@ unbiased</code></pre>
 </div>
 <div id="table-3.-rbard-and-hardy-weinberg-equilibrium" class="section level2">
 <h2>Table 3. rbarD and Hardy-Weinberg equilibrium</h2>
-<pre class="r"><code>ia_Pinf &lt;- poppr(diploid_pinf, clonecorrect = TRUE, strata = ~Region, sample = 999, quiet = TRUE)</code></pre>
+<pre class="r"><code>ia_Pinf &lt;- poppr(diploid_pinf, clonecorrect = TRUE, strata = ~Region, sample = 99, quiet = TRUE)</code></pre>
 <p><img src="ssr_files/figure-html/unnamed-chunk-6-1.png" width="864" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>ia_Pinf &lt;- ia_Pinf[,c(1:3,13:14)]  
 colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &quot;rbarD&quot;, &quot;P-value&quot;)
 ia_Pinf</code></pre>
 <pre><code>##         Region   N MLG    rbarD P-value
-## 1     Chapingo  17  17  0.13903   0.001
-## 2   Juchitepec  28  28 -0.00623   0.699
-## 3 San Gerónimo  22  22  0.01519   0.140
-## 4       Toluca  38  38 -0.00664   0.718
-## 5     Tlaxcala  76  76  0.01604   0.011
-## 6    Michoacan  43  43  0.01019   0.105
-## 7        Total 224 221  0.01302   0.001</code></pre>
+## 1     Chapingo  17  17  0.13903    0.01
+## 2   Juchitepec  28  28 -0.00623    0.68
+## 3 San Gerónimo  22  22  0.01519    0.14
+## 4       Toluca  38  38 -0.00664    0.63
+## 5     Tlaxcala  76  76  0.01604    0.01
+## 6    Michoacan  43  43  0.01019    0.15
+## 7        Total 224 221  0.01302    0.01</code></pre>
 </div>
 <div id="hardy_weiberg-equilibrium" class="section level2">
 <h2>Hardy_Weiberg Equilibrium</h2>
 <pre class="r"><code>library(pegas)
 diploid_pinf_cc &lt;- clonecorrect(diploid_pinf)
-hwe_per_pop &lt;- seppop(diploid_pinf_cc) %&gt;% lapply(hw.test, B = 1000)
+hwe_per_pop &lt;- seppop(diploid_pinf_cc) %&gt;% lapply(hw.test, B = 100)
 per_pop_mat &lt;- sapply(hwe_per_pop, &quot;[&quot;, i = TRUE, j = 3)
 alpha &lt;- 0.05
 per_pop_mat[per_pop_mat &gt; alpha] &lt;- 1
@@ -557,12 +557,12 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614   0.105              5
-## 2     Chapingo 17  17  0.139028170   0.001              6
-## 3       Toluca 38  38 -0.006641278   0.718              7
-## 4 San Gerónimo 22  22  0.015188555   0.140              9
-## 5   Juchitepec 28  28 -0.006226974   0.699             11
-## 6     Tlaxcala 76  76  0.016042513   0.011              7</code></pre>
+## 1    Michoacan 43  43  0.010185614    0.15              5
+## 2     Chapingo 17  17  0.139028170    0.01              6
+## 3       Toluca 38  38 -0.006641278    0.63              7
+## 4 San Gerónimo 22  22  0.015188555    0.14              9
+## 5   Juchitepec 28  28 -0.006226974    0.68             11
+## 6     Tlaxcala 76  76  0.016042513    0.01              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
 <h2>Table 4. Pairwise FST</h2>
@@ -590,23 +590,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-08-25 18:18:56 &gt;&gt;&gt;
-##  2019-08-25 18:18:57 : Pairwise tests : 100 permutations
-##    2019-08-25 18:18:57 : Chapingo v. Juchitepec 
-##    2019-08-25 18:18:58 : Chapingo v. Michoacan 
-##    2019-08-25 18:18:59 : Chapingo v. San Gerónimo 
-##    2019-08-25 18:18:59 : Chapingo v. Tlaxcala 
-##    2019-08-25 18:19:00 : Chapingo v. Toluca 
-##    2019-08-25 18:19:00 : Juchitepec v. Michoacan 
-##    2019-08-25 18:19:01 : Juchitepec v. San Gerónimo 
-##    2019-08-25 18:19:01 : Juchitepec v. Tlaxcala 
-##    2019-08-25 18:19:02 : Juchitepec v. Toluca 
-##    2019-08-25 18:19:03 : Michoacan v. San Gerónimo 
-##    2019-08-25 18:19:03 : Michoacan v. Tlaxcala 
-##    2019-08-25 18:19:03 : Michoacan v. Toluca 
-##    2019-08-25 18:19:04 : San Gerónimo v. Tlaxcala 
-##    2019-08-25 18:19:04 : San Gerónimo v. Toluca 
-##    2019-08-25 18:19:05 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-08-25 22:44:58 &gt;&gt;&gt;
+##  2019-08-25 22:44:59 : Pairwise tests : 100 permutations
+##    2019-08-25 22:44:59 : Chapingo v. Juchitepec 
+##    2019-08-25 22:44:59 : Chapingo v. Michoacan 
+##    2019-08-25 22:45:00 : Chapingo v. San Gerónimo 
+##    2019-08-25 22:45:00 : Chapingo v. Tlaxcala 
+##    2019-08-25 22:45:01 : Chapingo v. Toluca 
+##    2019-08-25 22:45:01 : Juchitepec v. Michoacan 
+##    2019-08-25 22:45:01 : Juchitepec v. San Gerónimo 
+##    2019-08-25 22:45:02 : Juchitepec v. Tlaxcala 
+##    2019-08-25 22:45:02 : Juchitepec v. Toluca 
+##    2019-08-25 22:45:03 : Michoacan v. San Gerónimo 
+##    2019-08-25 22:45:03 : Michoacan v. Tlaxcala 
+##    2019-08-25 22:45:04 : Michoacan v. Toluca 
+##    2019-08-25 22:45:04 : San Gerónimo v. Tlaxcala 
+##    2019-08-25 22:45:05 : San Gerónimo v. Toluca 
+##    2019-08-25 22:45:05 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
@@ -622,7 +622,7 @@ pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep
 ## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00990099
 ## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00990099
 ## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00990099
-## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.00990099
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.02970297
 ## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00990099
 ## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00990099</code></pre>
 <pre class="r"><code>fst_mat &lt;- pairwise_fst$pair.mat$Fst
@@ -677,26 +677,55 @@ myamv</code></pre>
 
 diploid_pinf &lt;- clonecorrect(diploid_pinf)
 tree_nj &lt;- bruvo.boot(diploid_pinf, replen = repeat_length, 
-                   sample = 99, cutoff = 70, tree = &quot;nj&quot;, showtree = FALSE)</code></pre>
-<pre><code>## 
-## Bootstrapping...
-## (note: calculation of node labels can take a while even after the progress bar is full)
-## 
-## 
-## Calculating bootstrap values... done.</code></pre>
-<pre class="r"><code>plot(tree_nj)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-10-1.png" width="1152" style="display: block; margin: auto;" /></p>
+                   sample = 99, cutoff = 70, tree = &quot;nj&quot;, showtree = FALSE)
+
+plot(tree_nj)
+
+#write.tree(tree_nj, file = &quot;mynj_tree&quot;)</code></pre>
 </div>
-<div id="lets-try-make-our-tree-visually-attractive" class="section level2">
-<h2>Lets try make our tree visually attractive</h2>
-<pre class="r"><code>tree_nj$tip.label &lt;- as.character(diploid_pinf$pop)
+<div id="lets-try-make-our-tree-visually-attractive-and-informative" class="section level2">
+<h2>Lets try make our tree visually attractive and informative</h2>
+<pre class="r"><code>tree_nj &lt;- read.tree(&quot;mynj_tree&quot;)
+strata &lt;- dplyr::data_frame(taxa = indNames(diploid_pinf)) %&gt;% cbind(strata(diploid_pinf)) 
+head(strata)</code></pre>
+<pre><code>##    taxa   Region Year
+## 1 CHG16 Chapingo 2015
+## 2  CHG1 Chapingo 2015
+## 3 CHG10 Chapingo 2015
+## 4 CHG11 Chapingo 2015
+## 5 CHG12 Chapingo 2015
+## 6 CHG13 Chapingo 2015</code></pre>
+<pre class="r"><code>tree_nj$tip.label &lt;- as.character(strata$Region)[match(tree_nj$tip.label, strata$taxa)]
 
 plot(tree_nj)
 plot.phylo(tree_nj)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-11-1.png" width="864" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>mycol &lt;- rep(NA, length(tree_nj$tip.label))
+
+unique(tree_nj$tip.label)</code></pre>
+<pre><code>## [1] &quot;Michoacan&quot;    &quot;Toluca&quot;       &quot;Juchitepec&quot;   &quot;Tlaxcala&quot;    
+## [5] &quot;Chapingo&quot;     &quot;San Gerónimo&quot;</code></pre>
+<pre class="r"><code>mycol[grep(&quot;Chapingo&quot;, tree_nj$tip.label)] &lt;- &quot;red&quot;
+plot.phylo(tree_nj, tip.color = mycol)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-11-2.png" width="864" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>mycol[grep(&quot;Juchitepec&quot;, tree_nj$tip.label)] &lt;- &quot;black&quot;
+mycol[grep(&quot;San Gerónimo&quot;, tree_nj$tip.label)] &lt;- &quot;green&quot;
+mycol[grep(&quot;Toluca&quot;, tree_nj$tip.label)] &lt;- &quot;blue&quot;
+mycol[grep(&quot;Tlaxcala&quot;, tree_nj$tip.label)] &lt;- &quot;orange&quot;
+mycol[grep(&quot;Michoacan&quot;, tree_nj$tip.label)] &lt;- &quot;pink&quot;
+
+
+plot.phylo(tree_nj, tip.color = mycol, font = 2)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-11-3.png" width="864" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#tiff(&quot;./mytree.tiff&quot;, width = 9, height = 18, res = 300, compression = &quot;zip&quot;, unit = &quot;in&quot;)
+plot(tree_nj, tip.color = mycol, edge.width = 1, font = 1, main = &quot;NJ tree.&quot;)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-11-4.png" width="864" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#dev.off()</code></pre>
 </div>
 <div id="structure-analysis" class="section level2">
 <h2>STRUCTURE analysis</h2>
 <pre class="r"><code>edited_qmat_list &lt;- readRDS(&quot;qmat_list.RData&quot;)
+library(mypackage)
 
 for (i in 1:length(edited_qmat_list)){
   temp_mat &lt;- edited_qmat_list[[i]]
@@ -706,6 +735,7 @@ for (i in 1:length(edited_qmat_list)){
 } 
 
 library(strataG)
+#admix_plot(edited_qmat_list[[3]], horiz = F)
 structurePlot(edited_qmat_list[[3]], horiz = F)</code></pre>
 <p><img src="ssr_files/figure-html/unnamed-chunk-12-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
