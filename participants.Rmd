@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Anup Paudyal
 <img src="./Participants/Anup_Paudyal.jpg" alt="drawing" width="200"/>
 
-### Dhirendra
+### Dhirendra Thakur
 <img src="./Participants/Dhirendra.jpg" alt="drawing" width="200"/>
 
 
@@ -42,6 +42,54 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Suraj Poudel
 <img src="./Participants/Suraj_Poudel.jpg" alt="drawing" width="200"/>
+
+### Santosh Lohani
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Nabin Bhandari
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Manila Lamichhane
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Pooja Aryal
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Meena Shrestha
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Kusum Lama
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Maya Gurung
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Gagan Bhattarai
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Barsha Bhandari
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Rejina Bachkain
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Divya Baral
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Kamana Karki
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Kshitij Budhathoki
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Dipika Bhusal
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Rajan Poudel
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
+
+### Mukti Poudel
+<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
 
 
 
