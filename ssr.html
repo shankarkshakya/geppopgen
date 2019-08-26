@@ -531,9 +531,9 @@ ia_Pinf</code></pre>
 ## 1     Chapingo  17  17  0.13903    0.01
 ## 2   Juchitepec  28  28 -0.00623    0.68
 ## 3 San Gerónimo  22  22  0.01519    0.14
-## 4       Toluca  38  38 -0.00664    0.63
-## 5     Tlaxcala  76  76  0.01604    0.01
-## 6    Michoacan  43  43  0.01019    0.15
+## 4       Toluca  38  38 -0.00664    0.74
+## 5     Tlaxcala  76  76  0.01604    0.03
+## 6    Michoacan  43  43  0.01019    0.13
 ## 7        Total 224 221  0.01302    0.01</code></pre>
 </div>
 <div id="hardy_weiberg-equilibrium" class="section level2">
@@ -557,12 +557,12 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614    0.15              5
+## 1    Michoacan 43  43  0.010185614    0.13              5
 ## 2     Chapingo 17  17  0.139028170    0.01              6
-## 3       Toluca 38  38 -0.006641278    0.63              7
+## 3       Toluca 38  38 -0.006641278    0.74              7
 ## 4 San Gerónimo 22  22  0.015188555    0.14              9
 ## 5   Juchitepec 28  28 -0.006226974    0.68             11
-## 6     Tlaxcala 76  76  0.016042513    0.01              7</code></pre>
+## 6     Tlaxcala 76  76  0.016042513    0.03              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
 <h2>Table 4. Pairwise FST</h2>
@@ -590,23 +590,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-08-25 22:44:58 &gt;&gt;&gt;
-##  2019-08-25 22:44:59 : Pairwise tests : 100 permutations
-##    2019-08-25 22:44:59 : Chapingo v. Juchitepec 
-##    2019-08-25 22:44:59 : Chapingo v. Michoacan 
-##    2019-08-25 22:45:00 : Chapingo v. San Gerónimo 
-##    2019-08-25 22:45:00 : Chapingo v. Tlaxcala 
-##    2019-08-25 22:45:01 : Chapingo v. Toluca 
-##    2019-08-25 22:45:01 : Juchitepec v. Michoacan 
-##    2019-08-25 22:45:01 : Juchitepec v. San Gerónimo 
-##    2019-08-25 22:45:02 : Juchitepec v. Tlaxcala 
-##    2019-08-25 22:45:02 : Juchitepec v. Toluca 
-##    2019-08-25 22:45:03 : Michoacan v. San Gerónimo 
-##    2019-08-25 22:45:03 : Michoacan v. Tlaxcala 
-##    2019-08-25 22:45:04 : Michoacan v. Toluca 
-##    2019-08-25 22:45:04 : San Gerónimo v. Tlaxcala 
-##    2019-08-25 22:45:05 : San Gerónimo v. Toluca 
-##    2019-08-25 22:45:05 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-08-25 23:05:39 &gt;&gt;&gt;
+##  2019-08-25 23:05:40 : Pairwise tests : 100 permutations
+##    2019-08-25 23:05:40 : Chapingo v. Juchitepec 
+##    2019-08-25 23:05:40 : Chapingo v. Michoacan 
+##    2019-08-25 23:05:41 : Chapingo v. San Gerónimo 
+##    2019-08-25 23:05:41 : Chapingo v. Tlaxcala 
+##    2019-08-25 23:05:41 : Chapingo v. Toluca 
+##    2019-08-25 23:05:42 : Juchitepec v. Michoacan 
+##    2019-08-25 23:05:42 : Juchitepec v. San Gerónimo 
+##    2019-08-25 23:05:43 : Juchitepec v. Tlaxcala 
+##    2019-08-25 23:05:43 : Juchitepec v. Toluca 
+##    2019-08-25 23:05:44 : Michoacan v. San Gerónimo 
+##    2019-08-25 23:05:44 : Michoacan v. Tlaxcala 
+##    2019-08-25 23:05:45 : Michoacan v. Toluca 
+##    2019-08-25 23:05:46 : San Gerónimo v. Tlaxcala 
+##    2019-08-25 23:05:46 : San Gerónimo v. Toluca 
+##    2019-08-25 23:05:47 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
@@ -622,7 +622,7 @@ pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep
 ## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00990099
 ## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00990099
 ## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00990099
-## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.02970297
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.01980198
 ## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00990099
 ## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00990099</code></pre>
 <pre class="r"><code>fst_mat &lt;- pairwise_fst$pair.mat$Fst
@@ -715,11 +715,11 @@ mycol[grep(&quot;Tlaxcala&quot;, tree_nj$tip.label)] &lt;- &quot;orange&quot;
 mycol[grep(&quot;Michoacan&quot;, tree_nj$tip.label)] &lt;- &quot;pink&quot;
 
 
-plot.phylo(tree_nj, tip.color = mycol, font = 2)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-11-3.png" width="864" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>#tiff(&quot;./mytree.tiff&quot;, width = 9, height = 18, res = 300, compression = &quot;zip&quot;, unit = &quot;in&quot;)
+
+
+#tiff(&quot;./mytree.tiff&quot;, width = 9, height = 18, res = 300, compression = &quot;zip&quot;, unit = &quot;in&quot;)
 plot(tree_nj, tip.color = mycol, edge.width = 1, font = 1, main = &quot;NJ tree.&quot;)</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-11-4.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="ssr_files/figure-html/unnamed-chunk-11-3.png" width="864" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>#dev.off()</code></pre>
 </div>
 <div id="structure-analysis" class="section level2">
