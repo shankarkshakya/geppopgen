@@ -1,8 +1,47 @@
 ---
-
+editor_options:
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
+### Anup Paudyal
+<img src="./Participants/Anup_Paudyal.jpg" alt="drawing" width="200"/>
+
+### Dhirendra
+<img src="./Participants/Dhirendra.jpg" alt="drawing" width="200"/>
+
+
+### Bikash Poudel
+<img src="./Participants/Bikash_Poudel.png" alt="drawing" width="200"/>
+
+### Lalit BC
+<img src="./Participants/Lalit_BC.JPG" alt="drawing" width="200"/>
+
+### Narendara Chand
+<img src="./Participants/Narendra_Chand.jpg" alt="drawing" width="200"/>
+
+### Prabina Acharya
+<img src="./Participants/Prabina_Acharya.jpg" alt="drawing" width="200"/>
+
+### Pushpa Gyawali
+<img src="./Participants/Pushpa_Gyawali.jpg" alt="drawing" width="200"/>
+
+### Sangam Bhattarai
+<img src="./Participants/Sangam_Bhattarai.jpg" alt="drawing" width="200"/>
+
+### Sapana Gotame
+<img src="./Participants/Sapana_Gotame.jpg" alt="drawing" width="200"/>
+
+
+### Sapana Thapa
+<img src="./Participants/Sapana_Thapa.jpeg" alt="drawing" width="200"/>
+
+### Suraj Poudel
+<img src="./Participants/Suraj_Poudel.jpg" alt="drawing" width="200"/>
+
+
 

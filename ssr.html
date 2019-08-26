@@ -529,11 +529,11 @@ colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &q
 ia_Pinf</code></pre>
 <pre><code>##         Region   N MLG    rbarD P-value
 ## 1     Chapingo  17  17  0.13903   0.001
-## 2   Juchitepec  28  28 -0.00623   0.723
-## 3 San Gerónimo  22  22  0.01519   0.134
-## 4       Toluca  38  38 -0.00664   0.730
-## 5     Tlaxcala  76  76  0.01604   0.013
-## 6    Michoacan  43  43  0.01019   0.120
+## 2   Juchitepec  28  28 -0.00623   0.699
+## 3 San Gerónimo  22  22  0.01519   0.140
+## 4       Toluca  38  38 -0.00664   0.718
+## 5     Tlaxcala  76  76  0.01604   0.011
+## 6    Michoacan  43  43  0.01019   0.105
 ## 7        Total 224 221  0.01302   0.001</code></pre>
 </div>
 <div id="hardy_weiberg-equilibrium" class="section level2">
@@ -557,12 +557,12 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614   0.120              5
+## 1    Michoacan 43  43  0.010185614   0.105              5
 ## 2     Chapingo 17  17  0.139028170   0.001              6
-## 3       Toluca 38  38 -0.006641278   0.730              7
-## 4 San Gerónimo 22  22  0.015188555   0.134              9
-## 5   Juchitepec 28  28 -0.006226974   0.723             11
-## 6     Tlaxcala 76  76  0.016042513   0.013              7</code></pre>
+## 3       Toluca 38  38 -0.006641278   0.718              7
+## 4 San Gerónimo 22  22  0.015188555   0.140              9
+## 5   Juchitepec 28  28 -0.006226974   0.699             11
+## 6     Tlaxcala 76  76  0.016042513   0.011              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
 <h2>Table 4. Pairwise FST</h2>
@@ -590,23 +590,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-08-12 23:11:54 &gt;&gt;&gt;
-##  2019-08-12 23:11:54 : Pairwise tests : 100 permutations
-##    2019-08-12 23:11:54 : Chapingo v. Juchitepec 
-##    2019-08-12 23:11:55 : Chapingo v. Michoacan 
-##    2019-08-12 23:11:55 : Chapingo v. San Gerónimo 
-##    2019-08-12 23:11:56 : Chapingo v. Tlaxcala 
-##    2019-08-12 23:11:56 : Chapingo v. Toluca 
-##    2019-08-12 23:11:57 : Juchitepec v. Michoacan 
-##    2019-08-12 23:11:57 : Juchitepec v. San Gerónimo 
-##    2019-08-12 23:11:57 : Juchitepec v. Tlaxcala 
-##    2019-08-12 23:11:58 : Juchitepec v. Toluca 
-##    2019-08-12 23:11:58 : Michoacan v. San Gerónimo 
-##    2019-08-12 23:11:58 : Michoacan v. Tlaxcala 
-##    2019-08-12 23:11:59 : Michoacan v. Toluca 
-##    2019-08-12 23:11:59 : San Gerónimo v. Tlaxcala 
-##    2019-08-12 23:12:00 : San Gerónimo v. Toluca 
-##    2019-08-12 23:12:00 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-08-25 18:18:56 &gt;&gt;&gt;
+##  2019-08-25 18:18:57 : Pairwise tests : 100 permutations
+##    2019-08-25 18:18:57 : Chapingo v. Juchitepec 
+##    2019-08-25 18:18:58 : Chapingo v. Michoacan 
+##    2019-08-25 18:18:59 : Chapingo v. San Gerónimo 
+##    2019-08-25 18:18:59 : Chapingo v. Tlaxcala 
+##    2019-08-25 18:19:00 : Chapingo v. Toluca 
+##    2019-08-25 18:19:00 : Juchitepec v. Michoacan 
+##    2019-08-25 18:19:01 : Juchitepec v. San Gerónimo 
+##    2019-08-25 18:19:01 : Juchitepec v. Tlaxcala 
+##    2019-08-25 18:19:02 : Juchitepec v. Toluca 
+##    2019-08-25 18:19:03 : Michoacan v. San Gerónimo 
+##    2019-08-25 18:19:03 : Michoacan v. Tlaxcala 
+##    2019-08-25 18:19:03 : Michoacan v. Toluca 
+##    2019-08-25 18:19:04 : San Gerónimo v. Tlaxcala 
+##    2019-08-25 18:19:04 : San Gerónimo v. Toluca 
+##    2019-08-25 18:19:05 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
@@ -622,7 +622,7 @@ pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep
 ## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00990099
 ## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00990099
 ## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00990099
-## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.02970297
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.00990099
 ## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00990099
 ## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00990099</code></pre>
 <pre class="r"><code>fst_mat &lt;- pairwise_fst$pair.mat$Fst
