@@ -23,7 +23,7 @@ Now open Rstudio. We ll learn couple of basic things.
 
 ## Rstudio
 
-![](Rstudio_image_LI.JPG)
+![](Rstudio_image_LI.jpg)
 
 We ll talk about these 4 distinct panes.
 
