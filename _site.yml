@@ -17,7 +17,7 @@ navbar:
       - href: Molecular_markers.html
   - text: Day 2
     menu: 
-      - text: Installing R and Rstudio
+      - text: R and R studio
       - href: installR.html
   - text: Day3
     menu:

@@ -13,9 +13,34 @@ if you do not have them already. Rstudio is optional but it is a great tool if y
 Once you have download and installed R and Rstudio, we ll start working by creating project.
 
 
+Now open Rstudio. We ll learn couple of basic things.
+
+1. Under whats in different panes in Rstudio.
+2. We ll learn how to create an R project directory.
+3. We ll learn how to use base functions and later how to install packages.
+4. What are packages and how is it useful etc.
+
+
+## Rstudio
+
+![](Rstudio_image_LI.JPG)
+
+We ll talk about these 4 distinct panes.
+
+
+## Creating new project directory
+
+Once you are inside Rstudio you can click on your top right where it says project to create a new project. By doing this you ll have all your data and script in one location.
+
+![](New_project.JPG)
+
+
+Now we can start working in Rstudio but before we go ahead and start writing scripts we can even work in our console. 
+
 ### R as calculator
 
 ```{r}
+
 # Add
 
 5+10
@@ -69,4 +94,17 @@ w
 ```
 
 
+## Reading data into R
+
+```{r}
+
+```
+
+
+## Plotting in R
+
+
+```{r}
+
+```
 
