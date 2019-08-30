@@ -529,15 +529,15 @@ colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &q
 ia_Pinf</code></pre>
 <pre><code>##         Region   N MLG    rbarD P-value
 ## 1     Chapingo  17  17  0.13903    0.01
-## 2   Juchitepec  28  28 -0.00623    0.68
-## 3 San Gerónimo  22  22  0.01519    0.14
+## 2   Juchitepec  28  28 -0.00623    0.72
+## 3 San Gerónimo  22  22  0.01519    0.15
 ## 4       Toluca  38  38 -0.00664    0.74
-## 5     Tlaxcala  76  76  0.01604    0.03
-## 6    Michoacan  43  43  0.01019    0.13
+## 5     Tlaxcala  76  76  0.01604    0.01
+## 6    Michoacan  43  43  0.01019    0.12
 ## 7        Total 224 221  0.01302    0.01</code></pre>
 </div>
-<div id="hardy_weiberg-equilibrium" class="section level2">
-<h2>Hardy_Weiberg Equilibrium</h2>
+<div id="hardy-weinberg-equilibrium" class="section level2">
+<h2>Hardy Weinberg Equilibrium</h2>
 <pre class="r"><code>library(pegas)
 diploid_pinf_cc &lt;- clonecorrect(diploid_pinf)
 hwe_per_pop &lt;- seppop(diploid_pinf_cc) %&gt;% lapply(hw.test, B = 100)
@@ -557,12 +557,12 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614    0.13              5
+## 1    Michoacan 43  43  0.010185614    0.12              5
 ## 2     Chapingo 17  17  0.139028170    0.01              6
 ## 3       Toluca 38  38 -0.006641278    0.74              7
-## 4 San Gerónimo 22  22  0.015188555    0.14              9
-## 5   Juchitepec 28  28 -0.006226974    0.68             11
-## 6     Tlaxcala 76  76  0.016042513    0.03              7</code></pre>
+## 4 San Gerónimo 22  22  0.015188555    0.15              9
+## 5   Juchitepec 28  28 -0.006226974    0.72             11
+## 6     Tlaxcala 76  76  0.016042513    0.01              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
 <h2>Table 4. Pairwise FST</h2>
@@ -590,23 +590,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-08-25 23:05:39 &gt;&gt;&gt;
-##  2019-08-25 23:05:40 : Pairwise tests : 100 permutations
-##    2019-08-25 23:05:40 : Chapingo v. Juchitepec 
-##    2019-08-25 23:05:40 : Chapingo v. Michoacan 
-##    2019-08-25 23:05:41 : Chapingo v. San Gerónimo 
-##    2019-08-25 23:05:41 : Chapingo v. Tlaxcala 
-##    2019-08-25 23:05:41 : Chapingo v. Toluca 
-##    2019-08-25 23:05:42 : Juchitepec v. Michoacan 
-##    2019-08-25 23:05:42 : Juchitepec v. San Gerónimo 
-##    2019-08-25 23:05:43 : Juchitepec v. Tlaxcala 
-##    2019-08-25 23:05:43 : Juchitepec v. Toluca 
-##    2019-08-25 23:05:44 : Michoacan v. San Gerónimo 
-##    2019-08-25 23:05:44 : Michoacan v. Tlaxcala 
-##    2019-08-25 23:05:45 : Michoacan v. Toluca 
-##    2019-08-25 23:05:46 : San Gerónimo v. Tlaxcala 
-##    2019-08-25 23:05:46 : San Gerónimo v. Toluca 
-##    2019-08-25 23:05:47 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-08-29 21:25:10 &gt;&gt;&gt;
+##  2019-08-29 21:25:11 : Pairwise tests : 100 permutations
+##    2019-08-29 21:25:11 : Chapingo v. Juchitepec 
+##    2019-08-29 21:25:11 : Chapingo v. Michoacan 
+##    2019-08-29 21:25:12 : Chapingo v. San Gerónimo 
+##    2019-08-29 21:25:12 : Chapingo v. Tlaxcala 
+##    2019-08-29 21:25:13 : Chapingo v. Toluca 
+##    2019-08-29 21:25:13 : Juchitepec v. Michoacan 
+##    2019-08-29 21:25:14 : Juchitepec v. San Gerónimo 
+##    2019-08-29 21:25:14 : Juchitepec v. Tlaxcala 
+##    2019-08-29 21:25:15 : Juchitepec v. Toluca 
+##    2019-08-29 21:25:15 : Michoacan v. San Gerónimo 
+##    2019-08-29 21:25:15 : Michoacan v. Tlaxcala 
+##    2019-08-29 21:25:16 : Michoacan v. Toluca 
+##    2019-08-29 21:25:16 : San Gerónimo v. Tlaxcala 
+##    2019-08-29 21:25:17 : San Gerónimo v. Toluca 
+##    2019-08-29 21:25:18 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
@@ -645,7 +645,7 @@ ggheatmap &lt;- ggplot(lower_tri, aes(x = Var1, y = Var2, fill = value)) + geom_
   geom_text(aes(label = round(value, 2)))
 
 ggheatmap</code></pre>
-<p><img src="ssr_files/figure-html/unnamed-chunk-8-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="ssr_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="table-5.-analysis-of-molecular-variance" class="section level2">
 <h2>Table 5. Analysis of molecular variance</h2>
@@ -722,8 +722,8 @@ plot(tree_nj, tip.color = mycol, edge.width = 1, font = 1, main = &quot;NJ tree.
 <p><img src="ssr_files/figure-html/unnamed-chunk-11-3.png" width="864" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>#dev.off()</code></pre>
 </div>
-<div id="structure-analysis" class="section level2">
-<h2>STRUCTURE analysis</h2>
+<div id="fig-3.-population-structure-analysis" class="section level2">
+<h2>Fig 3. Population STRUCTURE analysis</h2>
 <pre class="r"><code>edited_qmat_list &lt;- readRDS(&quot;qmat_list.RData&quot;)
 library(mypackage)
 
@@ -739,38 +739,66 @@ library(strataG)
 structurePlot(edited_qmat_list[[3]], horiz = F)</code></pre>
 <p><img src="ssr_files/figure-html/unnamed-chunk-12-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
-<div id="fig-5.-discriminant-analysis-of-principal-components" class="section level2">
-<h2>Fig 5. Discriminant Analysis of Principal components</h2>
+<div id="fig-4.-discriminant-analysis-of-principal-components" class="section level2">
+<h2>Fig 4. Discriminant Analysis of Principal components</h2>
 <pre class="r"><code>set.seed(999)
 P.infx &lt;- xvalDapc(tab(diploid_pinf, NA.method = &quot;mean&quot;), pop(diploid_pinf),
-                   n.pca = 60:70,  n.rep = 100, 
-                   parallel = &quot;multicore&quot;, ncpus = 4L)
-
-library(RColorBrewer)
+                   n.pca = 60:70,  n.rep = 10, 
+                   parallel = &quot;multicore&quot;, ncpus = 4L)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-13-1.png" width="480" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>library(RColorBrewer)
 myCol &lt;- brewer.pal(nPop(diploid_pinf), &quot;Dark2&quot;) %&gt;% setNames(popNames(diploid_pinf))
 
-diploid_pinf_no_MCH &lt;- popsub(diploid_pinf, blacklist = &quot;Michoacan&quot;)
-
+scatter.dapc(P.infx$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, posi.pca = &quot;topright&quot;, posi.leg = &quot;topright&quot;, legend = F, 
+        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-13-2.png" width="480" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>diploid_pinf_no_MCH &lt;- popsub(diploid_pinf, blacklist = &quot;Michoacan&quot;)
 
 set.seed(999)
-P.infx1 &lt;- xvalDapc(tab(diploid_pinf_no_MCH, NA.method = &quot;mean&quot;), pop(diploid_pinf_no_MCH),
-                   n.pca = 60:70,  n.rep = 100,
-                   parallel = &quot;multicore&quot;, ncpus = 4L)
-
-source(&quot;scatterdapc.R&quot;)
-
-par(mfrow = c(1,2))
-par(mar = c(1,1,1,3))
-
-scatterdapc(P.infx$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, 
+P.infx1 &lt;- xvalDapc(tab(diploid_pinf_no_MCH, NA.method = &quot;mean&quot;), pop(diploid_pinf_no_MCH), n.pca = 60:70,  n.rep = 10, parallel = &quot;multicore&quot;, ncpus = 4L)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-13-3.png" width="480" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>scatter.dapc(P.infx1$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, 
         posi.pca = &quot;topright&quot;, posi.leg = &quot;topright&quot;, legend = F, 
-        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)
-title(main = &quot;A&quot;, col = &quot;black&quot;, font.main = 2, adj = 0, line = -1)
+        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-13-4.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="fig-5.-isolation-by-distance-mantels-test" class="section level2">
+<h2>Fig 5. Isolation by distance (Mantel’s test)</h2>
+<pre class="r"><code>lat_lon &lt;- read.csv(&quot;Dgeo_MX.csv&quot;)
+colnames(lat_lon) &lt;- c(&quot;name&quot;, &quot;lat&quot;, &quot;lon&quot;)
+source(&quot;GeoDistanceInMetresMatrix.R&quot;)
 
-scatterdapc(P.infx1$DAPC, col=myCol, clabel = 0.75, pch=15:19, scree.pca = TRUE, scree.da = FALSE, 
-        posi.pca = &quot;topright&quot;, posi.leg = &quot;topright&quot;, legend = F, 
-        cleg = 0.9, inset.solid = 1, xax = 1, yax = 2, cex.lab = 1, cex = 1, solid = 1, cstar = 0)
-title(main = &quot;B&quot;, col = &quot;black&quot;, font.main =2, adj = 0, line = -1)</code></pre>
+geodist_mat &lt;- GeoDistanceInMetresMatrix(lat_lon) / 1000
+geodist_mat &lt;- as.dist(geodist_mat)
+
+
+new_fst_mat &lt;- readRDS(&quot;new_fst_mat.RData&quot;)
+fstdist_mat &lt;- as.dist(new_fst_mat)
+
+plot(geodist_mat, fstdist_mat, xlab = &quot;Geographical distance (km)&quot;, ylab = &quot;Genetic distance (FST)&quot;,
+     pch = 19, bg = &quot;black&quot;, cex.lab = 1.5, cex.axis = 1.5, font.lab = 2, 
+           font = 2, family = &quot;Microsoft Sans Serif&quot;)
+abline(lm(fstdist_mat~geodist_mat))</code></pre>
+<p><img src="ssr_files/figure-html/unnamed-chunk-14-1.png" width="384" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>summary(lm(fstdist_mat~geodist_mat))</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = fstdist_mat ~ geodist_mat)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.045566 -0.013234  0.002951  0.014523  0.029325 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 4.530e-02  8.989e-03   5.040 0.000227 ***
+## geodist_mat 1.169e-04  4.028e-05   2.903 0.012340 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.02177 on 13 degrees of freedom
+## Multiple R-squared:  0.3933, Adjusted R-squared:  0.3466 
+## F-statistic: 8.426 on 1 and 13 DF,  p-value: 0.01234</code></pre>
 </div>
 </div>
 
