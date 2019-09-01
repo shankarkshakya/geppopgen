@@ -68,6 +68,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Kusum Lama
 <img src="./Participants/Lama.JPG" alt="drawing" width="200"/>
 
+### Meena Shrestha
+<img src="./Participants/Meena.JPG" alt="drawing" width="200"/>
 
 
 
@@ -80,8 +82,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Gagan Bhattarai
 <img src="./Participants/blank.PNG" alt="drawing" width="200"/>
 
-### Meena Shrestha
-<img src="./Participants/blank.PNG" alt="drawing" width="200"/>
 
 
 ### Rajan Poudel
