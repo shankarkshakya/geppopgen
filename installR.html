@@ -401,21 +401,9 @@ y &lt;- c(4,5,6,7)
 matrix &lt;- cbind(x,y)
 mymat &lt;- matrix(NA, nrow = 2, ncol = 2)
 
-# Data frame
-chr &lt;- c(&quot;chr1&quot;, &quot;chr1&quot;, &quot;chr2&quot;, &quot;chr2&quot;)
-strand &lt;- c(&quot;-&quot;,&quot;-&quot;,&quot;+&quot;,&quot;+&quot;)
-start&lt;- c(200,4000,100,400)
-end&lt;-c(250,410,200,450)
-mydata &lt;- data.frame(chr,start,end,strand)
-#change column names
-names(mydata) &lt;- c(&quot;chr&quot;,&quot;start&quot;,&quot;end&quot;,&quot;strand&quot;)
-mydata </code></pre>
-<pre><code>##    chr start end strand
-## 1 chr1   200 250      -
-## 2 chr1  4000 410      -
-## 3 chr2   100 200      +
-## 4 chr2   400 450      +</code></pre>
-<pre class="r"><code># List
+
+
+# List
 
 w &lt;- list(name=&quot;Fred&quot;,
        mynumbers=c(1,2,3),
@@ -435,13 +423,26 @@ w</code></pre>
 ## 
 ## $age
 ## [1] 5.3</code></pre>
+<pre class="r"><code># Data frame
+chr &lt;- c(&quot;chr1&quot;, &quot;chr1&quot;, &quot;chr2&quot;, &quot;chr2&quot;)
+strand &lt;- c(&quot;-&quot;,&quot;-&quot;,&quot;+&quot;,&quot;+&quot;)
+start&lt;- c(200,4000,100,400)
+end&lt;-c(250,410,200,450)
+mydata &lt;- data.frame(chr,start,end,strand)
+#change column names
+names(mydata) &lt;- c(&quot;chr&quot;,&quot;start&quot;,&quot;end&quot;,&quot;strand&quot;)
+mydata </code></pre>
+<pre><code>##    chr start end strand
+## 1 chr1   200 250      -
+## 2 chr1  4000 410      -
+## 3 chr2   100 200      +
+## 4 chr2   400 450      +</code></pre>
 </div>
 </div>
 <div id="reading-data-into-r" class="section level2">
 <h2>Reading data into R</h2>
-</div>
-<div id="plotting-in-r" class="section level2">
-<h2>Plotting in R</h2>
+<p>For this part, we ll use the workshop material developed by Dr. Sydney E. Everhart’s lab at University of Nebraska, Lincoln.</p>
+<p>Lets <a href="https://everhartlab.github.io/APS_IntroR_2019/index.html">Intro to R</a></p>
 </div>
 
 
