@@ -372,6 +372,7 @@ $(document).ready(function () {
 <p>Once you are inside Rstudio you can click on your top right where it says project to create a new project. By doing this you ll have all your data and script in one location.</p>
 <p><img src="New_project.JPG" /></p>
 <p>Now we can start working in Rstudio but before we go ahead and start writing scripts we can even work in our console.</p>
+<p>In the console type getwd() and see what happens.</p>
 <div id="r-as-calculator" class="section level3">
 <h3>R as calculator</h3>
 <pre class="r"><code># Add
@@ -391,25 +392,48 @@ $(document).ready(function () {
 </div>
 <div id="r-data-structures" class="section level3">
 <h3>R data structures</h3>
-<pre class="r"><code># vectors
-x &lt;- c(1,3,2,10,5)
+</div>
+</div>
+<div id="vectors" class="section level2">
+<h2>Vectors</h2>
+<p>A vector can contain either number, strings, or logical values but not a mixture.</p>
+<pre class="r"><code>x &lt;- 100
 x</code></pre>
-<pre><code>## [1]  1  3  2 10  5</code></pre>
-<pre class="r"><code># Matrices
-x &lt;- c(1,2,3,4)
-y &lt;- c(4,5,6,7)
-matrix &lt;- cbind(x,y)
-mymat &lt;- matrix(NA, nrow = 2, ncol = 2)
+<pre><code>## [1] 100</code></pre>
+<pre class="r"><code>x &lt;- c(1,3,2,10,5)
 
+str(x)</code></pre>
+<pre><code>##  num [1:5] 1 3 2 10 5</code></pre>
+<pre class="r"><code>class(x)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code># Selecting elements from vector
 
-
-# List
-
-w &lt;- list(name=&quot;Fred&quot;,
+x[3]</code></pre>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="basic-statistics" class="section level2">
+<h2>Basic statistics</h2>
+<pre class="r"><code>mean(x)</code></pre>
+<pre><code>## [1] 4.2</code></pre>
+<pre class="r"><code>median(x)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>sd(x)</code></pre>
+<pre><code>## [1] 3.563706</code></pre>
+<pre class="r"><code>var(x)</code></pre>
+<pre><code>## [1] 12.7</code></pre>
+<pre class="r"><code>## See what summary command does
+summary(x)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0     2.0     3.0     4.2     5.0    10.0</code></pre>
+</div>
+<div id="list" class="section level2">
+<h2>List</h2>
+<p>List can hold different types of data structures.</p>
+<pre class="r"><code>mylist &lt;- list(name=&quot;Fred&quot;,
        mynumbers=c(1,2,3),
        mymatrix=matrix(1:4,ncol=2),
        age=5.3)
-w</code></pre>
+mylist</code></pre>
 <pre><code>## $name
 ## [1] &quot;Fred&quot;
 ## 
@@ -423,26 +447,69 @@ w</code></pre>
 ## 
 ## $age
 ## [1] 5.3</code></pre>
-<pre class="r"><code># Data frame
-chr &lt;- c(&quot;chr1&quot;, &quot;chr1&quot;, &quot;chr2&quot;, &quot;chr2&quot;)
+<pre class="r"><code>## access using $ sign.
+mylist$name</code></pre>
+<pre><code>## [1] &quot;Fred&quot;</code></pre>
+</div>
+<div id="matrix" class="section level2">
+<h2>Matrix</h2>
+<p>Matrix is vector but with dimension.</p>
+<pre class="r"><code>x &lt;- c(1,2,3,4)
+y &lt;- c(4,5,6,7)
+matrix &lt;- cbind(x,y)
+mymat &lt;- matrix(NA, nrow = 2, ncol = 2)</code></pre>
+</div>
+<div id="logicals" class="section level2">
+<h2>Logicals</h2>
+</div>
+<div id="data-frame" class="section level2">
+<h2>Data frame</h2>
+<pre class="r"><code>chr &lt;- c(&quot;chr1&quot;, &quot;chr1&quot;, &quot;chr2&quot;, &quot;chr2&quot;)
 strand &lt;- c(&quot;-&quot;,&quot;-&quot;,&quot;+&quot;,&quot;+&quot;)
-start&lt;- c(200,4000,100,400)
-end&lt;-c(250,410,200,450)
+start &lt;- c(200,4000,100,400)
+end &lt;- c(250,410,200,450)
 mydata &lt;- data.frame(chr,start,end,strand)
-#change column names
-names(mydata) &lt;- c(&quot;chr&quot;,&quot;start&quot;,&quot;end&quot;,&quot;strand&quot;)
-mydata </code></pre>
+
+head(mydata)</code></pre>
 <pre><code>##    chr start end strand
 ## 1 chr1   200 250      -
 ## 2 chr1  4000 410      -
 ## 3 chr2   100 200      +
 ## 4 chr2   400 450      +</code></pre>
-</div>
+<pre class="r"><code>#change column names
+
+names(mydata) &lt;- c(&quot;Chromosome&quot;,&quot;Start_position&quot;,&quot;End_position&quot;,&quot;Strand&quot;)
+mydata </code></pre>
+<pre><code>##   Chromosome Start_position End_position Strand
+## 1       chr1            200          250      -
+## 2       chr1           4000          410      -
+## 3       chr2            100          200      +
+## 4       chr2            400          450      +</code></pre>
+<pre class="r"><code>head(mydata)</code></pre>
+<pre><code>##   Chromosome Start_position End_position Strand
+## 1       chr1            200          250      -
+## 2       chr1           4000          410      -
+## 3       chr2            100          200      +
+## 4       chr2            400          450      +</code></pre>
+<pre class="r"><code>tail(mydata)</code></pre>
+<pre><code>##   Chromosome Start_position End_position Strand
+## 1       chr1            200          250      -
+## 2       chr1           4000          410      -
+## 3       chr2            100          200      +
+## 4       chr2            400          450      +</code></pre>
+<pre class="r"><code>nrow(mydata)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>ncol(mydata)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>dim(mydata)</code></pre>
+<pre><code>## [1] 4 4</code></pre>
+<pre class="r"><code>## Save csv file
+#write.csv(x = mydata, file = &quot;mydata.csv&quot;)</code></pre>
 </div>
 <div id="reading-data-into-r" class="section level2">
 <h2>Reading data into R</h2>
 <p>For this part, we ll use the workshop material developed by Dr. Sydney E. Everhart’s lab at University of Nebraska, Lincoln.</p>
-<p>Lets <a href="https://everhartlab.github.io/APS_IntroR_2019/index.html">Intro to R</a></p>
+<p><a href="https://everhartlab.github.io/APS_IntroR_2019/index.html">Intro to R</a></p>
 </div>
 
 
