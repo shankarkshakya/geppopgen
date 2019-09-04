@@ -20,6 +20,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -250,6 +253,63 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -257,6 +317,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -307,7 +377,7 @@ $(document).ready(function () {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Installing R and Rstudio</li>
+    <li class="dropdown-header">R and R studio</li>
     <li>
       <a href="installR.html"></a>
     </li>
@@ -345,8 +415,6 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
-<hr />
 <div id="analyses-of-microsatellite-data-in-r" class="section level1">
 <h1>Analyses of microsatellite data in R</h1>
 <p>Hopefully I have covered what microsatellites markers are by this time. Many R packages are available to analyse microsatellite data. We ll be using R package Poppr to analyze the data from <a href="https://apsjournals.apsnet.org/doi/10.1094/PDIS-11-17-1801-RE">Shakya et al. 2018</a>.</p>
@@ -529,11 +597,11 @@ colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &q
 ia_Pinf</code></pre>
 <pre><code>##         Region   N MLG    rbarD P-value
 ## 1     Chapingo  17  17  0.13903    0.01
-## 2   Juchitepec  28  28 -0.00623    0.72
-## 3 San Gerónimo  22  22  0.01519    0.15
-## 4       Toluca  38  38 -0.00664    0.74
-## 5     Tlaxcala  76  76  0.01604    0.01
-## 6    Michoacan  43  43  0.01019    0.12
+## 2   Juchitepec  28  28 -0.00623    0.73
+## 3 San Gerónimo  22  22  0.01519    0.09
+## 4       Toluca  38  38 -0.00664    0.76
+## 5     Tlaxcala  76  76  0.01604    0.02
+## 6    Michoacan  43  43  0.01019    0.16
 ## 7        Total 224 221  0.01302    0.01</code></pre>
 </div>
 <div id="hardy-weinberg-equilibrium" class="section level2">
@@ -557,12 +625,12 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614    0.12              5
+## 1    Michoacan 43  43  0.010185614    0.16              5
 ## 2     Chapingo 17  17  0.139028170    0.01              6
-## 3       Toluca 38  38 -0.006641278    0.74              7
-## 4 San Gerónimo 22  22  0.015188555    0.15              9
-## 5   Juchitepec 28  28 -0.006226974    0.72             11
-## 6     Tlaxcala 76  76  0.016042513    0.01              7</code></pre>
+## 3       Toluca 38  38 -0.006641278    0.76              7
+## 4 San Gerónimo 22  22  0.015188555    0.09              9
+## 5   Juchitepec 28  28 -0.006226974    0.73             11
+## 6     Tlaxcala 76  76  0.016042513    0.02              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
 <h2>Table 4. Pairwise FST</h2>
@@ -590,23 +658,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-08-29 21:25:10 &gt;&gt;&gt;
-##  2019-08-29 21:25:11 : Pairwise tests : 100 permutations
-##    2019-08-29 21:25:11 : Chapingo v. Juchitepec 
-##    2019-08-29 21:25:11 : Chapingo v. Michoacan 
-##    2019-08-29 21:25:12 : Chapingo v. San Gerónimo 
-##    2019-08-29 21:25:12 : Chapingo v. Tlaxcala 
-##    2019-08-29 21:25:13 : Chapingo v. Toluca 
-##    2019-08-29 21:25:13 : Juchitepec v. Michoacan 
-##    2019-08-29 21:25:14 : Juchitepec v. San Gerónimo 
-##    2019-08-29 21:25:14 : Juchitepec v. Tlaxcala 
-##    2019-08-29 21:25:15 : Juchitepec v. Toluca 
-##    2019-08-29 21:25:15 : Michoacan v. San Gerónimo 
-##    2019-08-29 21:25:15 : Michoacan v. Tlaxcala 
-##    2019-08-29 21:25:16 : Michoacan v. Toluca 
-##    2019-08-29 21:25:16 : San Gerónimo v. Tlaxcala 
-##    2019-08-29 21:25:17 : San Gerónimo v. Toluca 
-##    2019-08-29 21:25:18 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-09-01 15:47:51 &gt;&gt;&gt;
+##  2019-09-01 15:47:51 : Pairwise tests : 100 permutations
+##    2019-09-01 15:47:51 : Chapingo v. Juchitepec 
+##    2019-09-01 15:47:51 : Chapingo v. Michoacan 
+##    2019-09-01 15:47:52 : Chapingo v. San Gerónimo 
+##    2019-09-01 15:47:52 : Chapingo v. Tlaxcala 
+##    2019-09-01 15:47:52 : Chapingo v. Toluca 
+##    2019-09-01 15:47:53 : Juchitepec v. Michoacan 
+##    2019-09-01 15:47:53 : Juchitepec v. San Gerónimo 
+##    2019-09-01 15:47:53 : Juchitepec v. Tlaxcala 
+##    2019-09-01 15:47:54 : Juchitepec v. Toluca 
+##    2019-09-01 15:47:54 : Michoacan v. San Gerónimo 
+##    2019-09-01 15:47:54 : Michoacan v. Tlaxcala 
+##    2019-09-01 15:47:55 : Michoacan v. Toluca 
+##    2019-09-01 15:47:55 : San Gerónimo v. Tlaxcala 
+##    2019-09-01 15:47:56 : San Gerónimo v. Toluca 
+##    2019-09-01 15:47:56 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
@@ -804,6 +872,8 @@ abline(lm(fstdist_mat~geodist_mat))</code></pre>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -836,6 +906,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

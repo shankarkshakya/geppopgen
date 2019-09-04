@@ -20,6 +20,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -250,6 +253,63 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -257,6 +317,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -345,22 +415,20 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
-<hr />
 <div id="what-is-r-and-why-r" class="section level2">
 <h2>What is R and why R?</h2>
 <p>R is a free statistical programming language. It has been widely used for statistics, data analysis and data visualization. One of the fields where R is widely used is genomics. Many R packages have been developed for population genetics data analyses and visualization.</p>
-<div id="installing-r-and-rstudio" class="section level3">
-<h3>Installing R and Rstudio</h3>
+</div>
+<div id="installing-r-and-rstudio" class="section level2">
+<h2>Installing R and Rstudio</h2>
 <p>Download and install <a href="http://cran.r-project.org/">R</a> and <a href="http://www.rstudio.com/">RStudio</a>. if you do not have them already. Rstudio is optional but it is a great tool if you are just starting to learn R. Once you have download and installed R and Rstudio, we ll start working by creating project.</p>
 <p>Now open Rstudio. We ll learn couple of basic things.</p>
 <ol style="list-style-type: decimal">
 <li>Under whats in different panes in Rstudio.</li>
 <li>We ll learn how to create an R project directory.</li>
 <li>We ll learn how to use base functions and later how to install packages.</li>
-<li>What are packages and how is it useful etc.</li>
+<li>What are packages, how is it useful and how to find help etc.</li>
 </ol>
-</div>
 </div>
 <div id="rstudio" class="section level2">
 <h2>Rstudio</h2>
@@ -373,8 +441,9 @@ $(document).ready(function () {
 <p><img src="New_project.JPG" /></p>
 <p>Now we can start working in Rstudio but before we go ahead and start writing scripts we can even work in our console.</p>
 <p>In the console type getwd() and see what happens.</p>
-<div id="r-as-calculator" class="section level3">
-<h3>R as calculator</h3>
+</div>
+<div id="r-as-calculator" class="section level2">
+<h2>R as calculator</h2>
 <pre class="r"><code># Add
 
 5+10</code></pre>
@@ -390,12 +459,10 @@ $(document).ready(function () {
 100 / 5</code></pre>
 <pre><code>## [1] 20</code></pre>
 </div>
-<div id="r-data-structures" class="section level3">
-<h3>R data structures</h3>
-</div>
-</div>
-<div id="vectors" class="section level2">
-<h2>Vectors</h2>
+<div id="r-data-structures" class="section level2">
+<h2>R data structures</h2>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
 <p>A vector can contain either number, strings, or logical values but not a mixture.</p>
 <pre class="r"><code>x &lt;- 100
 x</code></pre>
@@ -410,6 +477,10 @@ str(x)</code></pre>
 
 x[3]</code></pre>
 <pre><code>## [1] 2</code></pre>
+<pre class="r"><code># lets plot something 
+plot(x)</code></pre>
+<p><img src="installR_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
 </div>
 <div id="basic-statistics" class="section level2">
 <h2>Basic statistics</h2>
@@ -421,13 +492,24 @@ x[3]</code></pre>
 <pre><code>## [1] 3.563706</code></pre>
 <pre class="r"><code>var(x)</code></pre>
 <pre><code>## [1] 12.7</code></pre>
+<pre class="r"><code>t.test(x)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  x
+## t = 2.6353, df = 4, p-value = 0.05786
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -0.2249254  8.6249254
+## sample estimates:
+## mean of x 
+##       4.2</code></pre>
 <pre class="r"><code>## See what summary command does
 summary(x)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##     1.0     2.0     3.0     4.2     5.0    10.0</code></pre>
-</div>
-<div id="list" class="section level2">
-<h2>List</h2>
+<div id="list" class="section level3">
+<h3>List</h3>
 <p>List can hold different types of data structures.</p>
 <pre class="r"><code>mylist &lt;- list(name=&quot;Fred&quot;,
        mynumbers=c(1,2,3),
@@ -451,19 +533,36 @@ mylist</code></pre>
 mylist$name</code></pre>
 <pre><code>## [1] &quot;Fred&quot;</code></pre>
 </div>
-<div id="matrix" class="section level2">
-<h2>Matrix</h2>
+<div id="matrix" class="section level3">
+<h3>Matrix</h3>
 <p>Matrix is vector but with dimension.</p>
+<pre class="r"><code>my_matrix &lt;- matrix(data = 1:10,nrow = 5, ncol = 2)
+dim(my_matrix)</code></pre>
+<pre><code>## [1] 5 2</code></pre>
+<pre class="r"><code>rownames(my_matrix) &lt;- c(&quot;Btl&quot;, &quot;Ktm&quot;, &quot;Bhw&quot;, &quot;Bkt&quot;, &quot;Pak&quot;)
+my_matrix</code></pre>
+<pre><code>##     [,1] [,2]
+## Btl    1    6
+## Ktm    2    7
+## Bhw    3    8
+## Bkt    4    9
+## Pak    5   10</code></pre>
+<pre class="r"><code>colnames(my_matrix) &lt;- c(&quot;ItemA&quot;, &quot;ItemB&quot;)
+
+my_matrix</code></pre>
+<pre><code>##     ItemA ItemB
+## Btl     1     6
+## Ktm     2     7
+## Bhw     3     8
+## Bkt     4     9
+## Pak     5    10</code></pre>
 <pre class="r"><code>x &lt;- c(1,2,3,4)
-y &lt;- c(4,5,6,7)
-matrix &lt;- cbind(x,y)
-mymat &lt;- matrix(NA, nrow = 2, ncol = 2)</code></pre>
+y &lt;- c(4,5,6,7) 
+
+matrix &lt;- cbind(x,y)</code></pre>
 </div>
-<div id="logicals" class="section level2">
-<h2>Logicals</h2>
-</div>
-<div id="data-frame" class="section level2">
-<h2>Data frame</h2>
+<div id="data-frame" class="section level3">
+<h3>Data frame</h3>
 <pre class="r"><code>chr &lt;- c(&quot;chr1&quot;, &quot;chr1&quot;, &quot;chr2&quot;, &quot;chr2&quot;)
 strand &lt;- c(&quot;-&quot;,&quot;-&quot;,&quot;+&quot;,&quot;+&quot;)
 start &lt;- c(200,4000,100,400)
@@ -506,14 +605,26 @@ mydata </code></pre>
 <pre class="r"><code>## Save csv file
 #write.csv(x = mydata, file = &quot;mydata.csv&quot;)</code></pre>
 </div>
-<div id="reading-data-into-r" class="section level2">
-<h2>Reading data into R</h2>
+</div>
+<div id="mini-exercise" class="section level2">
+<h2>Mini exercise</h2>
+<ul>
+<li><p>Create a dataframe with following columns of your group member (First_name, Last_name, home_district, Approx_height and one random number between 0 to 100).</p></li>
+<li><p>Use functions to find how many rows and columns are there in your dataframe</p></li>
+<li><p>Try combining first_name and last_name column and rename it to Name</p></li>
+<li><p>Find mean of a column which has that random number.</p></li>
+</ul>
+</div>
+<div id="r-for-plant-pathologist" class="section level2">
+<h2>R for plant pathologist</h2>
 <p>For this part, we ll use the workshop material developed by Dr. Sydney E. Everhart’s lab at University of Nebraska, Lincoln.</p>
-<p><a href="https://everhartlab.github.io/APS_IntroR_2019/index.html">Intro to R</a></p>
+<p><a href="https://everhartlab.github.io/APS_IntroR_2019/index.html">Introdution to R for plant pathologist</a></p>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -546,6 +657,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
