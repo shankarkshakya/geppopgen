@@ -1,5 +1,9 @@
 ---
-
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
 ---
 
 
@@ -63,34 +67,7 @@ allele_freq_B <- B/Gene_copies
 
 allele_freq_A
 allele_freq_B
-
-
-## Next day we ll try writing a very simple function to calculate these genotype and allele frequencies.
-
 ```
 
 
 Remember, we said that population genetics is about studying the changes in the allele frequency. Now if you ask, how these allele frequencies are going to change overtime, then you are in right path.
-
-
-
-
-
-
-
-
-### Population structure
-
-#### FST
-
-#### Clustering
-
-#### Minimum spanning network
-
-### Discriminant analysis of principle components
-
-
-
-
-
-### 

@@ -1,0 +1,50 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+
+# **Population structure and Fst**
+
+Even though the idea of random mating is very popular where each individual has the same probablity to mate with other individual this is rarely observed in nature. Individuals that are close together are likely to mate with each other than distantly located individuals. Becuase of this non random mating, we ll see population subdivision or also known as population structure. One of the primary reasons we get population structure is geographic barrier like huge water bodies or high mountains.
+
+
+Now, the question is how do we know if there is population structure or subdivision?
+
+Fst: Fst is probably the most common statistics used to quantify population subdivision. Fst measures the difference in allele frequcies between two populations.
+
+Mathematically, Fst = Ht - Hs / Ht
+
+Hs = heterozygosity in subdivided population
+Ht = Expected heterozygosity if the pooled populations is in HWE
+
+
+If the allele frequency is the same in the population, then Ht = Hs and therefore Fst = 0. 
+
+No overlap in allele frequency results in Fst = 1.
+
+Fst ranges from 0-1. Higher Fst represents high population structure or subdivision.
+
+
+**Problem 3**
+
+For two populations given below, calculate Fst.
+
+Population 1: AA = 20, Aa = 20, aa = 20
+Population 2: AA = 15, Aa = 15, aa = 30
+
+Ans: 0.016
+
+
+# **Clustering** 
+
+Clustering is 
+
+## Neighbor joining trees
+
+## Minimum spanning network
+
+## Discriminant analysis of principle components
+

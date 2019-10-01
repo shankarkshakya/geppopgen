@@ -12,7 +12,7 @@
 
 
 
-<title>HWE.utf8.md</title>
+<title>Pop_structure.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -419,47 +419,33 @@ div.tocify {
 </div>
 
 
-<div id="hardy-weinberg-equilibrium-hwe" class="section level2">
-<h2><strong>Hardy-Weinberg equilibrium (HWE)</strong></h2>
-<p>Previously, we calculated allele frequencies given the genotype counts. Now the question is can we reverse calculate i.e can we predict genotype frequencies from allele frequencies. Yes, we can but we have to make few assumptions first. First assumption is random mating.</p>
-<p>Random mating: One individual mate with any other individual with the same probablity.</p>
-<p>Lets consider a simple example of two alleles A and a whose allele freqencies are p and q respectively. Then, Pr(AA) = p2, Pr(aa) = q2 and P(Aa) = 2pq.</p>
-<p>The Hardy–Weinberg principle, also known as the Hardy–Weinberg equilibrium, model, theorem, or law, states that allele and genotype frequencies in a population will remain constant from generation to generation in the absence of other evolutionary influences like mutation, migration, genetic drift, mate choice, assortative mating, natural selection, sexual selection, inbreeding etc.</p>
-<p>Lets try to estimate genotype frequencies given the allele frequency.</p>
-<pre class="r"><code>freq_A &lt;- 0.08
-freq_a &lt;- 1-0.08
-
-AA &lt;- freq_A * freq_A
-aa &lt;- freq_a * freq_a
-
-Aa &lt;- 2*freq_a*freq_A
-
-AA</code></pre>
-<pre><code>## [1] 0.0064</code></pre>
-<pre class="r"><code>aa</code></pre>
-<pre><code>## [1] 0.8464</code></pre>
-<pre class="r"><code>Aa</code></pre>
-<pre><code>## [1] 0.1472</code></pre>
-<p>Therefore, expected homozygosity from above example is sum of AA and aa while expected heterozygosity is Aa.</p>
+<div id="population-structure-and-fst" class="section level1">
+<h1><strong>Population structure and Fst</strong></h1>
+<p>Even though the idea of random mating is very popular where each individual has the same probablity to mate with other individual this is rarely observed in nature. Individuals that are close together are likely to mate with each other than distantly located individuals. Becuase of this non random mating, we ll see population subdivision or also known as population structure. One of the primary reasons we get population structure is geographic barrier like huge water bodies or high mountains.</p>
+<p>Now, the question is how do we know if there is population structure or subdivision?</p>
+<p>Fst: Fst is probably the most common statistics used to quantify population subdivision. Fst measures the difference in allele frequcies between two populations.</p>
+<p>Mathematically, Fst = Ht - Hs / Ht</p>
+<p>Hs = heterozygosity in subdivided population Ht = Expected heterozygosity if the pooled populations is in HWE</p>
+<p>If the allele frequency is the same in the population, then Ht = Hs and therefore Fst = 0.</p>
+<p>No overlap in allele frequency results in Fst = 1.</p>
+<p>Fst ranges from 0-1. Higher Fst represents high population structure or subdivision.</p>
+<p><strong>Exercise 1</strong></p>
+<p>For two populations given below, calculate Fst.</p>
+<p>Population 1: AA = 20, Aa = 20, aa = 20 Population 2: AA = 15, Aa = 15, aa = 30</p>
+<p>Ans: 0.016</p>
 </div>
-<div id="problem-2" class="section level2">
-<h2><strong>Problem 2</strong></h2>
-<p>Calculate expected homozygosity and expected heterozygosity from following data</p>
-<p>AA = 42 AB = 16 BB = 32</p>
-<p>[Ans : Observed homozygosity = ; observed heterozygosity= ;]</p>
+<div id="clustering" class="section level1">
+<h1><strong>Clustering</strong></h1>
+<p>Clustering is</p>
+<div id="neighbor-joining-trees" class="section level2">
+<h2>Neighbor joining trees</h2>
 </div>
-<div id="deviations-from-hwe" class="section level2">
-<h2><strong>Deviations from HWE</strong></h2>
-<ol style="list-style-type: decimal">
-<li>Non random mating</li>
-<li>Inbreeding</li>
-<li>Population structure</li>
-<li>Selection</li>
-</ol>
+<div id="minimum-spanning-network" class="section level2">
+<h2>Minimum spanning network</h2>
 </div>
-<div id="chi-square-test" class="section level2">
-<h2><strong>Chi-square test</strong>*</h2>
-<p>We ll use chi-square test to test for the deviations.</p>
+<div id="discriminant-analysis-of-principle-components" class="section level2">
+<h2>Discriminant analysis of principle components</h2>
+</div>
 </div>
 
 
