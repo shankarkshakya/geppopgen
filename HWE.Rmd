@@ -56,7 +56,4 @@ observed heterozygosity= ;
 3. Population structure
 4. Selection
 
-## **Chi-square test***
-
-We ll use chi-square test to test for the deviations.
 
