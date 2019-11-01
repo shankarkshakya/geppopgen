@@ -49,11 +49,5 @@ observed heterozygosity= ;
 ]
 
 
-## **Deviations from HWE**
-
-1. Non random mating
-2. Inbreeding
-3. Population structure
-4. Selection
 
 

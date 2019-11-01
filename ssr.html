@@ -364,13 +364,13 @@ div.tocify {
     <li>
       <a href="HWE.html"></a>
     </li>
-    <li class="dropdown-header">Population structure and clustering</li>
-    <li>
-      <a href="Pop_structure.html"></a>
-    </li>
     <li class="dropdown-header">Molecular markers</li>
     <li>
       <a href="Molecular_markers.html"></a>
+    </li>
+    <li class="dropdown-header">Population structure and clustering</li>
+    <li>
+      <a href="Pop_structure.html"></a>
     </li>
   </ul>
 </li>
@@ -601,11 +601,11 @@ colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &q
 ia_Pinf</code></pre>
 <pre><code>##         Region   N MLG    rbarD P-value
 ## 1     Chapingo  17  17  0.13903    0.01
-## 2   Juchitepec  28  28 -0.00623    0.73
-## 3 San Gerónimo  22  22  0.01519    0.16
+## 2   Juchitepec  28  28 -0.00623    0.76
+## 3 San Gerónimo  22  22  0.01519    0.11
 ## 4       Toluca  38  38 -0.00664    0.69
-## 5     Tlaxcala  76  76  0.01604    0.01
-## 6    Michoacan  43  43  0.01019    0.10
+## 5     Tlaxcala  76  76  0.01604    0.02
+## 6    Michoacan  43  43  0.01019    0.14
 ## 7        Total 224 221  0.01302    0.01</code></pre>
 </div>
 <div id="hardy-weinberg-equilibrium" class="section level2">
@@ -629,12 +629,12 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614    0.10              5
+## 1    Michoacan 43  43  0.010185614    0.14              5
 ## 2     Chapingo 17  17  0.139028170    0.01              6
 ## 3       Toluca 38  38 -0.006641278    0.69              7
-## 4 San Gerónimo 22  22  0.015188555    0.16              9
-## 5   Juchitepec 28  28 -0.006226974    0.73             11
-## 6     Tlaxcala 76  76  0.016042513    0.01              7</code></pre>
+## 4 San Gerónimo 22  22  0.015188555    0.11              9
+## 5   Juchitepec 28  28 -0.006226974    0.76             11
+## 6     Tlaxcala 76  76  0.016042513    0.02              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
 <h2>Table 4. Pairwise FST</h2>
@@ -662,23 +662,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-09-30 22:58:21 &gt;&gt;&gt;
-##  2019-09-30 22:58:22 : Pairwise tests : 100 permutations
-##    2019-09-30 22:58:22 : Chapingo v. Juchitepec 
-##    2019-09-30 22:58:22 : Chapingo v. Michoacan 
-##    2019-09-30 22:58:23 : Chapingo v. San Gerónimo 
-##    2019-09-30 22:58:23 : Chapingo v. Tlaxcala 
-##    2019-09-30 22:58:23 : Chapingo v. Toluca 
-##    2019-09-30 22:58:23 : Juchitepec v. Michoacan 
-##    2019-09-30 22:58:23 : Juchitepec v. San Gerónimo 
-##    2019-09-30 22:58:24 : Juchitepec v. Tlaxcala 
-##    2019-09-30 22:58:24 : Juchitepec v. Toluca 
-##    2019-09-30 22:58:25 : Michoacan v. San Gerónimo 
-##    2019-09-30 22:58:25 : Michoacan v. Tlaxcala 
-##    2019-09-30 22:58:26 : Michoacan v. Toluca 
-##    2019-09-30 22:58:26 : San Gerónimo v. Tlaxcala 
-##    2019-09-30 22:58:27 : San Gerónimo v. Toluca 
-##    2019-09-30 22:58:27 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-10-31 19:24:03 &gt;&gt;&gt;
+##  2019-10-31 19:24:04 : Pairwise tests : 100 permutations
+##    2019-10-31 19:24:04 : Chapingo v. Juchitepec 
+##    2019-10-31 19:24:04 : Chapingo v. Michoacan 
+##    2019-10-31 19:24:05 : Chapingo v. San Gerónimo 
+##    2019-10-31 19:24:05 : Chapingo v. Tlaxcala 
+##    2019-10-31 19:24:05 : Chapingo v. Toluca 
+##    2019-10-31 19:24:06 : Juchitepec v. Michoacan 
+##    2019-10-31 19:24:06 : Juchitepec v. San Gerónimo 
+##    2019-10-31 19:24:06 : Juchitepec v. Tlaxcala 
+##    2019-10-31 19:24:07 : Juchitepec v. Toluca 
+##    2019-10-31 19:24:07 : Michoacan v. San Gerónimo 
+##    2019-10-31 19:24:08 : Michoacan v. Tlaxcala 
+##    2019-10-31 19:24:08 : Michoacan v. Toluca 
+##    2019-10-31 19:24:08 : San Gerónimo v. Tlaxcala 
+##    2019-10-31 19:24:09 : San Gerónimo v. Toluca 
+##    2019-10-31 19:24:09 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val
@@ -694,7 +694,7 @@ pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep
 ## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00990099
 ## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00990099
 ## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00990099
-## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.03960396
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.02970297
 ## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00990099
 ## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00990099</code></pre>
 <pre class="r"><code>fst_mat &lt;- pairwise_fst$pair.mat$Fst
