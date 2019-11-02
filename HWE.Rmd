@@ -37,17 +37,6 @@ Aa
 Therefore, expected homozygosity from above example is sum of AA and aa while expected heterozygosity is Aa.
 
 
-## **Problem 2**
-Calculate expected homozygosity and expected heterozygosity from following data
-
-AA = 42
-AB = 16
-BB = 32
-
-[Ans : Observed homozygosity = ;
-observed heterozygosity= ;
-]
-
 
 
 

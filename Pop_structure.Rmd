@@ -38,13 +38,5 @@ Population 2: AA = 15, Aa = 15, aa = 30
 Ans: 0.016
 
 
-# **Clustering** 
 
-Clustering is 
-
-## Neighbor joining trees
-
-## Minimum spanning network
-
-## Discriminant analysis of principle components
 

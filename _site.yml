@@ -13,15 +13,17 @@ navbar:
       - href: Introduction.html
       - text: HWE
       - href: HWE.html
-      - text: Molecular markers
-      - href: Molecular_markers.html
       - text: Population structure and clustering
       - href: Pop_structure.html
+      - text: Molecular markers
+      - href: Molecular_markers.html
+      
       
   - text: Day 2
     menu: 
       - text: R and R studio
       - href: installR.html
+      
   - text: Day3
     menu:
       - text: Microsatellite data analysis
