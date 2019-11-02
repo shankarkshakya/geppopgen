@@ -13,7 +13,7 @@ navbar:
       - href: Introduction.html
       - text: HWE
       - href: HWE.html
-      - text: Population structure and clustering
+      - text: Population structure
       - href: Pop_structure.html
       
   - text: Day 2
