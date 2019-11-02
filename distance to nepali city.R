@@ -3,12 +3,13 @@ head(mydata)
 mydistance <- dist(mydata)
 head(mydistance)
 
-
-plot(nj(mydistance))
+library(ape)
+#plot(nj(mydistance))
 
 
 tree <- nj(mydistance)
 
+tiff("ktmdistance.tiff", width = 7, height = 12, compression = "zip", res = 300, units = "in")
 plot(root(tree, "Baitadi"))
-
+dev.off()
 

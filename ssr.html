@@ -364,10 +364,6 @@ div.tocify {
     <li>
       <a href="HWE.html"></a>
     </li>
-    <li class="dropdown-header">Molecular markers</li>
-    <li>
-      <a href="Molecular_markers.html"></a>
-    </li>
     <li class="dropdown-header">Population structure and clustering</li>
     <li>
       <a href="Pop_structure.html"></a>
@@ -601,12 +597,12 @@ colnames(ia_Pinf) &lt;- c(&quot;Region&quot;, &quot;N&quot;, &quot;MLG&quot;, &q
 ia_Pinf</code></pre>
 <pre><code>##         Region   N MLG    rbarD P-value
 ## 1     Chapingo  17  17  0.13903    0.01
-## 2   Juchitepec  28  28 -0.00623    0.76
-## 3 San Gerónimo  22  22  0.01519    0.11
-## 4       Toluca  38  38 -0.00664    0.69
+## 2   Juchitepec  28  28 -0.00623    0.71
+## 3 San Gerónimo  22  22  0.01519    0.12
+## 4       Toluca  38  38 -0.00664    0.76
 ## 5     Tlaxcala  76  76  0.01604    0.02
-## 6    Michoacan  43  43  0.01019    0.14
-## 7        Total 224 221  0.01302    0.01</code></pre>
+## 6    Michoacan  43  43  0.01019    0.19
+## 7        Total 224 221  0.01302    0.03</code></pre>
 </div>
 <div id="hardy-weinberg-equilibrium" class="section level2">
 <h2>Hardy Weinberg Equilibrium</h2>
@@ -629,11 +625,11 @@ colnames(ia_Pinf)[6] &lt;- &quot;Loci under HWE&quot;
 
 ia_Pinf</code></pre>
 <pre><code>##         Region  N MLG        rbarD P-value Loci under HWE
-## 1    Michoacan 43  43  0.010185614    0.14              5
+## 1    Michoacan 43  43  0.010185614    0.19              5
 ## 2     Chapingo 17  17  0.139028170    0.01              6
-## 3       Toluca 38  38 -0.006641278    0.69              7
-## 4 San Gerónimo 22  22  0.015188555    0.11              9
-## 5   Juchitepec 28  28 -0.006226974    0.76             11
+## 3       Toluca 38  38 -0.006641278    0.76              7
+## 4 San Gerónimo 22  22  0.015188555    0.12              9
+## 5   Juchitepec 28  28 -0.006226974    0.71             11
 ## 6     Tlaxcala 76  76  0.016042513    0.02              7</code></pre>
 </div>
 <div id="table-4.-pairwise-fst" class="section level2">
@@ -662,23 +658,23 @@ diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
 <pre><code>## 
-## &lt;&lt;&lt; gtypes created on 2019-10-31 19:24:03 &gt;&gt;&gt;
-##  2019-10-31 19:24:04 : Pairwise tests : 100 permutations
-##    2019-10-31 19:24:04 : Chapingo v. Juchitepec 
-##    2019-10-31 19:24:04 : Chapingo v. Michoacan 
-##    2019-10-31 19:24:05 : Chapingo v. San Gerónimo 
-##    2019-10-31 19:24:05 : Chapingo v. Tlaxcala 
-##    2019-10-31 19:24:05 : Chapingo v. Toluca 
-##    2019-10-31 19:24:06 : Juchitepec v. Michoacan 
-##    2019-10-31 19:24:06 : Juchitepec v. San Gerónimo 
-##    2019-10-31 19:24:06 : Juchitepec v. Tlaxcala 
-##    2019-10-31 19:24:07 : Juchitepec v. Toluca 
-##    2019-10-31 19:24:07 : Michoacan v. San Gerónimo 
-##    2019-10-31 19:24:08 : Michoacan v. Tlaxcala 
-##    2019-10-31 19:24:08 : Michoacan v. Toluca 
-##    2019-10-31 19:24:08 : San Gerónimo v. Tlaxcala 
-##    2019-10-31 19:24:09 : San Gerónimo v. Toluca 
-##    2019-10-31 19:24:09 : Tlaxcala v. Toluca 
+## &lt;&lt;&lt; gtypes created on 2019-11-01 19:58:39 &gt;&gt;&gt;
+##  2019-11-01 19:58:39 : Pairwise tests : 100 permutations
+##    2019-11-01 19:58:39 : Chapingo v. Juchitepec 
+##    2019-11-01 19:58:40 : Chapingo v. Michoacan 
+##    2019-11-01 19:58:40 : Chapingo v. San Gerónimo 
+##    2019-11-01 19:58:41 : Chapingo v. Tlaxcala 
+##    2019-11-01 19:58:41 : Chapingo v. Toluca 
+##    2019-11-01 19:58:42 : Juchitepec v. Michoacan 
+##    2019-11-01 19:58:42 : Juchitepec v. San Gerónimo 
+##    2019-11-01 19:58:42 : Juchitepec v. Tlaxcala 
+##    2019-11-01 19:58:43 : Juchitepec v. Toluca 
+##    2019-11-01 19:58:43 : Michoacan v. San Gerónimo 
+##    2019-11-01 19:58:44 : Michoacan v. Tlaxcala 
+##    2019-11-01 19:58:44 : Michoacan v. Toluca 
+##    2019-11-01 19:58:45 : San Gerónimo v. Tlaxcala 
+##    2019-11-01 19:58:45 : San Gerónimo v. Toluca 
+##    2019-11-01 19:58:46 : Tlaxcala v. Toluca 
 ## 
 ## Population structure results:
 ##                              pair.label        Fst  Fst.p.val

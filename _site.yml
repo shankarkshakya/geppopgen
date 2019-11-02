@@ -15,9 +15,6 @@ navbar:
       - href: HWE.html
       - text: Population structure and clustering
       - href: Pop_structure.html
-      - text: Molecular markers
-      - href: Molecular_markers.html
-      
       
   - text: Day 2
     menu: 
