@@ -1,0 +1,21 @@
+---
+title: "Untitled"
+author: "Shankar K. Shakya"
+date: "11/3/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, fig.align="center", fig.height= 9, fig.width=7}
+mydata<- read.csv("./npl-travel-distances-in-km-unrchc.csv", header = T, row.names = 1)
+head(mydata)
+mydistance <- dist(mydata)
+head(mydistance)
+
+library(ape)
+tree <- nj(mydistance)
+
+plot(root(tree, "Baitadi"))
+```
+
