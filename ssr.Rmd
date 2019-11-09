@@ -74,6 +74,7 @@ splitStrata(diploid_pinf) <- ~Region/Year
 setPop(diploid_pinf) <- ~Region
 
 diploid_pinf
+saveRDS(diploid_pinf, "diploid_pinf.RDS")
 
 ```
 
@@ -168,6 +169,8 @@ gen2gtype <- function (x) {
 diploid_pinf_cc.g <- gen2gtype(diploid_pinf_cc)
 
 pairwise_fst <- pairwiseTest(diploid_pinf_cc.g, stats = "fst", nrep = 100)
+
+
 
 fst_mat <- pairwise_fst$pair.mat$Fst
 fst_mat[upper.tri(fst_mat)] <- t(fst_mat)[upper.tri(fst_mat)]

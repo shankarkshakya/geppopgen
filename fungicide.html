@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Shankar K. Shakya" />
+
+
+<title>Untitled</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Population genetics and data analysis workshop in R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="organizers.html">Meet the organizers</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Day 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Introduction</li>
+    <li>
+      <a href="Introduction.html"></a>
+    </li>
+    <li class="dropdown-header">HWE</li>
+    <li>
+      <a href="HWE.html"></a>
+    </li>
+    <li class="dropdown-header">Population structure</li>
+    <li>
+      <a href="Pop_structure.html"></a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Day 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R and R studio</li>
+    <li>
+      <a href="installR.html"></a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Day3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Microsatellite data analysis</li>
+    <li>
+      <a href="ssr.html"></a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="participants.html">List of participants</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Untitled</h1>
+<h4 class="author">Shankar K. Shakya</h4>
+<h4 class="date">11/4/2019</h4>
+
+</div>
+
+
+<div id="reading-data-file-first" class="section level2">
+<h2>Reading data file first</h2>
+<pre class="r"><code>mydata &lt;- read.csv(&quot;fungicide_dat.csv&quot;)
+head(mydata)</code></pre>
+<pre><code>##   Treatment Yield_bu_per_acre Severity
+## 1   Control            173.82      5.5
+## 2   Control            174.23      5.6
+## 3   Control            173.57      5.4
+## 4   Control            173.61      5.4
+## 5   Control            174.19      5.6
+## 6   Control            173.80      5.5</code></pre>
+</div>
+<div id="how-many-rows-and-columns-are-in-this-dataset" class="section level2">
+<h2>How many rows and columns are in this dataset?</h2>
+</div>
+<div id="convert-buacre-to-kgha-and-add-this-as-new-column" class="section level2">
+<h2>Convert bu/acre to kg/ha and add this as new column</h2>
+<p>This can be done by multiplying bu/acre with 62.77.</p>
+<pre class="r"><code>mydata$kg_ha &lt;- mydata$Yield_bu_per_acre * 62.77
+head(mydata)</code></pre>
+<pre><code>##   Treatment Yield_bu_per_acre Severity    kg_ha
+## 1   Control            173.82      5.5 10910.68
+## 2   Control            174.23      5.6 10936.42
+## 3   Control            173.57      5.4 10894.99
+## 4   Control            173.61      5.4 10897.50
+## 5   Control            174.19      5.6 10933.91
+## 6   Control            173.80      5.5 10909.43</code></pre>
+</div>
+<div id="subset-your-data-only-to-select-your-treament-and-kg_ha-column" class="section level2">
+<h2>subset your data only to select your treament and kg_ha column</h2>
+<pre class="r"><code>yield_kg_ha &lt;- mydata[ , c(1,4)]
+head(yield_kg_ha)</code></pre>
+<pre><code>##   Treatment    kg_ha
+## 1   Control 10910.68
+## 2   Control 10936.42
+## 3   Control 10894.99
+## 4   Control 10897.50
+## 5   Control 10933.91
+## 6   Control 10909.43</code></pre>
+</div>
+<div id="some-statistical-analysis" class="section level2">
+<h2>Some statistical analysis</h2>
+<pre class="r"><code>?aov</code></pre>
+<pre><code>## starting httpd help server ... done</code></pre>
+<pre class="r"><code>myanova &lt;- aov(formula = Yield_bu_per_acre ~ Treatment, data= mydata) 
+
+myanova</code></pre>
+<pre><code>## Call:
+##    aov(formula = Yield_bu_per_acre ~ Treatment, data = mydata)
+## 
+## Terms:
+##                 Treatment Residuals
+## Sum of Squares  14.722711  0.992333
+## Deg. of Freedom         2        15
+## 
+## Residual standard error: 0.2572072
+## Estimated effects may be unbalanced</code></pre>
+<pre class="r"><code>summary(myanova)</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Treatment    2 14.723   7.361   111.3 1.01e-09 ***
+## Residuals   15  0.992   0.066                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>TukeyHSD(myanova) </code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = Yield_bu_per_acre ~ Treatment, data = mydata)
+## 
+## $Treatment
+##                             diff        lwr       upr    p adj
+## Fungicide_A-Control     0.030000 -0.3557208 0.4157208 0.977785
+## Fungicide_B-Control     1.933333  1.5476125 2.3190542 0.000000
+## Fungicide_B-Fungicide_A 1.903333  1.5176125 2.2890542 0.000000</code></pre>
+</div>
+<div id="please-do-similar-analysis-for-severity-to-test-for-statistical-significance" class="section level2">
+<h2>Please do similar analysis for severity to test for statistical significance</h2>
+</div>
+<div id="now-lets-visualize-our-data" class="section level2">
+<h2>Now lets visualize our data</h2>
+<pre class="r"><code>library(ggplot2)
+
+yield.plot &lt;- ggplot(data = mydata, aes(x = Treatment, 
+                                    y = Yield_bu_per_acre))
+yield.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>yield.plot &lt;- yield.plot + geom_boxplot()
+
+yield.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>yield.plot &lt;- yield.plot + geom_boxplot(fill = &quot;orange&quot;)
+yield.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>yield.plot &lt;- yield.plot + geom_boxplot(aes(fill = Treatment))
+yield.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>yield.plot &lt;- yield.plot + ggtitle(&quot;Effect of Fungicides on Yield&quot;)
+yield.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>yield.plot &lt;- yield.plot + xlab(&quot;Treatment Applied&quot;) + ylab(&quot;Yield&quot;)
+yield.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="now-try-plotting-disease-severity-data" class="section level2">
+<h2>Now try plotting disease severity data</h2>
+<pre class="r"><code>ggplot(mydata, aes(x = Treatment, y = Severity)) + geom_boxplot(aes(fill = Treatment))</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>severity.plot &lt;- ggplot(mydata, aes(x = Treatment, y = Severity)) + geom_boxplot(aes(fill = Treatment)) + theme_bw(base_size = 14) + theme(panel.grid = element_blank())
+
+severity.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<pre class="r"><code>library(ggpubr)</code></pre>
+<pre><code>## Loading required package: magrittr</code></pre>
+<pre class="r"><code>severity.plot &lt;- severity.plot + stat_compare_means(method = &quot;anova&quot;, label.y = 6.5)
+
+severity.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>my_comparisons &lt;- list(c(&quot;Control&quot;, &quot;Fungicide_A&quot;),
+                       c(&quot;Control&quot;, &quot;Fungicide_B&quot;), 
+                       c(&quot;Fungicide_A&quot;, &quot;Fungicide_B&quot;))
+
+severity.plot &lt;- severity.plot +
+    stat_compare_means(comparisons = my_comparisons, 
+                        label = &quot;p.signif&quot;, 
+                        method = &quot;t.test&quot;)
+
+severity.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="now-we-are-ready-to-save-our-plot" class="section level2">
+<h2>Now we are ready to save our plot</h2>
+<pre class="r"><code>#tiff(&quot;myfungicidedata.tiff&quot;, width = 7, height = 7, res = 300, units = &quot;in&quot;, compression = &quot;zip&quot;)
+severity.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>#dev.off()</code></pre>
+<pre class="r"><code>#tiff(&quot;myfungicidedata.tiff&quot;, width = 9, height = 7, res = 300, units = &quot;in&quot;, compression = &quot;zip&quot;)
+severity.plot</code></pre>
+<p><img src="fungicide_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<pre class="r"><code>#dev.off()</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

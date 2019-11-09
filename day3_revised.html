@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Shankar K. Shakya" />
+
+
+<title>Untitled</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Population genetics and data analysis workshop in R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="organizers.html">Meet the organizers</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Day 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Introduction</li>
+    <li>
+      <a href="Introduction.html"></a>
+    </li>
+    <li class="dropdown-header">HWE</li>
+    <li>
+      <a href="HWE.html"></a>
+    </li>
+    <li class="dropdown-header">Population structure</li>
+    <li>
+      <a href="Pop_structure.html"></a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Day 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R and R studio</li>
+    <li>
+      <a href="installR.html"></a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Day3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Microsatellite data analysis</li>
+    <li>
+      <a href="ssr.html"></a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="participants.html">List of participants</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Untitled</h1>
+<h4 class="author">Shankar K. Shakya</h4>
+<h4 class="date">11/5/2019</h4>
+
+</div>
+
+
+<pre class="r"><code>diploid_pinf&lt;- readRDS(&quot;diploid_pinf.RDS&quot;)
+diploid_pinf</code></pre>
+<pre><code>## Loading required package: poppr</code></pre>
+<pre><code>## Loading required package: adegenet</code></pre>
+<pre><code>## Loading required package: ade4</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;spdep&#39;:
+##   method   from
+##   plot.mst ape</code></pre>
+<pre><code>## 
+##    /// adegenet 2.1.1 is loaded ////////////
+## 
+##    &gt; overview: &#39;?adegenet&#39;
+##    &gt; tutorials/doc/questions: &#39;adegenetWeb()&#39; 
+##    &gt; bug reports/feature requests: adegenetIssues()</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;pegas&#39;:
+##   method      from
+##   print.amova ade4</code></pre>
+<pre><code>## This is poppr version 2.8.3. To get started, type package?poppr
+## OMP parallel support: available</code></pre>
+<pre><code>## 
+## This is a genclone object
+## -------------------------
+## Genotype information:
+## 
+##    221 original multilocus genotypes 
+##    431 diploid individuals
+##     11 codominant loci
+## 
+## Population information:
+## 
+##      2 strata - Region, Year
+##      6 populations defined - 
+## Chapingo, Juchitepec, San Gerónimo, Toluca, Tlaxcala, Michoacan</code></pre>
+<pre class="r"><code>diploid_pinf_cc &lt;- clonecorrect(diploid_pinf)
+diploid_pinf_cc</code></pre>
+<pre><code>## 
+## This is a genclone object
+## -------------------------
+## Genotype information:
+## 
+##    221 original multilocus genotypes 
+##    224 diploid individuals
+##     11 codominant loci
+## 
+## Population information:
+## 
+##      2 strata - Region, Year
+##      6 populations defined - 
+## Chapingo, Juchitepec, San Gerónimo, Toluca, Tlaxcala, Michoacan</code></pre>
+<pre class="r"><code>library(strataG)</code></pre>
+<pre><code>## Loading required package: apex</code></pre>
+<pre><code>## Loading required package: ape</code></pre>
+<pre><code>## Loading required package: phangorn</code></pre>
+<pre><code>## 
+## Attaching package: &#39;phangorn&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:adegenet&#39;:
+## 
+##     AICc</code></pre>
+<pre class="r"><code>gen2gtype &lt;- function (x) {
+  
+  gen.mat &lt;- genind2df(x, usepop = TRUE, oneColPerAll = TRUE)
+  strata &lt;- x@strata
+  rownames(strata) &lt;- rownames(gen.mat)
+  x@strata &lt;- strata
+  gen.mat[gen.mat == &quot;NA&quot;] &lt;- NA
+  has.pop &lt;- !is.null(x@pop)
+  df2gtypes(x = gen.mat, ploidy = x@ploidy[1], id.col = NULL, 
+            strata.col = if (has.pop) 
+              1
+            else NULL, loc.col = if (has.pop) 
+              2
+            else 1, 
+            schemes = x@strata,  other = other(x))
+}
+
+diploid_pinf_cc.g &lt;- gen2gtype(diploid_pinf_cc)
+
+pairwise_fst &lt;- pairwiseTest(diploid_pinf_cc.g, stats = &quot;fst&quot;, nrep = 100)</code></pre>
+<pre><code>## 
+## &lt;&lt;&lt; gtypes created on 2019-11-05 08:02:26 &gt;&gt;&gt;
+##  2019-11-05 08:02:26 : Pairwise tests : 100 permutations
+##    2019-11-05 08:02:26 : Chapingo v. Juchitepec 
+##    2019-11-05 08:02:28 : Chapingo v. Michoacan 
+##    2019-11-05 08:02:28 : Chapingo v. San Gerónimo 
+##    2019-11-05 08:02:29 : Chapingo v. Tlaxcala 
+##    2019-11-05 08:02:29 : Chapingo v. Toluca 
+##    2019-11-05 08:02:30 : Juchitepec v. Michoacan 
+##    2019-11-05 08:02:30 : Juchitepec v. San Gerónimo 
+##    2019-11-05 08:02:31 : Juchitepec v. Tlaxcala 
+##    2019-11-05 08:02:31 : Juchitepec v. Toluca 
+##    2019-11-05 08:02:31 : Michoacan v. San Gerónimo 
+##    2019-11-05 08:02:32 : Michoacan v. Tlaxcala 
+##    2019-11-05 08:02:32 : Michoacan v. Toluca 
+##    2019-11-05 08:02:33 : San Gerónimo v. Tlaxcala 
+##    2019-11-05 08:02:33 : San Gerónimo v. Toluca 
+##    2019-11-05 08:02:34 : Tlaxcala v. Toluca 
+## 
+## Population structure results:
+##                              pair.label        Fst  Fst.p.val
+## 1      Chapingo (17) v. Juchitepec (28) 0.05933588 0.00990099
+## 2       Chapingo (17) v. Michoacan (43) 0.06152119 0.00990099
+## 3    Chapingo (17) v. San Gerónimo (22) 0.06584521 0.00990099
+## 4        Chapingo (17) v. Tlaxcala (76) 0.05181373 0.00990099
+## 5          Chapingo (17) v. Toluca (38) 0.04356232 0.00990099
+## 6     Juchitepec (28) v. Michoacan (43) 0.06805726 0.00990099
+## 7  Juchitepec (28) v. San Gerónimo (22) 0.05353811 0.00990099
+## 8      Juchitepec (28) v. Tlaxcala (76) 0.04262064 0.00990099
+## 9        Juchitepec (28) v. Toluca (38) 0.06661917 0.00990099
+## 10  Michoacan (43) v. San Gerónimo (22) 0.11561847 0.00990099
+## 11      Michoacan (43) v. Tlaxcala (76) 0.10420317 0.00990099
+## 12        Michoacan (43) v. Toluca (38) 0.10782517 0.00990099
+## 13   San Gerónimo (22) v. Tlaxcala (76) 0.01159181 0.03960396
+## 14     San Gerónimo (22) v. Toluca (38) 0.07121965 0.00990099
+## 15         Tlaxcala (76) v. Toluca (38) 0.06161425 0.00990099</code></pre>
+<pre class="r"><code>pairwise_fst</code></pre>
+<pre><code>## $result
+##                              pair.label     strata.1     strata.2 n.1 n.2
+## 1      Chapingo (17) v. Juchitepec (28)     Chapingo   Juchitepec  17  28
+## 2       Chapingo (17) v. Michoacan (43)     Chapingo    Michoacan  17  43
+## 3    Chapingo (17) v. San Gerónimo (22)     Chapingo San Gerónimo  17  22
+## 4        Chapingo (17) v. Tlaxcala (76)     Chapingo     Tlaxcala  17  76
+## 5          Chapingo (17) v. Toluca (38)     Chapingo       Toluca  17  38
+## 6     Juchitepec (28) v. Michoacan (43)   Juchitepec    Michoacan  28  43
+## 7  Juchitepec (28) v. San Gerónimo (22)   Juchitepec San Gerónimo  28  22
+## 8      Juchitepec (28) v. Tlaxcala (76)   Juchitepec     Tlaxcala  28  76
+## 9        Juchitepec (28) v. Toluca (38)   Juchitepec       Toluca  28  38
+## 10  Michoacan (43) v. San Gerónimo (22)    Michoacan San Gerónimo  43  22
+## 11      Michoacan (43) v. Tlaxcala (76)    Michoacan     Tlaxcala  43  76
+## 12        Michoacan (43) v. Toluca (38)    Michoacan       Toluca  43  38
+## 13   San Gerónimo (22) v. Tlaxcala (76) San Gerónimo     Tlaxcala  22  76
+## 14     San Gerónimo (22) v. Toluca (38) San Gerónimo       Toluca  22  38
+## 15         Tlaxcala (76) v. Toluca (38)     Tlaxcala       Toluca  76  38
+##           Fst  Fst.p.val
+## 1  0.05933588 0.00990099
+## 2  0.06152119 0.00990099
+## 3  0.06584521 0.00990099
+## 4  0.05181373 0.00990099
+## 5  0.04356232 0.00990099
+## 6  0.06805726 0.00990099
+## 7  0.05353811 0.00990099
+## 8  0.04262064 0.00990099
+## 9  0.06661917 0.00990099
+## 10 0.11561847 0.00990099
+## 11 0.10420317 0.00990099
+## 12 0.10782517 0.00990099
+## 13 0.01159181 0.03960396
+## 14 0.07121965 0.00990099
+## 15 0.06161425 0.00990099
+## 
+## $pair.mat
+## $pair.mat$Fst
+##                Chapingo Juchitepec  Michoacan San Gerónimo   Tlaxcala
+## Chapingo             NA 0.00990099 0.00990099   0.00990099 0.00990099
+## Juchitepec   0.05933588         NA 0.00990099   0.00990099 0.00990099
+## Michoacan    0.06152119 0.06805726         NA   0.00990099 0.00990099
+## San Gerónimo 0.06584521 0.05353811 0.11561847           NA 0.03960396
+## Tlaxcala     0.05181373 0.04262064 0.10420317   0.01159181         NA
+## Toluca       0.04356232 0.06661917 0.10782517   0.07121965 0.06161425
+##                  Toluca
+## Chapingo     0.00990099
+## Juchitepec   0.00990099
+## Michoacan    0.00990099
+## San Gerónimo 0.00990099
+## Tlaxcala     0.00990099
+## Toluca               NA
+## 
+## 
+## $null.dist
+## NULL</code></pre>
+<div id="neighbor-joining-tree" class="section level2">
+<h2>Neighbor joining tree</h2>
+<pre class="r"><code>mydata &lt;- read.csv(&quot;./npl-travel-distances-in-km-unrchc.csv&quot;, header = T, row.names = 1)
+head(mydata)</code></pre>
+<pre><code>##               Baglung Baitadi Barhabise Bhairahawa Biratnagar
+## Baglung             0     893       454        334        604
+## Baitadi           893       0       820        924        603
+## Barhabise         454     820         0        354        660
+## Bhairahawa        334     924       354          0        540
+## Biratnagar        604     603       660        540          0
+## Birendranagar     630    1099       686        340        851
+##               Birendranagar Birganj Butwal Chandragadhi Chautara Dailekh
+## Baglung                 630     331    312          679      353     660
+## Baitadi                1099     445    826          581     1174     920
+## Barhabise               686     387    368          735       79     731
+## Bhairahawa              340     267     22          615      361     370
+## Biratnagar              851     325    518          123      631     866
+## Birendranagar             0     472    318          911      657      94
+##               Dhangadhi Dhankuta Dharan Dhulikhel Dhunche Dipayal Gaighat
+## Baglung             705      650    600       303     388     871     507
+## Baitadi             475      218   1145      1095     870     955     150
+## Barhabise           761      730    656        79     228     927     563
+## Bhairahawa          415      586    536       311     396     581     443
+## Biratnagar          911       94     44       200     666    1077     153
+## Birendranagar       257      882    832       607     692     423     739
+##               Gorkha Hetauda Ilam Janakpur Jiri Kakarbhitta Kathmandu
+## Baglung          181     276  740      433  480         673       271
+## Baitadi         1000     762  771     1235  928        1050      1168
+## Barhabise        251     332  796      489  118         729       111
+## Bhairahawa       203     212  676      369  488         609       279
+## Biratnagar       473     328  184      209  758         117       549
+## Birendranagar    499     508  972      665  784         905       575
+##               Kodari Krishnanagar Lumbini Mahendranagar Narayanghat
+## Baglung          409          389     356           739         199
+## Baitadi         1036          544     591           252         694
+## Barhabise        729          445     412           795         255
+## Bhairahawa       417           99      22           449         135
+## Biratnagar       687          595     562           945         405
+## Birendranagar    713          281     328           291         431
+##               Nepalgunj Pokhara Rajbiraj Salyan Sindhulimadhi Tansen
+## Baglung             554      73      511    558           442    199
+## Baitadi             369     820     1006    519           937    620
+## Barhabise           610     309      567    614           498    407
+## Bhairahawa          264     261      447    268           378     61
+## Biratnagar          760     531       89    764           238    557
+## Birendranagar       106     557      743    256           674    357
+##               Taplejung Terhathum Trishuli.Bazar Tulsipur
+## Baglung             890       709            341      496
+## Baitadi            1385      1228            908      457
+## Barhabise           946       765            181      552
+## Bhairahawa          843       645            349      206
+## Biratnagar          334       153            619      702
+## Birendranagar      1122       941            645      194</code></pre>
+<pre class="r"><code>class(mydata)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>mydistance &lt;- dist(mydata)
+head(mydistance)</code></pre>
+<pre><code>## [1] 3256.927 1021.774 1140.834 2207.630 1999.004 1239.785</code></pre>
+<pre class="r"><code>class(mydistance)</code></pre>
+<pre><code>## [1] &quot;dist&quot;</code></pre>
+<pre class="r"><code>library(ape)
+tree &lt;- nj(mydistance)
+
+plot(root(tree, &quot;Baitadi&quot;))</code></pre>
+<p><img src="day3_revised_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="structure-plot" class="section level2">
+<h2>STRUCTURE plot</h2>
+<pre class="r"><code>edited_qmat_list &lt;- readRDS(&quot;qmat_list.RData&quot;)
+
+# for (i in 1:length(edited_qmat_list)){
+#   temp_mat &lt;- edited_qmat_list[[i]]
+#   key &lt;- c(&quot;Michoacan&quot; = &quot;MICHO&quot;, &quot;Chapingo&quot; = &quot;CHA&quot;, &quot;Toluca&quot; = &quot;TOLU&quot;, &quot;San Gerónimo&quot; = &quot;SG&quot;, &quot;Juchitepec&quot; = &quot;JFH&quot;, &quot;Tlaxcala&quot; = &quot;TLAX&quot;)
+#   temp_mat$orig.pop &lt;- factor(key[temp_mat$orig.pop], ordered = TRUE, levels = key)
+#   edited_qmat_list[[i]] &lt;- temp_mat
+# } 
+
+library(strataG)
+structurePlot(edited_qmat_list[[4]], horiz = F)</code></pre>
+<p><img src="day3_revised_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

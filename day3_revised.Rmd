@@ -1,0 +1,90 @@
+---
+title: "Untitled"
+author: "Shankar K. Shakya"
+date: "11/5/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+diploid_pinf<- readRDS("diploid_pinf.RDS")
+diploid_pinf
+
+library(poppr)
+diploid_pinf_cc <- clonecorrect(diploid_pinf)
+diploid_pinf_cc
+
+```
+
+
+```{r}
+
+library(strataG)
+gen2gtype <- function (x) {
+  
+  gen.mat <- genind2df(x, usepop = TRUE, oneColPerAll = TRUE)
+  strata <- x@strata
+  rownames(strata) <- rownames(gen.mat)
+  x@strata <- strata
+  gen.mat[gen.mat == "NA"] <- NA
+  has.pop <- !is.null(x@pop)
+  df2gtypes(x = gen.mat, ploidy = x@ploidy[1], id.col = NULL, 
+            strata.col = if (has.pop) 
+              1
+            else NULL, loc.col = if (has.pop) 
+              2
+            else 1, 
+            schemes = x@strata,  other = other(x))
+}
+
+diploid_pinf_cc.g <- gen2gtype(diploid_pinf_cc)
+
+pairwise_fst <- pairwiseTest(diploid_pinf_cc.g, stats = "fst", nrep = 100)
+pairwise_fst
+
+```
+
+## Neighbor joining tree
+
+```{r}
+
+mydata <- read.csv("./npl-travel-distances-in-km-unrchc.csv", header = T, row.names = 1)
+head(mydata)
+class(mydata)
+
+mydistance <- dist(mydata)
+head(mydistance)
+class(mydistance)
+
+library(ape)
+tree <- nj(mydistance)
+
+plot(root(tree, "Baitadi"))
+
+```
+
+## STRUCTURE plot
+
+```{r}
+
+edited_qmat_list <- readRDS("qmat_list.RData")
+
+# for (i in 1:length(edited_qmat_list)){
+#   temp_mat <- edited_qmat_list[[i]]
+#   key <- c("Michoacan" = "MICHO", "Chapingo" = "CHA", "Toluca" = "TOLU", "San Gerónimo" = "SG", "Juchitepec" = "JFH", "Tlaxcala" = "TLAX")
+#   temp_mat$orig.pop <- factor(key[temp_mat$orig.pop], ordered = TRUE, levels = key)
+#   edited_qmat_list[[i]] <- temp_mat
+# } 
+
+library(strataG)
+structurePlot(edited_qmat_list[[4]], horiz = F)
+
+```
+
+
+

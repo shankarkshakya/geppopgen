@@ -1,0 +1,169 @@
+---
+title: "Untitled"
+author: "Shankar K. Shakya"
+date: "11/4/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Reading data file first
+
+```{r}
+
+mydata <- read.csv("fungicide_dat.csv")
+head(mydata)
+
+```
+
+## How many rows and columns are in this dataset?
+
+
+## Convert bu/acre to kg/ha and add this as new column
+This can be done by multiplying bu/acre with 62.77. 
+
+```{r}
+
+mydata$kg_ha <- mydata$Yield_bu_per_acre * 62.77
+head(mydata)
+
+```
+
+## subset your data only to select your treament and kg_ha column
+
+```{r}
+
+yield_kg_ha <- mydata[ , c(1,4)]
+head(yield_kg_ha)
+
+```
+
+## Some statistical analysis
+
+```{r}
+
+?aov
+
+myanova <- aov(formula = Yield_bu_per_acre ~ Treatment, data= mydata) 
+
+myanova
+
+
+summary(myanova)
+
+TukeyHSD(myanova) 
+
+```
+
+
+## Please do similar analysis for severity to test for statistical significance
+
+
+## Now lets visualize our data
+
+```{r}
+library(ggplot2)
+
+yield.plot <- ggplot(data = mydata, aes(x = Treatment, 
+                                    y = Yield_bu_per_acre))
+yield.plot
+
+
+```
+
+
+```{r}
+yield.plot <- yield.plot + geom_boxplot()
+
+yield.plot
+```
+
+
+```{r}
+
+yield.plot <- yield.plot + geom_boxplot(fill = "orange")
+yield.plot
+
+```
+
+```{r}
+
+yield.plot <- yield.plot + geom_boxplot(aes(fill = Treatment))
+yield.plot
+
+```
+
+
+```{r}
+yield.plot <- yield.plot + ggtitle("Effect of Fungicides on Yield")
+yield.plot
+
+```
+
+```{r}
+yield.plot <- yield.plot + xlab("Treatment Applied") + ylab("Yield")
+yield.plot
+```
+
+
+## Now try plotting disease severity data 
+
+
+```{r}
+ggplot(mydata, aes(x = Treatment, y = Severity)) + geom_boxplot(aes(fill = Treatment))
+
+severity.plot <- ggplot(mydata, aes(x = Treatment, y = Severity)) + geom_boxplot(aes(fill = Treatment)) + theme_bw(base_size = 14) + theme(panel.grid = element_blank())
+
+severity.plot
+
+```
+
+
+```{r}
+library(ggpubr)
+severity.plot <- severity.plot + stat_compare_means(method = "anova", label.y = 6.5)
+
+severity.plot
+```
+
+
+
+```{r}
+my_comparisons <- list(c("Control", "Fungicide_A"),
+                       c("Control", "Fungicide_B"), 
+                       c("Fungicide_A", "Fungicide_B"))
+
+severity.plot <- severity.plot +
+    stat_compare_means(comparisons = my_comparisons, 
+                        label = "p.signif", 
+                        method = "t.test")
+
+severity.plot
+
+```
+
+
+## Now we are ready to save our plot
+
+```{r}
+
+#tiff("myfungicidedata.tiff", width = 7, height = 7, res = 300, units = "in", compression = "zip")
+severity.plot
+#dev.off()
+
+
+```
+
+
+```{r}
+#tiff("myfungicidedata.tiff", width = 9, height = 7, res = 300, units = "in", compression = "zip")
+severity.plot
+#dev.off()
+```
+
+
